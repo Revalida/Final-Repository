@@ -10,6 +10,8 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
 import { StudentListComponent } from './student-list/student-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
+import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { HeaderComponent } from './header/header.component';
     AdmindashboardComponent,
     StudentListComponent,
     HeaderComponent,
+    LoginComponent,
+    WelcomepageComponent,
   ],
   imports: [
     BrowserModule,

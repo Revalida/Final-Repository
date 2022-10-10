@@ -21,13 +21,13 @@ public class LmsRevalidaApplication {
 	@Autowired
 	private StudentService service;
 	
-	@CrossOrigin("http://localhost:4200/")
+	@CrossOrigin("http://localhost:54148/")
 	@GetMapping("/student")
 	public List<StudentDetails> getStudents() {
 		return service.getStudents();
 	}
 	
-	@CrossOrigin("http://localhost:4200/")
+	@CrossOrigin("http://localhost:54148/")
 	@PostMapping("/student/addstudent")
 	public StudentDetails AddStudent(@RequestBody StudentDetails student) {
 		service.insertStudent(student);
