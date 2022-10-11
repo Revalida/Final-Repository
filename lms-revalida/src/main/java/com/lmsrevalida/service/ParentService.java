@@ -21,9 +21,9 @@ public class ParentService {
 	}
 	
 	public void insertParent(ParentDetails parent) {
-		dslContext.insertInto(Tables.PARENT_DETAILS,Tables.PARENT_DETAILS.FULL_NAME
-				,Tables.PARENT_DETAILS.PASSWORD,Tables.PARENT_DETAILS.TYPE)
-		.values(parent.getFullName(),parent.getPassword(),parent.getType()).execute();
+		dslContext.insertInto(Tables.PARENT_DETAILS,Tables.PARENT_DETAILS.PARENT_FIRST_NAME
+				,Tables.PARENT_DETAILS.PARENT_LAST_NAME)
+		.values(parent.getParentFirstName(),parent.getParentLastName()).execute();
 	}
 }
 

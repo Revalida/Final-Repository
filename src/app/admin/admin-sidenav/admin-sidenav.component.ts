@@ -14,9 +14,9 @@ export class AdminSidenavComponent implements OnInit {
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {}
-  open(content: any) {
+  openStudent(student: any) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .open(student, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
           this.closeResult = `Closed with: ${result}`;
@@ -37,10 +37,33 @@ export class AdminSidenavComponent implements OnInit {
     }
   }
 
-  addStudent(f: NgForm) {
+  addStudent(s: NgForm) {
+    console.log(s.form.value);
+    this.http
+      .post('http://localhost:9191/student/addstudent', s.value)
+      .subscribe((result) => {
+        this.ngOnInit(); // reload the table
+      });
+    this.modalService.dismissAll(); // dismiss the modal
+  }
+
+  openFaculty(faculty: any) {
+    this.modalService
+      .open(faculty, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  addFaculty(f: NgForm) {
     console.log(f.form.value);
     this.http
-      .post('http://localhost:9191/student/addstudent', f.value)
+      .post('http://localhost:9191/faculty/addfaculty', f.value)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });

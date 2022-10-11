@@ -46,7 +46,7 @@
             <span>{{ student.activeDeactive }}</span>
           </td>
           <td>
-            <button class="btn btn-sm btn-warning">
+            <button class="btn btn-sm btn-warning" (click)="openParent(parent)">
               <i class="fa fa-plus"></i>Add
             </button>
           </td>
@@ -55,3 +55,60 @@
     </table>
   </div>
 </div>
+
+<ng-template #parent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Parent</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #p="ngForm" (ngSubmit)="addParent(p)">
+      <div class="form-group">
+        <label for="parentFirstName">Parent Firstname</label>
+        <div class="input-group">
+          <input
+            id="parentFirstName"
+            class="form-control"
+            name="parentFirstName"
+            placeholder="ParentFirstName"
+            #parentFirstName="ngModel"
+            ngModel
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="parentLastName">Parent Lastname</label>
+        <div class="input-group">
+          <input
+            id="parentLastName"
+            class="form-control"
+            name="parentLastName"
+            placeholder="ParentLastName"
+            #parentLastName="ngModel"
+            ngModel
+          />
+        </div>
+      </div>
+      <br />
+      <div class="text-center">
+        <button data-dismiss="modal" class="btn btn-info">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Cancel
+    </button>
+  </div>
+</ng-template>

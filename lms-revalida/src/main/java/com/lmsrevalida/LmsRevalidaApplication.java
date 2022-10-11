@@ -62,6 +62,13 @@ public class LmsRevalidaApplication {
 	public List<FacultyDetails> getFaculty() {
 		return Facultyservice.getFaculty();
 	}
+	
+	@CrossOrigin("http://localhost:4200/")
+	@PostMapping("/faculty/addfaculty")
+	public FacultyDetails AddFaculty(@RequestBody FacultyDetails faculty) {
+		Facultyservice.insertFaculty(faculty);
+		return null;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(LmsRevalidaApplication.class, args);
