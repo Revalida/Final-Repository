@@ -1,29 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-admindashboard',
-  templateUrl: './admindashboard.component.html',
-  styleUrls: ['./admindashboard.component.scss'],
+  selector: 'app-admin-sidenav',
+  templateUrl: './admin-sidenav.component.html',
+  styleUrls: ['./admin-sidenav.component.scss'],
 })
-export class AdmindashboardComponent implements OnInit {
+export class AdminSidenavComponent implements OnInit {
   students: any;
   closeResult: any;
-  deleteId: number | undefined;
-  constructor(
-    private http: HttpClient,
-    private modalService: NgbModal,
-    private _route: Router
-  ) {}
+  constructor(private http: HttpClient, private modalService: NgbModal) {}
 
-  ngOnInit(): void {
-    let response = this.http.get('http://localhost:9191/student');
-    response.subscribe((data) => (this.students = data));
-  }
-
+  ngOnInit(): void {}
   open(content: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
@@ -45,14 +35,6 @@ export class AdmindashboardComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
-  }
-
-  getstudent() {
-    return this.http
-      .get('http://localhost:9191/student')
-      .subscribe((result) => {
-        console.log(result);
-      });
   }
 
   addStudent(f: NgForm) {

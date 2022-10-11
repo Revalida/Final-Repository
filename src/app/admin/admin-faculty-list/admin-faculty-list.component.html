@@ -1,0 +1,40 @@
+<app-header></app-header>
+<app-admin-sidenav></app-admin-sidenav>
+<div class="table">
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Faculty No</th>
+          <th>Full Name</th>
+          <th>Work</th>
+          <th>Status</th>
+          <th>Active/Not</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of faculty">
+          <td>
+            <span>{{ data.facultyNo }}</span>
+          </td>
+          <td>
+            <span>{{ data.facultyName }}</span>
+          </td>
+          <td>
+            <span>{{ data.work }}</span>
+          </td>
+          <td>
+            <span>{{ data.status }}</span>
+          </td>
+          <td>
+            <span>{{ data.activeDeactive }}</span>
+          </td>
+          <td>
+            <span>{{ data.type }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

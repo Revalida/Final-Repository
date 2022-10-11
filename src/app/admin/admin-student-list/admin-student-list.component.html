@@ -1,0 +1,57 @@
+<app-header></app-header>
+<app-admin-sidenav></app-admin-sidenav>
+<div class="table">
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Student No</th>
+          <th>Full Name</th>
+          <th>BirthDate</th>
+          <th>Course</th>
+          <th>Year Level</th>
+          <th>Acad Year</th>
+          <th>Status</th>
+          <th>Active/Not</th>
+          <th>Parent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>
+            <span>{{ student.studNo }}</span>
+          </td>
+          <td>
+            <span
+              >{{ student.firstName }} {{ student.middleName }}
+              {{ student.lastName }}</span
+            >
+          </td>
+          <td>
+            <span>{{ student.birthDate }}</span>
+          </td>
+          <td>
+            <span>{{ student.course }}</span>
+          </td>
+          <td>
+            <span>{{ student.yearLevel }}</span>
+          </td>
+          <td>
+            <span>{{ student.acadYear }}</span>
+          </td>
+          <td>
+            <span>{{ student.status }}</span>
+          </td>
+          <td>
+            <span>{{ student.activeDeactive }}</span>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-warning">
+              <i class="fa fa-plus"></i>Add
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

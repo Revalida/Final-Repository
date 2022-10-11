@@ -5,8 +5,9 @@ import java.util.List;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.jooq.revalida.model.tables.pojos.StudentDetails;
+
 import com.jooq.revalida.model.Tables;
+import com.jooq.revalida.model.tables.pojos.StudentDetails;
 
 @Service
 public class StudentService {
@@ -20,10 +21,11 @@ public class StudentService {
 	}
 	
 	public void insertStudent(StudentDetails student) {
-		dslContext.insertInto(Tables.STUDENT_DETAILS,Tables.STUDENT_DETAILS.FIRST_NAME,Tables.STUDENT_DETAILS.LAST_NAME
+		dslContext.insertInto(Tables.STUDENT_DETAILS,Tables.STUDENT_DETAILS.FIRST_NAME
+				,Tables.STUDENT_DETAILS.MIDDLE_NAME,Tables.STUDENT_DETAILS.LAST_NAME,Tables.STUDENT_DETAILS.PASSWORD
 				,Tables.STUDENT_DETAILS.COURSE,Tables.STUDENT_DETAILS.SECTION,Tables.STUDENT_DETAILS.SEM
 				,Tables.STUDENT_DETAILS.YEAR_LEVEL,Tables.STUDENT_DETAILS.TYPE)
-		.values(student.getFirstName(),student.getLastName(),student.getCourse(),student.getSection()
+		.values(student.getFirstName(),student.getMiddleName(),student.getLastName(),student.getPassword(),student.getCourse(),student.getSection()
 ,student.getSem(),student.getYearLevel(),student.getType()).execute();
 	}
 }
