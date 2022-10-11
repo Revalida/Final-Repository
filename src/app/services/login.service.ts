@@ -17,7 +17,7 @@ export class LoginService {
   constructor(private _http: HttpClient) {}
 
   public loginUserFromRemote(user: User) {
-    return this._http.post<any>(`${NAV_URL}/loginuser`, user).pipe(
+    return this._http.get<any>(`${NAV_URL}`).pipe(
       map((data) => {
         sessionStorage.setItem('USER', user.email);
         sessionStorage.setItem('ROLE', 'USER');
