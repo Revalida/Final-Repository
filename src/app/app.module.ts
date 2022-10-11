@@ -12,9 +12,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
+import { RouterModule } from '@angular/router';
+import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
+import { StudentHeaderComponent } from './student/studentheader/studentheader.component';
 
 @NgModule({
   declarations: [
+    StudentHeaderComponent,
+    StudentdashboardComponent,
     AppComponent,
     AdmindashboardComponent,
     StudentListComponent,
@@ -23,6 +28,7 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
     WelcomepageComponent,
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -30,6 +36,7 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
     FormsModule,
     FontAwesomeModule,
   ],
+  exports: [HeaderComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
