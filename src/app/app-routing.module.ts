@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { AdminGuard } from './guards/admin.guard';
 import { LoginComponent } from './login/login.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: 'admindashboard',
     component: AdmindashboardComponent,
+    //canActivate: [AdminGuard],
   },
   {
     path: 'student-list',

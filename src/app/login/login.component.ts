@@ -45,12 +45,12 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         console.log(data);
         console.log('Response Received');
-        sessionStorage.setItem('loggedUser', this.user.email);
-        sessionStorage.setItem('USER', 'user');
+        sessionStorage.setItem('loggedUser', this.user.userid);
+        sessionStorage.setItem('USER', this.user.email);
         sessionStorage.setItem('ROLE', 'user');
-        sessionStorage.setItem('name', this.user.email);
-        sessionStorage.setItem('gender', 'male');
-        this._router.navigate(['/userdashboard']);
+        sessionStorage.setItem('name', this.user.username);
+        sessionStorage.setItem('gender', this.user.gender);
+        this._router.navigate(['/admindashboard']);
       },
       (error: { error: any }) => {
         console.log(error.error);

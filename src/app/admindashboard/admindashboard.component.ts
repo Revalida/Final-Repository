@@ -47,6 +47,14 @@ export class AdmindashboardComponent implements OnInit {
     }
   }
 
+  getstudent() {
+    return this.http
+      .get('http://localhost:9191/student')
+      .subscribe((result) => {
+        console.log(result);
+      });
+  }
+
   addStudent(f: NgForm) {
     console.log(f.form.value);
     this.http

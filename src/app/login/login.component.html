@@ -17,16 +17,15 @@
         >
         <div class="form-group">
           <label for="email"
-            >User Email address: <b class="text-danger">*</b></label
+            >User Student Number: <b class="text-danger">*</b></label
           >
           <input
-            type="email"
+            type="text"
             class="form-control"
             placeholder="enter email"
             name="email"
             [(ngModel)]="user.email"
             required
-            pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
             #email="ngModel"
             [class.is-invalid]="email.invalid && email.touched"
           />
