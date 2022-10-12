@@ -17,8 +17,9 @@ export class UserGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (
-      (this._service.isUserLoggedIn() && this._service.userType() === 'user') ||
-      this._service.userType() === 'USER'
+      (this._service.isUserLoggedIn() &&
+        this._service.userType() === 'student') ||
+      this._service.userType() === 'STUDENT'
     ) {
       return true;
     }

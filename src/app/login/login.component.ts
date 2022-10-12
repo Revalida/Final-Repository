@@ -17,12 +17,14 @@ export class LoginComponent implements OnInit {
   msg = '';
   adminEmail = '';
   adminPassword = '';
+  studentNo = '';
   showAdmin = false;
   showUser = true;
   showProf = false;
-  type = '';
+  showParent = false;
 
   loginForm!: FormGroup;
+  profForm!: FormGroup;
 
   constructor(
     private _service: LoginService,
@@ -42,25 +44,31 @@ export class LoginComponent implements OnInit {
     this.showAdmin = false;
     this.showUser = true;
     this.showProf = false;
-    this.type = 'student';
-    console.log(this.type);
+    this.showParent = false;
+  }
+
+  showParentButton() {
+    this.showAdmin = false;
+    this.showUser = false;
+    this.showProf = false;
+    this.showParent = true;
   }
 
   showAdminButton() {
     this.showAdmin = true;
     this.showUser = false;
     this.showProf = false;
+    this.showParent = false;
   }
 
   showProfButton() {
     this.showAdmin = false;
     this.showUser = false;
     this.showProf = true;
+    this.showParent = false;
   }
 
   login() {
-    const cartName = this.loginForm.value.username;
-    const cartPassword = this.loginForm.value.password;
     this.http.get<any>('http://localhost:9191/student').subscribe(
       (res) => {
         const user = res.find((a: any) => {
@@ -73,7 +81,35 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           this._router.navigate(['studentdashboard']);
           sessionStorage.setItem('USER', 'user');
-          sessionStorage.setItem('ROLE', 'user');
+          sessionStorage.setItem('ROLE', user.type);
+        } else {
+          alert('User not found!');
+          this.loginForm.reset();
+          console.log(res);
+        }
+      },
+      (err) => {
+        alert('Something went wrong!');
+      }
+    );
+  }
+
+  loginParent() {
+    this.http.get<any>('http://localhost:9191/parent').subscribe(
+      (res) => {
+        const user = res.find((a: any) => {
+          return (
+            a.parentNo === this.loginForm.value.username &&
+            a.parentPassword === this.loginForm.value.password
+          );
+        });
+        if (user) {
+          this.loginForm.reset();
+          this._router.navigate(['parentdashboard']);
+          sessionStorage.setItem('USER', 'user');
+          sessionStorage.setItem('ROLE', user.type);
+          sessionStorage.setItem('STUD_NO', user.studentNo);
+          console.log(user);
         } else {
           alert('User not found!');
           this.loginForm.reset();
@@ -87,9 +123,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginProfessor() {
-    const cartName = this.loginForm.value.username;
-    const cartPassword = this.loginForm.value.password;
-    this.http.get<any>('http://localhost:9191/professor').subscribe(
+    this.http.get<any>('http://localhost:9191/faculty').subscribe(
       (res) => {
         const user = res.find((a: any) => {
           return (
@@ -99,9 +133,9 @@ export class LoginComponent implements OnInit {
         });
         if (user) {
           this.loginForm.reset();
-          this._router.navigate(['studentdashboard']);
+          this._router.navigate(['facultydashboard']);
           sessionStorage.setItem('USER', 'user');
-          sessionStorage.setItem('ROLE', 'professor');
+          sessionStorage.setItem('ROLE', user.type);
         } else {
           alert('User not found!');
           this.loginForm.reset();

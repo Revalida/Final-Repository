@@ -1,0 +1,21 @@
+package com.lmsrevalida.service;
+
+import java.util.List;
+
+import org.jooq.DSLContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jooq.revalida.model.Tables;
+import com.jooq.revalida.model.tables.pojos.FacultyDetails;
+
+@Service
+public class FacultyService {
+	@Autowired
+	private DSLContext dslContext;
+
+	public List<FacultyDetails> getFaculty() {
+		return dslContext.selectFrom(Tables.FACULTY_DETAILS)
+				.fetchInto(FacultyDetails.class);
+	}
+}

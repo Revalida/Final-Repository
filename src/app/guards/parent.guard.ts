@@ -12,14 +12,14 @@ import { LoginService } from '../services/login.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ProfessorGuard implements CanActivate {
+export class UserGuard implements CanActivate {
   constructor(private router: Router, private _service: LoginService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (
       (this._service.isUserLoggedIn() &&
-        this._service.userType() === 'professor') ||
-      this._service.userType() === 'PROFESSOR'
+        this._service.userType() === 'parent') ||
+      this._service.userType() === 'PARENT'
     ) {
       return true;
     }

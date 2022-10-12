@@ -14,6 +14,8 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { RouterModule } from '@angular/router';
 import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
 import { StudentHeaderComponent } from './student/studentheader/studentheader.component';
+import { FacultyComponent } from './faculty/faculty.component';
+import { ParentComponent } from './parent/parent.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { StudentHeaderComponent } from './student/studentheader/studentheader.co
     HeaderComponent,
     LoginComponent,
     WelcomepageComponent,
+    FacultyComponent,
+    ParentComponent,
   ],
   imports: [
     RouterModule,

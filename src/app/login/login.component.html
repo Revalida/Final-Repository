@@ -3,16 +3,20 @@
     <button class="headbtn1" id="userbtn" (click)="showStudentButton()">
       Student
     </button>
+    <button class="headbtn3" id="adminbtn" (click)="showParentButton()">
+      Parent
+    </button>
     <button class="headbtn2" id="professorbtn" (click)="showProfButton()">
       Professor
     </button>
     <button class="headbtn3" id="adminbtn" (click)="showAdminButton()">
       Admin
     </button>
+
     <div class="user-login-form" *ngIf="showUser">
-      <h2 class="textual">User Login</h2>
+      <h2 class="textual">Student Login</h2>
       <form>
-        <form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="showUser">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
           <small class="text-danger"
             ><b>{{ msg }}</b></small
           >
@@ -62,7 +66,77 @@
             >forgot password?</small
           >
           <br />
-          <button type="submit" class="btn loginbtn">Login</button>
+          <button
+            type="submit"
+            class="btn loginbtn"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
+        </form>
+      </form>
+    </div>
+
+    <div class="user-login-form" *ngIf="showParent">
+      <h2 class="textual">Parent Login</h2>
+      <form>
+        <form [formGroup]="loginForm" (ngSubmit)="loginParent()">
+          <small class="text-danger"
+            ><b>{{ msg }}</b></small
+          >
+          <div class="form-group md-6">
+            <label for="exampleInputUsername"
+              >User Parent Number : <b class="text-danger">*</b></label
+            >
+            <input
+              formControlName="username"
+              type="text"
+              class="form-control"
+              id="exampleInputUsername"
+              aria-describedby="emailHelp"
+              placeholder="Enter parent number"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                loginForm.controls['username'].dirty &&
+                loginForm.hasError('required', 'username')
+              "
+              >Username is required</span
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" style="margin-top: 5px"
+              >User Password: <b class="text-danger">*</b></label
+            >
+            <br />
+            <input
+              formControlName="password"
+              id="exampleInputPassword1"
+              class="form-control"
+              aria-describedby="emailHelp"
+              placeholder="Enter Password"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                loginForm.controls['password'].dirty &&
+                loginForm.hasError('required', 'password')
+              "
+              >Password is required</span
+            >
+          </div>
+          <small style="color: navy; margin-top: 58%; cursor: pointer"
+            >forgot password?</small
+          >
+          <br />
+          <button
+            type="submit"
+            class="btn loginbtn"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
         </form>
       </form>
     </div>
@@ -143,11 +217,7 @@
     <div class="user-login-form" *ngIf="showProf">
       <h2 class="textual">Professor Login</h2>
       <form>
-        <form
-          [formGroup]="loginForm"
-          (ngSubmit)="loginProfessor()"
-          *ngIf="showUser"
-        >
+        <form [formGroup]="loginForm" (ngSubmit)="loginProfessor()">
           <small class="text-danger"
             ><b>{{ msg }}</b></small
           >
@@ -197,7 +267,13 @@
             >forgot password?</small
           >
           <br />
-          <button type="submit" class="btn loginbtn">Login</button>
+          <button
+            type="submit"
+            class="btn loginbtn"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
         </form>
       </form>
     </div>
