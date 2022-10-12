@@ -12,8 +12,10 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { RouterModule } from '@angular/router';
+
 import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
 import { StudentHeaderComponent } from './student/studentheader/studentheader.component';
+import { SidebarModule} from 'ng-sidebar';
 
 import { FacultyComponent } from './faculty/faculty.component';
 import { ParentComponent } from './parent/parent.component';
@@ -22,6 +24,11 @@ import { AdminStudentListComponent } from './admin/admin-student-list/admin-stud
 import { AdminParentListComponent } from './admin/admin-parent-list/admin-parent-list.component';
 import { AdminFacultyListComponent } from './admin/admin-faculty-list/admin-faculty-list.component';
 import { AdminSidenavComponent } from './admin/admin-sidenav/admin-sidenav.component';
+import { ProfileComponent } from './student/profile/profile.component';
+import { PreAssignedComponent } from './student/pre-assigned/pre-assigned.component';
+import { CoursesListComponent } from './student/courses-list/courses-list.component';
+import { AttendanceComponent } from './student/attendance/attendance.component';
+import { GradesComponent } from './student/grades/grades.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +45,11 @@ import { AdminSidenavComponent } from './admin/admin-sidenav/admin-sidenav.compo
     WelcomepageComponent,
     FacultyComponent,
     ParentComponent,
+    ProfileComponent,
+    PreAssignedComponent,
+    CoursesListComponent,
+    AttendanceComponent,
+    GradesComponent,
   ],
   imports: [
     RouterModule,
@@ -48,6 +60,7 @@ import { AdminSidenavComponent } from './admin/admin-sidenav/admin-sidenav.compo
     FormsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    SidebarModule.forRoot()
   ],
   exports: [HeaderComponent],
   providers: [],
