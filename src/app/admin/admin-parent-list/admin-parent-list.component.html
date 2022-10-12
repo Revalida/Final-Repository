@@ -1,0 +1,28 @@
+<app-header></app-header>
+<app-admin-sidenav></app-admin-sidenav>
+<div class="table">
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>parent No</th>
+          <th>Full Name</th>
+          <th>User Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of parent">
+          <td>
+            <span>{{ data.parentNo }}</span>
+          </td>
+          <td>
+            <span>{{ data.parentFirstName }} {{ data.parentLastName }}</span>
+          </td>
+          <td>
+            <span>{{ data.type }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

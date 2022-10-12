@@ -1,32 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-admindashboard',
-  templateUrl: './admindashboard.component.html',
-  styleUrls: ['./admindashboard.component.scss'],
+  selector: 'app-admin-student-list',
+  templateUrl: './admin-student-list.component.html',
+  styleUrls: ['./admin-student-list.component.scss'],
 })
-export class AdmindashboardComponent implements OnInit {
+export class AdminStudentListComponent implements OnInit {
   students: any;
   closeResult: any;
-  deleteId: number | undefined;
-  constructor(
-    private http: HttpClient,
-    private modalService: NgbModal,
-    private _route: Router
-  ) {}
+  constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     let response = this.http.get('http://localhost:9191/student');
     response.subscribe((data) => (this.students = data));
   }
-
-  open(content: any) {
+  openParent(parent: any) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .open(parent, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
           this.closeResult = `Closed with: ${result}`;
@@ -47,18 +40,10 @@ export class AdmindashboardComponent implements OnInit {
     }
   }
 
-  getstudent() {
-    return this.http
-      .get('http://localhost:9191/student')
-      .subscribe((result) => {
-        console.log(result);
-      });
-  }
-
-  addStudent(f: NgForm) {
-    console.log(f.form.value);
+  addParent(p: NgForm) {
+    console.log(p.form.value);
     this.http
-      .post('http://localhost:9191/student/addstudent', f.value)
+      .post('http://localhost:9191/parent/addparent', p.value)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });

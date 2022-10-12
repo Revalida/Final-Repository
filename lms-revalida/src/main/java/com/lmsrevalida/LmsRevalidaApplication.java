@@ -23,19 +23,51 @@ import com.lmsrevalida.service.StudentService;
 public class LmsRevalidaApplication {
 	
 	@Autowired
-	private StudentService service;
+	private StudentService Studentservice;
 	
-	@CrossOrigin("http://localhost:54148/")
+	@CrossOrigin("http://localhost:4200/")
 	@GetMapping("/student")
 	public List<StudentDetails> getStudents() {
-		return service.getStudents();
+		return Studentservice.getStudents();
 	}
 	
-	@CrossOrigin("http://localhost:54148/")
+	@CrossOrigin("http://localhost:4200/")
 	@PostMapping("/student/addstudent")
 	public StudentDetails AddStudent(@RequestBody StudentDetails student) {
-		service.insertStudent(student);
-		return student;
+		Studentservice.insertStudent(student);
+		return null;
+	}
+	
+	@Autowired 
+	private ParentService Parentservice;
+	
+	@CrossOrigin("http://localhost:4200/")
+	@GetMapping("/parent")
+	public List<ParentDetails> getParents() {
+		return Parentservice.getParents();
+	}
+	
+	@CrossOrigin("http://localhost:4200/")
+	@PostMapping("/parent/addparent")
+	public ParentDetails AddParent(@RequestBody ParentDetails parent) {
+		Parentservice.insertParent(parent);
+		return null;
+	}
+	
+	@Autowired
+	private FacultyService Facultyservice;
+	
+	@CrossOrigin("http://localhost:4200/")
+	@GetMapping("/faculty")
+	public List<FacultyDetails> getFaculty() {
+		return Facultyservice.getFaculty();
+	}
+	
+	@CrossOrigin("http://localhost:4200/")
+	@PostMapping("/faculty/addfaculty")
+	public FacultyDetails AddFaculty(@RequestBody FacultyDetails faculty) {
+		Facultyservice.insertFaculty(faculty);
+		return null;
 	}
 	
 	@Autowired 
