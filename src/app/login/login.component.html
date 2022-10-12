@@ -1,170 +1,69 @@
 <div class="wrapper">
   <div class="container">
-    <button class="headbtn1" id="userbtn" (click)="showUserButton()">
-      user
+    <button class="headbtn1" id="userbtn" (click)="showStudentButton()">
+      Student
     </button>
     <button class="headbtn2" id="professorbtn" (click)="showProfButton()">
       Professor
     </button>
     <button class="headbtn3" id="adminbtn" (click)="showAdminButton()">
-      admin
+      Admin
     </button>
     <div class="user-login-form" *ngIf="showUser">
       <h2 class="textual">User Login</h2>
-      <form #userloginform="ngForm" (ngSubmit)="loginUser()">
-        <small class="text-danger"
-          ><b>{{ msg }}</b></small
-        >
-        <div class="form-group">
-          <label for="email"
-            >User Student Number: <b class="text-danger">*</b></label
+      <form>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="showUser">
+          <small class="text-danger"
+            ><b>{{ msg }}</b></small
           >
-          <input
-            type="text"
-            class="form-control"
-            placeholder="enter email"
-            name="email"
-            [(ngModel)]="user.email"
-            required
-            #email="ngModel"
-            [class.is-invalid]="email.invalid && email.touched"
-          />
-          <div *ngIf="email.errors && email.invalid && email.touched">
-            <small class="text-danger" *ngIf="email.errors"
-              ><b>required field</b></small
+          <div class="form-group md-6">
+            <label for="exampleInputUsername"
+              >User Student Number : <b class="text-danger">*</b></label
+            >
+            <input
+              formControlName="username"
+              type="text"
+              class="form-control"
+              id="exampleInputUsername"
+              aria-describedby="emailHelp"
+              placeholder="Enter student number"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                loginForm.controls['username'].dirty &&
+                loginForm.hasError('required', 'username')
+              "
+              >Username is required</span
             >
           </div>
-        </div>
-
-        <div class="form-group">
-          <label for="pwd" style="margin-top: 5px"
-            >User Password: <b class="text-danger">*</b></label
-          >
-          <input
-            type="password"
-            class="form-control"
-            placeholder="enter password"
-            name="pwd"
-            [(ngModel)]="user.password"
-            required
-            #password="ngModel"
-            [class.is-invalid]="password.invalid && password.touched"
-          />
-          <div *ngIf="password.errors && password.invalid && password.touched">
-            <small class="text-danger" *ngIf="password.errors"
-              ><b>required field</b></small
+          <div class="form-group">
+            <label for="exampleInputPassword1" style="margin-top: 5px"
+              >User Password: <b class="text-danger">*</b></label
+            >
+            <br />
+            <input
+              formControlName="password"
+              id="exampleInputPassword1"
+              class="form-control"
+              aria-describedby="emailHelp"
+              placeholder="Enter Password"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                loginForm.controls['password'].dirty &&
+                loginForm.hasError('required', 'password')
+              "
+              >Password is required</span
             >
           </div>
-          <small style="color: gray; font-size: 10px"
-            >atleast one uppercase, numeric digit, lowercase, special character,
-            length of 6-20</small
-          >
-        </div>
-
-        <div class="checkbox" style="margin-top: 5px">
-          <small style="color: gray"
-            ><input type="checkbox" name="remember" /> Remember me</small
-          >
-          <small style="color: navy; margin-left: 35%; cursor: pointer"
+          <small style="color: navy; margin-top: 58%; cursor: pointer"
             >forgot password?</small
           >
-        </div>
-        <button
-          [disabled]="userloginform.form.invalid"
-          type="submit"
-          class="btn loginbtn"
-        >
-          Login
-        </button>
-      </form>
-      <hr />
-    </div>
-
-    <div class="professor-login-form" *ngIf="showProf">
-      <h2 class="textual">Professor Login</h2>
-      <form #professorloginform="ngForm" (ngSubmit)="loginProfessor()">
-        <small class="text-danger"
-          ><b>{{ msg }}</b></small
-        >
-        <div class="form-group">
-          <label for="email"
-            >Professor Email address: <b class="text-danger">*</b></label
-          >
-          <input
-            type="email"
-            class="form-control"
-            placeholder="enter email"
-            name="professoremail"
-            [(ngModel)]="professor.email"
-            required
-            pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
-            #professoremail="ngModel"
-            [class.is-invalid]="
-              professoremail.invalid && professoremail.touched
-            "
-          />
-          <!--<small class="text-danger" [class.d-none]="professoremail.valid || professoremail.untouched"><b>required field</b></small>-->
-          <div
-            *ngIf="
-              professoremail.errors &&
-              professoremail.invalid &&
-              professoremail.touched
-            "
-          >
-            <small class="text-danger" *ngIf="professoremail.errors"
-              ><b>Invalid email Id</b></small
-            >
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="pwd" style="margin-top: 5px"
-            >Professor Password: <b class="text-danger">*</b></label
-          >
-          <input
-            type="password"
-            class="form-control"
-            placeholder="enter password"
-            name="pwd"
-            [(ngModel)]="professor.password"
-            required
-            #professorpassword="ngModel"
-            [class.is-invalid]="
-              professorpassword.invalid && professorpassword.touched
-            "
-          />
-          <div
-            *ngIf="
-              professorpassword.errors &&
-              professorpassword.invalid &&
-              professorpassword.touched
-            "
-          >
-            <small class="text-danger" *ngIf="professorpassword.errors"
-              ><b>required field</b></small
-            >
-          </div>
-          <small style="color: gray; font-size: 10px"
-            >atleast one uppercase, numeric digit, lowercase, special character,
-            length of 6-20</small
-          >
-        </div>
-
-        <div class="checkbox" style="margin-top: 5px">
-          <small style="color: gray"
-            ><input type="checkbox" name="remember" /> Remember me</small
-          >
-          <small style="color: navy; margin-left: 35%; cursor: pointer"
-            >forgot password?</small
-          >
-        </div>
-        <button
-          [disabled]="professorloginform.form.invalid"
-          type="submit"
-          class="btn loginbtn"
-        >
-          Login
-        </button>
+          <br />
+          <button type="submit" class="btn loginbtn">Login</button>
+        </form>
       </form>
     </div>
 
@@ -230,9 +129,7 @@
           >
         </div>
 
-        <small style="color: navy; margin-left: 69%; cursor: pointer"
-          >forgot password?</small
-        >
+        <small style="color: navy; cursor: pointer">forgot password?</small>
         <button
           [disabled]="adminloginform.form.invalid"
           type="submit"
@@ -240,6 +137,68 @@
         >
           Login
         </button>
+      </form>
+    </div>
+
+    <div class="user-login-form" *ngIf="showProf">
+      <h2 class="textual">Professor Login</h2>
+      <form>
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="loginProfessor()"
+          *ngIf="showUser"
+        >
+          <small class="text-danger"
+            ><b>{{ msg }}</b></small
+          >
+          <div class="form-group md-6">
+            <label for="exampleInputUsername"
+              >User Professor Number : <b class="text-danger">*</b></label
+            >
+            <input
+              formControlName="username"
+              type="text"
+              class="form-control"
+              id="exampleInputUsername"
+              aria-describedby="emailHelp"
+              placeholder="Enter student number"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                loginForm.controls['username'].dirty &&
+                loginForm.hasError('required', 'username')
+              "
+              >Username is required</span
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" style="margin-top: 5px"
+              >User Password: <b class="text-danger">*</b></label
+            >
+            <br />
+            <input
+              formControlName="password"
+              id="exampleInputPassword1"
+              class="form-control"
+              aria-describedby="emailHelp"
+              placeholder="Enter Password"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                loginForm.controls['password'].dirty &&
+                loginForm.hasError('required', 'password')
+              "
+              >Password is required</span
+            >
+          </div>
+          <small style="color: navy; margin-top: 58%; cursor: pointer"
+            >forgot password?</small
+          >
+          <br />
+          <button type="submit" class="btn loginbtn">Login</button>
+        </form>
       </form>
     </div>
   </div>

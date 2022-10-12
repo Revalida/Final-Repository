@@ -1,14 +1,13 @@
-export class User 
-{
+export class User {
+  username: string = '';
+  studentId: string = '';
+  email: string = '';
+  profession: string = '';
+  gender: string = '';
+  mobile: string = '';
+  address: string = '';
+  password: string = '';
+  type: string = '';
 
-    username : string = '';
-    userid : string = 'empty';
-    email : string = '';
-    profession : string = '';
-    gender : string = '';
-    mobile : string = '';
-    address : string = '';
-    password : string = '';
-
-    constructor() {}
+  constructor() {}
 }

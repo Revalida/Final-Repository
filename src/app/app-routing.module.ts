@@ -2,28 +2,26 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AdminGuard } from './guards/admin.guard';
+import { UserGuard } from './guards/user.guard';
 import { LoginComponent } from './login/login.component';
-import { StudentListComponent } from './student-list/student-list.component';
 import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
+import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: StudentdashboardComponent
+    path: 'studentdashboard',
+    component: StudentdashboardComponent,
+    canActivate: [UserGuard],
   },
-  // {
-  //   path: '',
-  //   component: WelcomepageComponent,
-  // },
+  {
+    path: '',
+    component: WelcomepageComponent,
+  },
   { path: 'login', component: LoginComponent },
   {
     path: 'admindashboard',
     component: AdmindashboardComponent,
-    //canActivate: [AdminGuard],
-  },
-  {
-    path: 'student-list',
-    component: StudentListComponent,
+    canActivate: [AdminGuard],
   },
 ];
 

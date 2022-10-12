@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Professor } from 'src/app/models/professor';
 import { User } from 'src/app/models/user';
@@ -18,14 +20,30 @@ export class LoginComponent implements OnInit {
   showAdmin = false;
   showUser = true;
   showProf = false;
-  constructor(private _service: LoginService, private _router: Router) {}
+  type = '';
 
-  ngOnInit(): void {}
+  loginForm!: FormGroup;
 
-  showUserButton() {
+  constructor(
+    private _service: LoginService,
+    private http: HttpClient,
+    private _router: Router,
+    private formbuilder: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.formbuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
+
+  showStudentButton() {
     this.showAdmin = false;
     this.showUser = true;
     this.showProf = false;
+    this.type = 'student';
+    console.log(this.type);
   }
 
   showAdminButton() {
@@ -40,41 +58,58 @@ export class LoginComponent implements OnInit {
     this.showProf = true;
   }
 
-  loginUser() {
-    this._service.loginUserFromRemote(this.user).subscribe(
-      (data: any) => {
-        console.log(data);
-        console.log('Response Received');
-        sessionStorage.setItem('loggedUser', this.user.userid);
-        sessionStorage.setItem('USER', this.user.email);
-        sessionStorage.setItem('ROLE', 'user');
-        sessionStorage.setItem('name', this.user.username);
-        sessionStorage.setItem('gender', this.user.gender);
-        this._router.navigate(['/admindashboard']);
+  login() {
+    const cartName = this.loginForm.value.username;
+    const cartPassword = this.loginForm.value.password;
+    this.http.get<any>('http://localhost:9191/student').subscribe(
+      (res) => {
+        const user = res.find((a: any) => {
+          return (
+            a.studNo === this.loginForm.value.username &&
+            a.password === this.loginForm.value.password
+          );
+        });
+        if (user) {
+          this.loginForm.reset();
+          this._router.navigate(['studentdashboard']);
+          sessionStorage.setItem('USER', 'user');
+          sessionStorage.setItem('ROLE', 'user');
+        } else {
+          alert('User not found!');
+          this.loginForm.reset();
+          console.log(res);
+        }
       },
-      (error: { error: any }) => {
-        console.log(error.error);
-        this.msg = 'Bad credentials, please enter valid credentials !!!';
+      (err) => {
+        alert('Something went wrong!');
       }
     );
   }
 
   loginProfessor() {
-    this._service.loginProfessorFromRemote(this.professor).subscribe(
-      (data: any) => {
-        console.log(data);
-        console.log('Response Received');
-        sessionStorage.clear();
-        sessionStorage.setItem('loggedUser', this.professor.email);
-        sessionStorage.setItem('USER', 'professor');
-        sessionStorage.setItem('ROLE', 'professor');
-        sessionStorage.setItem('professorname', this.professor.email);
-        sessionStorage.setItem('gender', 'male');
-        this._router.navigate(['/professordashboard']);
+    const cartName = this.loginForm.value.username;
+    const cartPassword = this.loginForm.value.password;
+    this.http.get<any>('http://localhost:9191/professor').subscribe(
+      (res) => {
+        const user = res.find((a: any) => {
+          return (
+            a.facultyNo === this.loginForm.value.username &&
+            a.password === this.loginForm.value.password
+          );
+        });
+        if (user) {
+          this.loginForm.reset();
+          this._router.navigate(['studentdashboard']);
+          sessionStorage.setItem('USER', 'user');
+          sessionStorage.setItem('ROLE', 'professor');
+        } else {
+          alert('User not found!');
+          this.loginForm.reset();
+          console.log(res);
+        }
       },
-      (error: { error: any }) => {
-        console.log(error.error);
-        this.msg = 'Bad credentials, please enter valid credentials !!!';
+      (err) => {
+        alert('Something went wrong!');
       }
     );
   }
