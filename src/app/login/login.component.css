@@ -48,10 +48,10 @@ input {
 .headbtn3 {
   border: none;
   padding: 2% 20px 2% 20px;
-  width: 122px;
+  width: 110px;
   font-weight: bold;
   background-color: transparent;
-  margin-left: 0px;
+  margin-left: -20px;
 }
 .headbtn1:hover,
 .headbtn2:hover,

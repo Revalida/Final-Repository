@@ -11,14 +11,16 @@ import com.jooq.revalida.model.tables.pojos.ParentDetails;
 
 @Service
 public class ParentService {
+
 	
 	@Autowired
 	private DSLContext dslContext;
-	
+
 	public List<ParentDetails> getParents() {
 		return dslContext.selectFrom(Tables.PARENT_DETAILS)
 				.fetchInto(ParentDetails.class);
 	}
+
 	
 	public void insertParent(ParentDetails parent) {
 		dslContext.insertInto(Tables.PARENT_DETAILS,Tables.PARENT_DETAILS.PARENT_FIRST_NAME
