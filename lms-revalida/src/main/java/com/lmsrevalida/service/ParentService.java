@@ -24,8 +24,8 @@ public class ParentService {
 	
 	public void insertParent(ParentDetails parent) {
 		dslContext.insertInto(Tables.PARENT_DETAILS,Tables.PARENT_DETAILS.PARENT_FIRST_NAME
-				,Tables.PARENT_DETAILS.PARENT_LAST_NAME)
-		.values(parent.getParentFirstName(),parent.getParentLastName()).execute();
+				,Tables.PARENT_DETAILS.PARENT_LAST_NAME,Tables.PARENT_DETAILS.STUDENT_NO)
+		.values(parent.getParentFirstName(),parent.getParentLastName(),parent.getStudentNo()).execute();
 	}
 }
 
