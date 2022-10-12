@@ -41,6 +41,7 @@ import { AdminSidenavComponent } from './admin/admin-sidenav/admin-sidenav.compo
     NgbModule,
     FormsModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
   ],
   exports: [HeaderComponent],
   providers: [],

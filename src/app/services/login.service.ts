@@ -20,7 +20,7 @@ export class LoginService {
     return this._http.get<any>(`${NAV_URL}`).pipe(
       map((data) => {
         sessionStorage.setItem('USER', user.email);
-        sessionStorage.setItem('ROLE', 'USER');
+        sessionStorage.setItem('ROLE', user.type);
         sessionStorage.setItem('TOKEN', `Bearer ${data.token}`);
         return data;
       })
