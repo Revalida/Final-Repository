@@ -70,23 +70,6 @@ public class LmsRevalidaApplication {
 		return null;
 	}
 	
-	@Autowired 
-	private FacultyService Facultyservice;
-	
-	@CrossOrigin("http://localhost:54148/")
-	@GetMapping("/faculty")
-	public List<FacultyDetails> getFaculty() {
-		return Facultyservice.getFaculty();
-	}
-	
-	@Autowired 
-	private ParentService Parentservice;
-	
-	@CrossOrigin("http://localhost:54148/")
-	@GetMapping("/parent")
-	public List<ParentDetails> getParents() {
-		return Parentservice.getParents();
-	}
 	
 
 	public static void main(String[] args) {

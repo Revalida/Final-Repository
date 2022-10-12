@@ -11,13 +11,15 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class AdminStudentListComponent implements OnInit {
   students: any;
   closeResult: any;
+  studentNo: any;
+  data: any;
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     let response = this.http.get('http://localhost:9191/student');
     response.subscribe((data) => (this.students = data));
   }
-  openParent(parent: any) {
+  openParent(parent: any, data: any) {
     this.modalService
       .open(parent, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
@@ -28,6 +30,7 @@ export class AdminStudentListComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+    this.studentNo = data.studNo;
   }
 
   private getDismissReason(reason: any): string {
@@ -41,9 +44,10 @@ export class AdminStudentListComponent implements OnInit {
   }
 
   addParent(p: NgForm) {
-    console.log(p.form.value);
+    this.data = p.form.value;
+    this.data.studentNo = this.studentNo;
     this.http
-      .post('http://localhost:9191/parent/addparent', p.value)
+      .post('http://localhost:9191/parent/addparent', this.data)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });

@@ -46,7 +46,10 @@
             <span>{{ student.activeDeactive }}</span>
           </td>
           <td>
-            <button class="btn btn-sm btn-warning" (click)="openParent(parent)">
+            <button
+              class="btn btn-sm btn-warning"
+              (click)="openParent(parent, student)"
+            >
               <i class="fa fa-plus"></i>Add
             </button>
           </td>
