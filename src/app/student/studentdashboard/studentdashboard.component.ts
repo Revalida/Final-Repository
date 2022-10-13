@@ -7,6 +7,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./studentdashboard.component.scss'],
 })
 export class StudentdashboardComponent implements OnInit {
+  opened = false;
+
+  toogleSidebar() {
+    this.opened = !this.opened;
+  } 
+
   loggedUser = '';
   currRole = '';
   courses: Observable<any[]> | undefined;
@@ -26,4 +32,5 @@ export class StudentdashboardComponent implements OnInit {
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE') || '{}');
     this.currRole = this.currRole.replace(/"/g, '');
   }
+  
 }
