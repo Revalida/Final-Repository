@@ -12,6 +12,8 @@ import { ParentComponent } from './parent/parent.component';
 import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
+import { ProfessorGuard } from './guards/professor.guard';
+import { ParentGuard } from './guards/parent.guard';
 
 const routes: Routes = [
   {
@@ -33,10 +35,12 @@ const routes: Routes = [
   {
     path: 'facultydashboard',
     component: FacultyComponent,
+    canActivate: [ProfessorGuard],
   },
   {
     path: 'parentdashboard',
     component: ParentComponent,
+    canActivate: [ParentGuard],
   },
   {
     path: 'admin-student-list',
