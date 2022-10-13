@@ -11,7 +11,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class AdminStudentListComponent implements OnInit {
   students: any;
   closeResult: any;
-  studentNo: any;
+  studentNo = '';
   data: any;
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
@@ -30,7 +30,9 @@ export class AdminStudentListComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+
     this.studentNo = data.studNo;
+    console.log(this.studentNo);
   }
 
   private getDismissReason(reason: any): string {

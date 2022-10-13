@@ -9,16 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
-import { WelcomepageComponent } from './welcomepage/welcomepage.component';
+import { LoginComponent } from './components/login/login.component';
+import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { RouterModule } from '@angular/router';
 
 import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
 import { StudentHeaderComponent } from './student/studentheader/studentheader.component';
-import { SidebarModule} from 'ng-sidebar';
+import { SidebarModule } from 'ng-sidebar';
 
-import { FacultyComponent } from './faculty/faculty.component';
-import { ParentComponent } from './parent/parent.component';
+import { ParentComponent } from './components/parental access module/parent/parent.component';
 
 import { AdminStudentListComponent } from './admin/admin-student-list/admin-student-list.component';
 import { AdminParentListComponent } from './admin/admin-parent-list/admin-parent-list.component';
@@ -29,6 +28,9 @@ import { PreAssignedComponent } from './student/pre-assigned/pre-assigned.compon
 import { CoursesListComponent } from './student/courses-list/courses-list.component';
 import { AttendanceComponent } from './student/attendance/attendance.component';
 import { GradesComponent } from './student/grades/grades.component';
+import { FacultyComponent } from './components/Faculty Management module/faculty/faculty.component';
+import { AttendanceParentComponent } from './components/parental access module/attendance.parent/attendance.parent.component';
+import { FacultyAttendanceComponent } from './components/Faculty Management module/faculty.attendance/faculty.attendance.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { GradesComponent } from './student/grades/grades.component';
     CoursesListComponent,
     AttendanceComponent,
     GradesComponent,
+    AttendanceParentComponent,
+    FacultyAttendanceComponent,
   ],
   imports: [
     RouterModule,
@@ -60,7 +64,7 @@ import { GradesComponent } from './student/grades/grades.component';
     FormsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    SidebarModule.forRoot()
+    SidebarModule.forRoot(),
   ],
   exports: [HeaderComponent],
   providers: [],

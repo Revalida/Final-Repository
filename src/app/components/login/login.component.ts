@@ -162,6 +162,5 @@ export class LoginComponent implements OnInit {
       console.log('Exception Occured');
       this.msg = 'Bad admin credentials !!!';
     }
-    console.log(sessionStorage.getItem('TOKEN'));
   }
 }

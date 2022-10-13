@@ -1,46 +1,46 @@
 <app-studentheader></app-studentheader>
 
 <ng-sidebar-container>
-  <!-- Sidebar -->
-  <ng-sidebar [opened] = "opened">
+  Sidebar -->
+  <ng-sidebar [opened]="opened">
     <div class="sidebar">
       <div class="profile">
         <img [src]="'assets/img/male.png'" width="150" height="150" />
       </div>
-    <ul class="nav-list">
-      <li>
-        <a routerLink="/profile">
-          <i class="fa fa-user"></i>
-          <span class="links_name">Account Profile</span>
-        </a>
-      </li>
-      <li >
-        <a routerLink="/pre-assigned">
-          <i class="fa fa-check"></i>
-          <span class="links_name">Pre-assigned Courses</span>
-        </a>
-      </li>
-      <li >
-        <a routerLink="/courses-list">
-          <i class="fa fa-list"></i>
-          <span class="links_name">Courses List </span>
-        </a>
-      </li>
-      <li >
-        <a routerLink="/attendance">
-          <i class="fa fa-clipboard"></i>
-          <span class="links_name">Attendance</span>
-        </a>
-      </li>
-      <li >
-        <a routerLink="/grades">
-          <i class="fa fa-graduation-cap"></i>
-          <span class="links_name">Courses Marks</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-    </ng-sidebar>
+      <ul class="nav-list">
+        <li>
+          <a routerLink="/profile">
+            <i class="fa fa-user"></i>
+            <span class="links_name">Account Profile</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/pre-assigned">
+            <i class="fa fa-check"></i>
+            <span class="links_name">Pre-assigned Courses</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/courses-list">
+            <i class="fa fa-list"></i>
+            <span class="links_name">Courses List </span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/attendance">
+            <i class="fa fa-clipboard"></i>
+            <span class="links_name">Attendance</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/grades">
+            <i class="fa fa-graduation-cap"></i>
+            <span class="links_name">Courses Marks</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </ng-sidebar>
   <div ng-sidebar-content>
     <!-- Page Contents -->
     <button (click)="toogleSidebar()">
@@ -48,6 +48,4 @@
     </button>
   </div>
 </ng-sidebar-container>
-
-<!-- Content -->
-
+-->
