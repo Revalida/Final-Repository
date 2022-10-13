@@ -1,16 +1,11 @@
-<div class="sidebar-logo fixed-top">
+<div class="sidebar-logo">
   <div class="welcometxt" style="float: left">
-    <b style="color: white">Admin Dashboard</b>
+    <b style="color: white">{{ title }}</b>
   </div>
-  <button
-    class="logoutbtn"
-    style="margin-right: 1%"
-    [routerLink]="['/admindashboard']"
-  >
-    <i class="fa fa-home"></i> Home
-  </button>
   <b class="sidebar-text" style="color: whitesmoke"
-    ><i class="fa fa-user"></i> Welcome admin</b
+    ><i class="fa fa-user"></i> Welcome {{ role }}</b
   >
-  <button class="logoutbtn"><i class="fa fa-sign-out"></i> Logout</button>
+  <button class="logoutbtn" (click)="logout()">
+    <i class="fa fa-sign-out"></i> Logout
+  </button>
 </div>

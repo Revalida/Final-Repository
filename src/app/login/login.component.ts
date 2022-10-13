@@ -128,7 +128,7 @@ export class LoginComponent implements OnInit {
         const user = res.find((a: any) => {
           return (
             a.facultyNo === this.loginForm.value.username &&
-            a.password === this.loginForm.value.password
+            a.facultyPassword === this.loginForm.value.password
           );
         });
         if (user) {

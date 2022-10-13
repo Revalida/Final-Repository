@@ -10,12 +10,17 @@ import { ParentComponent } from './parent/parent.component';
 import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
+
+import { ProfessorGuard } from './guards/professor.guard';
+import { ParentGuard } from './guards/parent.guard';
+
 import { ProfileComponent } from './student/profile/profile.component';
 import { PreAssignedComponent } from './student/pre-assigned/pre-assigned.component';
 import { CoursesListComponent } from './student/courses-list/courses-list.component';
 import { AttendanceComponent } from './student/attendance/attendance.component';
 import { GradesComponent } from './student/grades/grades.component';
 // import { UserGuard } from './guards/user.guard';
+
 
 const routes: Routes = [
   {
@@ -40,10 +45,12 @@ const routes: Routes = [
   {
     path: 'facultydashboard',
     component: FacultyComponent,
+    canActivate: [ProfessorGuard],
   },
   {
     path: 'parentdashboard',
     component: ParentComponent,
+    canActivate: [ParentGuard],
   },
   {
     path: 'profile',

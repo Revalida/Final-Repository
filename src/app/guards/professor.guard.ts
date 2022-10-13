@@ -18,8 +18,8 @@ export class ProfessorGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (
       (this._service.isUserLoggedIn() &&
-        this._service.userType() === 'professor') ||
-      this._service.userType() === 'PROFESSOR'
+        this._service.userType() === 'Faculty') ||
+      this._service.userType() === 'faculty'
     ) {
       return true;
     }

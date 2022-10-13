@@ -18,7 +18,7 @@ export class ParentGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (
       (this._service.isUserLoggedIn() &&
-        this._service.userType() === 'parent') ||
+        this._service.userType() === 'Parent') ||
       this._service.userType() === 'PARENT'
     ) {
       return true;
