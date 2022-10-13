@@ -7,6 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./studentheader.component.scss']
 })
 export class StudentHeaderComponent implements OnInit {
+  opened = false;
+
+  toogleSidebar() {
+    this.opened = !this.opened;
+  } 
 
   loggedUser = '';
   currRole = '';
