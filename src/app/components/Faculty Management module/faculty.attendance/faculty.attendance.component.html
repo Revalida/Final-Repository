@@ -34,22 +34,15 @@
             <span>{{ student.acadYear }}</span>
           </td>
           <td>
-            <div class="col-8 col-chk">
-              <input
-                type="checkbox"
-                name="Present"
-                (change)="present(student)"
-              />
-            </div>
-            <div class="col-35"><label>Present</label></div>
-            <div class="col-8 col-chk">
-              <input type="checkbox" name="Absent" (change)="absent(student)" />
-            </div>
-            <div class="col-35"><label>Absent</label></div>
+            <button class="btn btn-sm btn-warning" (click)="present(student)">
+              Present
+            </button>
+            <button class="btn btn-sm btn-warning" (click)="absent(student)">
+              Absent
+            </button>
           </td>
         </tr>
       </tbody>
-      <button (click)="submit()">Submit</button>
     </table>
   </div>
 </div>

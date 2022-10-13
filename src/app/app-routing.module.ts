@@ -52,7 +52,7 @@ const routes: Routes = [
   },
   {
     path: 'parentdashboard',
-    component: ParentComponent,
+    component: AttendanceParentComponent,
     canActivate: [ParentGuard],
   },
   {
