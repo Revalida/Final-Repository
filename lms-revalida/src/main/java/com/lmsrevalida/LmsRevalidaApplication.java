@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
+import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
 import com.lmsrevalida.service.StudentService;
@@ -68,6 +70,15 @@ public class LmsRevalidaApplication {
 	public FacultyDetails AddFaculty(@RequestBody FacultyDetails faculty) {
 		Facultyservice.insertFaculty(faculty);
 		return null;
+	}
+	
+	@Autowired
+	private AttendanceService Attendanceservice;
+	
+	@CrossOrigin("http://localhost:4200/")
+	@GetMapping("/attendance")
+	public List<Attendance> getAttendance() {
+		return Attendanceservice.getAttendance();
 	}
 	
 	

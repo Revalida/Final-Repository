@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div class="table">
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Student No</th>
+          <th>Subject</th>
+          <th>Full Name</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span>{{ datas.studNo }}</span>
+          </td>
+          <td>
+            <span>{{ datas.subject }}</span>
+          </td>
+          <td>
+            <span
+              >{{ datas.firstName }} {{ datas.middleName }}
+              {{ datas.lastName }}</span
+            >
+          </td>
+          <td>
+            <span>{{ datas.status }}</span>
+          </td>
+          <td>
+            <span>{{ datas.timestamp }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap");
 
 //Sidebar
 ng-sidebar-container {
   height: 100vh;
+  margin-top: -10px;
 }
 
 ::ng-deep .ng-sidebar {
@@ -12,7 +13,7 @@ ng-sidebar-container {
   top: 0;
   height: 115%;
   width: 225px;
-  background: #11101D;
+  background: #11101d;
   // padding: 6em 3em;
   z-index: 99;
   transition: all 0.5s ease;
@@ -24,7 +25,7 @@ ng-sidebar-container {
   padding-left: 2em;
 }
 
-.sidebar i{
+.sidebar i {
   color: #fff;
   height: 60px;
   min-width: 50px;
@@ -33,7 +34,7 @@ ng-sidebar-container {
   line-height: 60px;
 }
 
-.sidebar .nav-list{
+.sidebar .nav-list {
   margin-top: 25px;
   margin-left: -10%;
   margin-right: 10px;
@@ -41,34 +42,33 @@ ng-sidebar-container {
   display: block;
 }
 
-.sidebar.open .nav-list{
+.sidebar.open .nav-list {
   margin-top: 20px;
-  margin-left: -15%; 
+  margin-left: -15%;
   height: 100%;
   display: block;
 }
 
-.sidebar li{
+.sidebar li {
   position: relative;
   margin: 8px 0;
   list-style: none;
 }
 
-.sidebar li a{
+.sidebar li a {
   display: flex;
   height: 100%;
   width: 100;
   border-radius: 10px;
   align-items: center;
   transition: all 0.4s ease;
-
 }
-.sidebar li a:hover{
-  background: #FFF;
+.sidebar li a:hover {
+  background: #fff;
   cursor: pointer;
 }
 
-.sidebar li a .links_name{
+.sidebar li a .links_name {
   color: #fff;
   font-size: 15px;
   font-weight: 400;
@@ -78,12 +78,12 @@ ng-sidebar-container {
 }
 
 .sidebar li a:hover .links_name,
-.sidebar li a:hover i{
+.sidebar li a:hover i {
   transition: all 0.5s ease;
-  color: #11101D;
+  color: #11101d;
 }
 
-.sidebar li i{
+.sidebar li i {
   height: 50px;
   line-height: 50px;
   font-size: 18px;
