@@ -81,6 +81,13 @@ public class LmsRevalidaApplication {
 		return Attendanceservice.getAttendance();
 	}
 	
+	@CrossOrigin("http://localhost:4200/")
+	@PostMapping("/attendance/addattendance")
+	public StudentDetails AddAttendance(@RequestBody Attendance attendance) {
+		Attendanceservice.insertAttendance(attendance);
+		return null;
+	}
+	
 	
 
 	public static void main(String[] args) {

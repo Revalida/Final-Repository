@@ -27,16 +27,25 @@ export class FacultyAttendanceComponent implements OnInit {
     console.log(this.studAtt);
     this.canClick = true;
     this.cantClick = false;
-    this.comp = this.studAtt;
+    this.http
+      .post('http://localhost:9191/attendance/addattendance', this.studAtt)
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 
   absent(data: any) {
     this.studAtt = data;
-    this.students.status = 'Absent';
-    console.log(this.students);
+    this.studAtt.status = 'Absent';
+    this.ngOnInit;
+    console.log(this.studAtt);
     this.canClick = false;
     this.cantClick = true;
-    this.comp = this.studAtt;
+    this.http
+      .post('http://localhost:9191/attendance/addattendance', this.studAtt)
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 
   submit() {

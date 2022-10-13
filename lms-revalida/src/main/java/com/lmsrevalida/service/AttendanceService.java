@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jooq.revalida.model.Tables;
 import com.jooq.revalida.model.tables.pojos.Attendance;
+import com.jooq.revalida.model.tables.pojos.StudentDetails;
 
 @Service
 public class AttendanceService {
@@ -18,6 +19,14 @@ public class AttendanceService {
 	public List<Attendance> getAttendance() {
 		return dslContext.selectFrom(Tables.ATTENDANCE)
 				.fetchInto(Attendance.class);
+	}
+	
+	public void insertAttendance(Attendance attendance) {
+		dslContext.insertInto(Tables.ATTENDANCE,Tables.ATTENDANCE.STUD_NO
+				,Tables.ATTENDANCE.FIRST_NAME,Tables.ATTENDANCE.MIDDLE_NAME,Tables.ATTENDANCE.LAST_NAME
+				,Tables.ATTENDANCE.STATUS,Tables.ATTENDANCE.SUBJECT)
+		.values(attendance.getStudNo(),attendance.getFirstName(),attendance.getMiddleName(),attendance.getLastName(),attendance.getStatus()
+,attendance.getSubject()).execute();
 	}
 
 }
