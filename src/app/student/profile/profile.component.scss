@@ -5,7 +5,7 @@
 }
 
 img {
-    border: 2px solid #ffc836;
+    border: 2px solid black;
     width: 200px !important;
     height: 150px;
 }
@@ -63,23 +63,15 @@ img {
 }
 
 .form-control {
-    border: 2px solid #fb817e !important;
+    border: 2px solid black !important;
     height: 3rem !important;
 }
 
-.active-link {
-    background: #ffc13b;
+.ng-invalid:not(form, .info-group) {
+    border: 2px solid black;
 }
 
-.active-link:hover {
-    background: #ffc13b !important;
-}
-
-.ng-invalid:not(form, .address-group) {
-    border: 2px solid #eb707a;
-}
-
-.ng-valid:not(form, .address-group) {
+.ng-valid:not(form, .info-group) {
     border: 2px solid #ffc836 !important;
 }
 
