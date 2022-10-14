@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
@@ -14,7 +14,6 @@ import { WelcomepageComponent } from './components/welcomepage/welcomepage.compo
 import { RouterModule } from '@angular/router';
 
 import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
-import { StudentHeaderComponent } from './student/studentheader/studentheader.component';
 import { SidebarModule } from 'ng-sidebar';
 
 import { ParentComponent } from './components/parental access module/parent/parent.component';
@@ -41,7 +40,6 @@ import { FacultyAttendanceComponent } from './components/Faculty Management modu
     AdminParentListComponent,
     AdminFacultyListComponent,
     AdminSidenavComponent,
-    StudentHeaderComponent,
     StudentdashboardComponent,
     LoginComponent,
     WelcomepageComponent,
@@ -67,7 +65,7 @@ import { FacultyAttendanceComponent } from './components/Faculty Management modu
     SidebarModule.forRoot(),
   ],
   exports: [HeaderComponent],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

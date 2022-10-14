@@ -1,9 +1,11 @@
-<app-studentheader></app-studentheader>
-
+<app-header></app-header>
 <ng-sidebar-container>
-  Sidebar -->
+  <!-- Sidebar -->
   <ng-sidebar [opened]="opened">
     <div class="sidebar">
+      <a (click)="toogleSidebar()">
+        <i class="fa fa-bars"></i>
+      </a>
       <div class="profile">
         <img [src]="'assets/img/male.png'" width="150" height="150" />
       </div>
@@ -46,6 +48,8 @@
     <button (click)="toogleSidebar()">
       <i class="fa fa-bars"></i>
     </button>
+    <div>
+      
+    </div>
   </div>
 </ng-sidebar-container>
--->
