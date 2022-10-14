@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.jooq.revalida.model.Tables;
 import com.jooq.revalida.model.tables.pojos.Attendance;
-import com.jooq.revalida.model.tables.pojos.StudentDetails;
 
 @Service
 public class AttendanceService {

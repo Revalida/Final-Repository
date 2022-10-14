@@ -30,6 +30,7 @@ import { GradesComponent } from './student/grades/grades.component';
 import { FacultyComponent } from './components/Faculty Management module/faculty/faculty.component';
 import { AttendanceParentComponent } from './components/parental access module/attendance.parent/attendance.parent.component';
 import { FacultyAttendanceComponent } from './components/Faculty Management module/faculty.attendance/faculty.attendance.component';
+import { AdminCourseListComponent } from './admin/admin-course-list/admin-course-list.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { FacultyAttendanceComponent } from './components/Faculty Management modu
     GradesComponent,
     AttendanceParentComponent,
     FacultyAttendanceComponent,
+    AdminCourseListComponent,
   ],
   imports: [
     RouterModule,
