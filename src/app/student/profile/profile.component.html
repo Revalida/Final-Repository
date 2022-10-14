@@ -1,2 +1,157 @@
-<app-studentheader></app-studentheader>
-<p>profile works!</p>
+<app-header></app-header>
+<!-- Layout wrapper -->
+
+<div class="d-flex flex-row justify-content-center">
+    <div class="layout-container-page">
+      <div class="layout-page">
+        <form [formGroup]="studentForm" (ngSubmit)="submit()">
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y" id="profile">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Student Profile</h4>
+  
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card mb-4">
+                    <h5 class="card-header">Profile Details</h5>
+                    <!-- Account -->
+                    <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img width="50" [src]="imageUrl" alt="student-avatar" class="d-block rounded" height="100"
+                          width="100" id="uploadedAvatar" />
+                        <div class="button-wrapper ">
+                          <div class="d-flex flex-row justify-content-center align-items-center ">
+                            <label for="upload" class="btn us-btn-primary me-2 mb-4" tabindex="0">
+                              <span class="d-none d-sm-block">Upload new photo</span>
+                              <i class="bx bx-upload d-block d-sm-none"></i>
+                              <input type="file" id="upload" class="account-file-input" hidden
+                                (change)="previewImage($event)" accept="image/png, image/jpeg" />
+                            </label>
+                            <button type="button" class="btn us-btn-secondary account-image-reset mb-4">
+                              <i class="bx bx-reset d-block d-sm-none"></i>
+                              <span class="d-none d-sm-block" (click)="imageUrl = '../../../../assets/images/empty.png'">Reset</span>
+                            </button>
+                          </div>
+  
+                          <p class="text-muted mb-0">Allowed JPG, JPEG or PNG. Max size of 1MB</p>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="card-body">
+  
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="studentNo" class="form-label">Student No.</label>
+                            <input class="form-control" type="text" formControlName="studentNo" placeholder="SN-77GSI-0000" required/>
+                          </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="acadYear" class="form-label">Academic Year</label>
+                            <input class="form-control" type="text" formControlName="acadYear" placeholder="2021 - 2022" required/>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                          <label for="firstName" class="form-label">First Name</label>
+                          <input class="form-control" type="text" formControlName="firstName" placeholder="First Name" required/>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="lastName" class="form-label">Last Name</label>
+                          <input class="form-control" type="text" formControlName="lastName" placeholder="Last Name" required/>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="middleName" class="form-label">Middle Name</label>
+                          <input class="form-control" type="text" formControlName="middleName" placeholder="Middle Name" required/>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="gender" class="form-label">Gender</label>
+                          <select class="form-control" formControlName="gender" placeholder="Gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="bday">Birthday</label>
+                            <input type="date" formControlName="bday" class="form-control" placeholder="Date" required>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="parent" class="form-label">Parent Name</label>
+                            <input class="form-control" type="text" formControlName="parentName" placeholder="Parent Name" required/>
+                          </div>
+                      </div>
+                      <div class="mt-2">
+                        <button type="submit" class="btn us-btn-primary me-2">Save changes</button>
+                        <button type="reset" class="btn us-btn-secondary">Cancel</button>
+                      </div>
+  
+                    </div>
+                  </div>
+  
+                  <div class="card mb-4">
+                    <h5 class="card-header">More Student Info</h5>
+                    <div class="card-body info-group" formGroupName="info">
+                      <div #target>
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label for="courseD" class="form-label">Course Degree</label>
+                            <input class="form-control" formControlName="courseD" placeholder="Course Degree"/>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="yearLevel" class="form-label">Year Level</label>
+                            <input class="form-control" type="text" formControlName="yearLevel" placeholder="Year Level" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="section" class="form-label">Section</label>
+                            <input class="form-control" formControlName="section" placeholder="Section"/>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="sem" class="form-label">Semester</label>
+                            <input class="form-control" type="text" formControlName="sem" placeholder="Semester" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="status" class="form-label">Student Status</label>
+                            <select class="form-control" formControlName="status" placeholder="Status">
+                                <option value="Regular">Regular</option>
+                                <option value="Irregular">Irregular</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="card mb-4">
+                    <h5 class="card-header">Change password</h5>
+                    <div class="card-body address-group" formGroupName="address">
+                      <form #target [formGroup]="changePasswordForm" (ngSubmit)="onChangePassword()">
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">New Password</label>
+                            <input class="form-control" formControlName="newPass" type="password" placeholder="New Password" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">Confirm Password</label>
+                            <input class="form-control" formControlName="confirmPass" type="password" placeholder="Confirm Password" />
+                          </div>
+                        </div>
+                        <div class="mt-2">
+                          <button type="submit" class="btn us-btn-primary me-2">Save changes</button>
+                          <button type="reset" class="btn us-btn-secondary">Cancel</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+          </div>
+          <!-- Content wrapper -->
+        </form>
+      </div>
+      <!-- / Layout page -->
+    </div>
+    <!-- Overlay -->
+  </div>
