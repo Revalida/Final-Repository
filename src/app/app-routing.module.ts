@@ -22,6 +22,7 @@ import { GradesComponent } from './student/grades/grades.component';
 import { FacultyComponent } from './components/Faculty Management module/faculty/faculty.component';
 import { AttendanceParentComponent } from './components/parental access module/attendance.parent/attendance.parent.component';
 import { FacultyAttendanceComponent } from './components/Faculty Management module/faculty.attendance/faculty.attendance.component';
+import { AdminCourseListComponent } from './admin/admin-course-list/admin-course-list.component';
 
 // import { UserGuard } from './guards/user.guard';
 
@@ -86,6 +87,10 @@ const routes: Routes = [
   {
     path: 'admin-faculty-list',
     component: AdminFacultyListComponent,
+  },
+  {
+    path: 'admin-course-list',
+    component: AdminCourseListComponent,
   },
 ];
 
