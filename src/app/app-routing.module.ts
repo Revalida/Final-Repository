@@ -6,7 +6,6 @@ import { AdminFacultyListComponent } from './admin/admin-faculty-list/admin-facu
 import { AdminParentListComponent } from './admin/admin-parent-list/admin-parent-list.component';
 import { AdminStudentListComponent } from './admin/admin-student-list/admin-student-list.component';
 import { LoginComponent } from './components/login/login.component';
-import { ParentComponent } from './components/parental access module/parent/parent.component';
 import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
