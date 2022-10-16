@@ -1,0 +1,308 @@
+<app-header></app-header>
+<app-admin-sidenav></app-admin-sidenav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm" style="margin-left: 200px">
+      <a
+        href="/course-bsit"
+        role="button"
+        class="btn btn-outline-primary btn-lg btn-block text-center"
+      >
+        <span><i class="fa fa-book"></i></span>
+        <br />BSIT
+      </a>
+    </div>
+    <div class="col-sm">
+      <a
+        href="/course-bscs"
+        role="button"
+        class="btn btn-outline-primary btn-lg btn-block text-center"
+      >
+        <span><i class="fa fa-book"></i></span>
+        <br />BSCS
+      </a>
+    </div>
+    <div class="col-sm">
+      <a
+        href="/course-bsee"
+        role="button"
+        class="btn btn-outline-primary btn-lg btn-block text-center"
+      >
+        <span><i class="fa fa-book"></i></span>
+        <br />BSEE
+      </a>
+    </div>
+    <div class="border"></div>
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <p>1st Year 1st Semester</p>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Units</th>
+            <th>Pre-Requisites</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data11 of bsit11">
+            <td>
+              <span>{{ data11.subjectCode }}</span>
+            </td>
+            <td>
+              <span>{{ data11.subjectTitle }}</span>
+            </td>
+            <td>
+              <span>{{ data11.units }}</span>
+            </td>
+            <td>
+              <span>{{ data11.prerequisites }}</span>
+            </td>
+            <td>
+              <span>{{ data11.course }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <p>1st Year 2nd Semester</p>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Units</th>
+            <th>Pre-Requisites</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data12 of bsit12">
+            <td>
+              <span>{{ data12.subjectCode }}</span>
+            </td>
+            <td>
+              <span>{{ data12.subjectTitle }}</span>
+            </td>
+            <td>
+              <span>{{ data12.units }}</span>
+            </td>
+            <td>
+              <span>{{ data12.prerequisites }}</span>
+            </td>
+            <td>
+              <span>{{ data12.course }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <p>2nd Year 1st Semester</p>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Units</th>
+            <th>Pre-Requisites</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data21 of bsit21">
+            <td>
+              <span>{{ data21.subjectCode }}</span>
+            </td>
+            <td>
+              <span>{{ data21.subjectTitle }}</span>
+            </td>
+            <td>
+              <span>{{ data21.units }}</span>
+            </td>
+            <td>
+              <span>{{ data21.prerequisites }}</span>
+            </td>
+            <td>
+              <span>{{ data21.course }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <p>2nd Year 2nd Semester</p>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Units</th>
+            <th>Pre-Requisites</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data22 of bsit22">
+            <td>
+              <span>{{ data22.subjectCode }}</span>
+            </td>
+            <td>
+              <span>{{ data22.subjectTitle }}</span>
+            </td>
+            <td>
+              <span>{{ data22.units }}</span>
+            </td>
+            <td>
+              <span>{{ data22.prerequisites }}</span>
+            </td>
+            <td>
+              <span>{{ data22.course }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <p>3rd Year 1st Semester</p>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Units</th>
+            <th>Pre-Requisites</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data31 of bsit31">
+            <td>
+              <span>{{ data31.subjectCode }}</span>
+            </td>
+            <td>
+              <span>{{ data31.subjectTitle }}</span>
+            </td>
+            <td>
+              <span>{{ data31.units }}</span>
+            </td>
+            <td>
+              <span>{{ data31.prerequisites }}</span>
+            </td>
+            <td>
+              <span>{{ data31.course }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <p>3rd Year 2nd Semester</p>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Units</th>
+            <th>Pre-Requisites</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data32 of bsit32">
+            <td>
+              <span>{{ data32.subjectCode }}</span>
+            </td>
+            <td>
+              <span>{{ data32.subjectTitle }}</span>
+            </td>
+            <td>
+              <span>{{ data32.units }}</span>
+            </td>
+            <td>
+              <span>{{ data32.prerequisites }}</span>
+            </td>
+            <td>
+              <span>{{ data32.course }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <p>4th Year 1st Semester</p>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Units</th>
+            <th>Pre-Requisites</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data41 of bsit41">
+            <td>
+              <span>{{ data41.subjectCode }}</span>
+            </td>
+            <td>
+              <span>{{ data41.subjectTitle }}</span>
+            </td>
+            <td>
+              <span>{{ data41.units }}</span>
+            </td>
+            <td>
+              <span>{{ data41.prerequisites }}</span>
+            </td>
+            <td>
+              <span>{{ data41.course }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <p>4th Year 2nd Semester</p>
+          <tr>
+            <th>Subject Code</th>
+            <th>Subject Title</th>
+            <th>Units</th>
+            <th>Pre-Requisites</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data42 of bsit42">
+            <td>
+              <span>{{ data42.subjectCode }}</span>
+            </td>
+            <td>
+              <span>{{ data42.subjectTitle }}</span>
+            </td>
+            <td>
+              <span>{{ data42.units }}</span>
+            </td>
+            <td>
+              <span>{{ data42.prerequisites }}</span>
+            </td>
+            <td>
+              <span>{{ data42.course }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

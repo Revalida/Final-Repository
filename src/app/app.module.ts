@@ -32,6 +32,12 @@ import { FacultyComponent } from './components/Faculty Management module/faculty
 import { AttendanceParentComponent } from './components/parental access module/attendance.parent/attendance.parent.component';
 import { FacultyAttendanceComponent } from './components/Faculty Management module/faculty.attendance/faculty.attendance.component';
 import { AdminCourseListComponent } from './admin/admin-course-list/admin-course-list.component';
+import { CourseBsitComponent } from './admin/course-bsit/course-bsit.component';
+import { CourseBscsComponent } from './admin/course-bscs/course-bscs.component';
+import { CourseBseeComponent } from './admin/course-bsee/course-bsee.component';
+import { StudentRegularComponent } from './admin/student-regular/student-regular.component';
+import { StudentIrregularComponent } from './admin/student-irregular/student-irregular.component';
+import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +62,15 @@ import { AdminCourseListComponent } from './admin/admin-course-list/admin-course
     AttendanceParentComponent,
     FacultyAttendanceComponent,
     AdminCourseListComponent,
+    CourseBsitComponent,
+    CourseBsitComponent,
+    CourseBscsComponent,
+    CourseBscsComponent,
+    CourseBseeComponent,
+    CourseBseeComponent,
+    StudentRegularComponent,
+    StudentIrregularComponent,
+    StudentGraduateComponent,
   ],
   imports: [
     RouterModule,

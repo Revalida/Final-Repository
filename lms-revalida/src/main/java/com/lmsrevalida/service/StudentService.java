@@ -15,8 +15,27 @@ public class StudentService {
 	@Autowired
 	private DSLContext dslContext;
 	
-	public List<StudentDetails> getStudents() {
+	public List<StudentDetails> getRegularStudents() {
 		return dslContext.selectFrom(Tables.STUDENT_DETAILS)
+				.where(Tables.STUDENT_DETAILS.STATUS.eq("Regular"))
+				.fetchInto(StudentDetails.class);
+	}
+	
+	public List<StudentDetails> getIrregularStudents() {
+		return dslContext.selectFrom(Tables.STUDENT_DETAILS)
+				.where(Tables.STUDENT_DETAILS.STATUS.eq("Irregular"))
+				.fetchInto(StudentDetails.class);
+	}
+	
+	public List<StudentDetails> getGraduateStudents() {
+		return dslContext.selectFrom(Tables.STUDENT_DETAILS)
+				.where(Tables.STUDENT_DETAILS.STATUS.eq("Graduate"))
+				.fetchInto(StudentDetails.class);
+	}
+	
+	public List<StudentDetails> getActiveStudents() {
+		return dslContext.selectFrom(Tables.STUDENT_DETAILS)
+				.where(Tables.STUDENT_DETAILS.ACTIVE_DEACTIVE.eq("Active"))
 				.fetchInto(StudentDetails.class);
 	}
 	
