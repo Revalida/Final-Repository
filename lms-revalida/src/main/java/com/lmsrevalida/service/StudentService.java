@@ -39,6 +39,11 @@ public class StudentService {
 				.fetchInto(StudentDetails.class);
 	}
 	
+	public List<StudentDetails> getStudents() {
+		return dslContext.selectFrom(Tables.STUDENT_DETAILS)
+				.fetchInto(StudentDetails.class);
+	}
+	
 	public void insertStudent(StudentDetails student) {
 		dslContext.insertInto(Tables.STUDENT_DETAILS,Tables.STUDENT_DETAILS.FIRST_NAME
 				,Tables.STUDENT_DETAILS.MIDDLE_NAME,Tables.STUDENT_DETAILS.LAST_NAME

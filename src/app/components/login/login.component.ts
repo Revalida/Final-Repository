@@ -82,6 +82,8 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['studentdashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
+          sessionStorage.setItem('STUDENT_NO', user.studNo);
+          console.log(user);
         } else {
           alert('User not found!');
           this.loginForm.reset();

@@ -16,13 +16,15 @@ import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
+
 import com.jooq.revalida.model.tables.pojos.SubjectTable;
+
 import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
 import com.lmsrevalida.service.StudentService;
-import com.lmsrevalida.service.SubjectService;
+
 
 
 @SpringBootApplication
@@ -51,6 +53,12 @@ public class LmsRevalidaApplication {
 	@GetMapping("/student/irregular")
 	public List<StudentDetails> getIrregularStudents() {
 		return Studentservice.getIrregularStudents();
+	}
+	
+	@CrossOrigin("http://localhost:4200/")
+	@GetMapping("/student")
+	public List<StudentDetails> getStudents() {
+		return Studentservice.getStudents();
 	}
 	
 	@CrossOrigin("http://localhost:4200/")
@@ -120,10 +128,16 @@ public class LmsRevalidaApplication {
 		return null;
 	}
 	
-	@Autowired
-	private SubjectService Subjectservice;
+	@Autowired 
+	private AdminService Adminservice;
 	
 	@CrossOrigin("http://localhost:4200/")
+	@GetMapping("/admin")
+	public List<AdminTable> getAdmin() {
+		return Adminservice.getAdmin();
+	}
+	
+
 	@GetMapping("/BSCS11")
 	public List<SubjectTable> getBSCS11() {
 		return Subjectservice.getBSCS11();

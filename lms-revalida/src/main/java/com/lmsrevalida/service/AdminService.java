@@ -12,7 +12,6 @@ import com.jooq.revalida.model.tables.pojos.AdminTable;
 @Service
 public class AdminService {
 
-	
 	@Autowired
 	private DSLContext dslContext;
 
