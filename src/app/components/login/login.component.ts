@@ -151,18 +151,35 @@ export class LoginComponent implements OnInit {
   }
 
   adminLogin() {
-    if (
-      this._service.adminLoginFromRemote(this.adminEmail, this.adminPassword)
-    ) {
-      sessionStorage.setItem('loggedUser', this.adminEmail);
-      sessionStorage.setItem('USER', 'admin');
-      sessionStorage.setItem('ROLE', 'admin');
-      sessionStorage.setItem('name', 'admin');
-      sessionStorage.setItem('gender', 'male');
-      this._router.navigate(['/admindashboard']);
-    } else {
-      console.log('Exception Occured');
-      this.msg = 'Bad admin credentials !!!';
-    }
+    this.http.get<any>('http://localhost:9191/admin').subscribe(
+      (res) => {
+        const user = res.find((a: any) => {
+          return (
+            a.adminEmail === this.loginForm.value.username &&
+            a.adminPassword === this.loginForm.value.password
+          );
+        });
+        if (user) {
+          this.loginForm.reset();
+          this._router.navigate(['admindashboard']);
+          sessionStorage.setItem('USER', 'user');
+          sessionStorage.setItem('ROLE', user.type);
+          console.log(user);
+        } else {
+          alert('User not found!');
+          this.loginForm.reset();
+          console.log(res);
+        }
+      },
+      (err) => {
+        alert('Something went wrong!');
+      }
+    );
+  }
+
+  print() {
+    this.http.get('http://localhost:9191/admin').subscribe((res) => {
+      console.log(res);
+    });
   }
 }
