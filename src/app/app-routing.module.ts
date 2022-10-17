@@ -22,6 +22,12 @@ import { FacultyComponent } from './components/Faculty Management module/faculty
 import { AttendanceParentComponent } from './components/parental access module/attendance.parent/attendance.parent.component';
 import { FacultyAttendanceComponent } from './components/Faculty Management module/faculty.attendance/faculty.attendance.component';
 import { AdminCourseListComponent } from './admin/admin-course-list/admin-course-list.component';
+import { CourseBsitComponent } from './admin/course-bsit/course-bsit.component';
+import { CourseBscsComponent } from './admin/course-bscs/course-bscs.component';
+import { CourseBseeComponent } from './admin/course-bsee/course-bsee.component';
+import { StudentRegularComponent } from './admin/student-regular/student-regular.component';
+import { StudentIrregularComponent } from './admin/student-irregular/student-irregular.component';
+import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
 
 // import { UserGuard } from './guards/user.guard';
 
@@ -90,6 +96,30 @@ const routes: Routes = [
   {
     path: 'admin-course-list',
     component: AdminCourseListComponent,
+  },
+  {
+    path: 'course-bsit',
+    component: CourseBsitComponent,
+  },
+  {
+    path: 'course-bscs',
+    component: CourseBscsComponent,
+  },
+  {
+    path: 'course-bsee',
+    component: CourseBseeComponent,
+  },
+  {
+    path: 'student-regular',
+    component: StudentRegularComponent,
+  },
+  {
+    path: 'student-irregular',
+    component: StudentIrregularComponent,
+  },
+  {
+    path: 'student-graduate',
+    component: StudentGraduateComponent,
   },
 ];
 

@@ -31,9 +31,27 @@ public class LmsRevalidaApplication {
 	private StudentService Studentservice;
 	
 	@CrossOrigin("http://localhost:4200/")
-	@GetMapping("/student")
-	public List<StudentDetails> getStudents() {
-		return Studentservice.getStudents();
+	@GetMapping("/student/regular")
+	public List<StudentDetails> getRegularStudents() {
+		return Studentservice.getRegularStudents();
+	}
+	
+	@CrossOrigin("http://localhost:4200/")
+	@GetMapping("/student/irregular")
+	public List<StudentDetails> getIrregularStudents() {
+		return Studentservice.getIrregularStudents();
+	}
+	
+	@CrossOrigin("http://localhost:4200/")
+	@GetMapping("/student/active")
+	public List<StudentDetails> getActiveStudents() {
+		return Studentservice.getActiveStudents();
+	}
+	
+	@CrossOrigin("http://localhost:4200/")
+	@GetMapping("/student/graduate")
+	public List<StudentDetails> getGraduateStudents() {
+		return Studentservice.getGraduateStudents();
 	}
 	
 	@CrossOrigin("http://localhost:4200/")
@@ -91,13 +109,13 @@ public class LmsRevalidaApplication {
 		return null;
 	}
 	
-	@Autowired 
-	private AdminService Adminservice;
+	@Autowired
+	private SubjectService Subjectservice;
 	
 	@CrossOrigin("http://localhost:4200/")
-	@GetMapping("/admin")
-	public List<AdminTable> getAdmin() {
-		return Adminservice.getAdmin();
+	@GetMapping("/subject")
+	public List<SubjectTable> getSubject() {
+		return Subjectservice.getSubject();
 	}
 	
 	public static void main(String[] args) {
