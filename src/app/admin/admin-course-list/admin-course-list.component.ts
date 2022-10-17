@@ -7,12 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-course-list.component.scss'],
 })
 export class AdminCourseListComponent implements OnInit {
-  subjectCS: any;
+  constructor() {}
 
-  constructor(private http: HttpClient) {}
-
-  ngOnInit(): void {
-    let response = this.http.get('http://localhost:9191/subjectCS');
-    response.subscribe((data) => (this.subjectCS = data));
-  }
+  ngOnInit(): void {}
 }

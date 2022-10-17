@@ -10,17 +10,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./admindashboard.component.scss'],
 })
 export class AdmindashboardComponent implements OnInit {
-  students: any;
-  closeResult: any;
-  deleteId: number | undefined;
-  constructor(
-    private http: HttpClient,
-    private modalService: NgbModal,
-    private _route: Router
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    let response = this.http.get('http://localhost:9191/student');
-    response.subscribe((data) => (this.students = data));
-  }
+  ngOnInit(): void {}
 }
