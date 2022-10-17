@@ -7,13 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jooq.revalida.model.Tables;
-import com.jooq.revalida.model.tables.pojos.SubjectTable;
+import com.jooq.revalida.model.tables.pojos.AdminTable;
 
 @Service
-public class SubjectService {
+public class AdminService {
+
 	
 	@Autowired
 	private DSLContext dslContext;
+
+
+	public List<AdminTable> getAdmin() {
+		return dslContext.selectFrom(Tables.ADMIN_TABLE)
+				.fetchInto(AdminTable.class);
 
 	public List<SubjectTable> getSubjectCS() {
 		return dslContext.selectFrom(Tables.SUBJECT_TABLE)
@@ -213,4 +219,5 @@ public class SubjectService {
 				.fetchInto(SubjectTable.class);
 	}
 
+	
 }

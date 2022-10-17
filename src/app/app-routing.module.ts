@@ -49,7 +49,7 @@ const routes: Routes = [
   {
     path: 'admindashboard',
     component: AdmindashboardComponent,
-    canActivate: [AdminGuard],
+    // canActivate: [AdminGuard],
   },
   {
     path: 'facultydashboard',
