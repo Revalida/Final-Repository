@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jooq.revalida.model.tables.pojos.AdminTable;
 import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
-import com.jooq.revalida.model.tables.pojos.SubjectTable;
+import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
 import com.lmsrevalida.service.StudentService;
-import com.lmsrevalida.service.SubjectService;
+
 
 @SpringBootApplication
 @RestController
@@ -90,17 +91,17 @@ public class LmsRevalidaApplication {
 		return null;
 	}
 	
-	@Autowired
-	private SubjectService Subjectservice;
+	@Autowired 
+	private AdminService Adminservice;
 	
 	@CrossOrigin("http://localhost:4200/")
-	@GetMapping("/subject")
-	public List<SubjectTable> getSubject() {
-		return Subjectservice.getSubject();
+	@GetMapping("/admin")
+	public List<AdminTable> getAdmin() {
+		return Adminservice.getAdmin();
 	}
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(LmsRevalidaApplication.class, args);
 	}
-
+	
 }
