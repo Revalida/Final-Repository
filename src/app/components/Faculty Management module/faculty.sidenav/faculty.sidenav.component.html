@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Faculty Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <br /><br />
+  <div class="sidebar-container fixed-left">
+    <ul class="sidebar-navigation">
+      <div class="card" style="width: 235px; background-color: #cc4f4f">
+        <div id="userimg" style="width: 150px">
+          <img
+            [src]="'assets/img/admin.png'"
+            alt="Card image"
+            style="width: 100%"
+          />
+        </div>
+        <div style="margin-left: auto; margin-right: auto" class="card-body">
+          <h4 style="font-weight: bolder" class="card-title">
+            <b>Faculty</b>
+          </h4>
+        </div>
+      </div>
+
+      <li>
+        <i
+          class="fa fa-home"
+          style="font-size: 25px"
+          aria-hidden="true"
+          [routerLink]="['/admindashboard']"
+          ><b>&nbsp;&nbsp;Home</b></i
+        >
+      </li>
+
+      <li>
+        <i class="fa fa-plus" style="font-size: 25px" aria-hidden="true"
+          ><b>&nbsp;&nbsp;Add Professor</b></i
+        >
+      </li>
+      <li>
+        <i class="fa fa-cart-plus" style="font-size: 25px" aria-hidden="true"
+          ><b>&nbsp;&nbsp;Add Student</b></i
+        >
+      </li>
+
+      <li>
+        <i class="fa fa-list" style="font-size: 25px" aria-hidden="true"
+          ><b>&nbsp;&nbsp;Add Course</b></i
+        >
+      </li>
+    </ul>
+  </div>
+</html>
