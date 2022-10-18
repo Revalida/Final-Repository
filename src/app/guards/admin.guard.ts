@@ -18,8 +18,8 @@ export class AdminGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (
       (this._service.isUserLoggedIn() &&
-        this._service.userType() === 'admin') ||
-      this._service.userType() === 'ADMIN'
+        this._service.userType() === 'Admin') ||
+      this._service.userType() === 'admin'
     ) {
       return true;
     }

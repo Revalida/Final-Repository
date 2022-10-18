@@ -37,7 +37,7 @@ import { CourseBseeComponent } from './admin/course-bsee/course-bsee.component';
 import { StudentRegularComponent } from './admin/student-regular/student-regular.component';
 import { StudentIrregularComponent } from './admin/student-irregular/student-irregular.component';
 import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
-import { FacultySidenavComponent } from './components/Faculty Management module/faculty.sidenav/faculty.sidenav.component';
+import { FacultySidenavComponent } from './components/Faculty Management module/faculty.sidenav/faculty-sidenav.component';
 
 @NgModule({
   declarations: [

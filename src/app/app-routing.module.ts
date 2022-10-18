@@ -49,11 +49,11 @@ const routes: Routes = [
   {
     path: 'admindashboard',
     component: AdmindashboardComponent,
-    // canActivate: [AdminGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'facultydashboard',
-    component: FacultyAttendanceComponent,
+    component: FacultyComponent,
     canActivate: [ProfessorGuard],
   },
   {
@@ -120,6 +120,10 @@ const routes: Routes = [
   {
     path: 'student-graduate',
     component: StudentGraduateComponent,
+  },
+  {
+    path: 'faculty-attendance',
+    component: FacultyAttendanceComponent,
   },
 ];
 
