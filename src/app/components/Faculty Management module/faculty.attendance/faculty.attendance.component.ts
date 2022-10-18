@@ -13,6 +13,7 @@ export class FacultyAttendanceComponent implements OnInit {
   canClick = false;
   cantClick = false;
   comp: any;
+  opened = false;
 
   constructor(private http: HttpClient) {}
 
@@ -48,7 +49,7 @@ export class FacultyAttendanceComponent implements OnInit {
       });
   }
 
-  submit() {
-    console.log(this.comp);
+  toogleSidebar() {
+    this.opened = !this.opened;
   }
 }

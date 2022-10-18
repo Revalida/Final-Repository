@@ -1,15 +1,9 @@
-.col-35 {
-  float: left;
-  margin-top: 0px;
-  width: 35%;
-}
+@import "~bootstrap/dist/css/bootstrap.css";
 
-.col-8 {
-  float: left;
-  margin-top: 5px;
-  width: 8%;
-}
-
-.col-chk {
-  margin-left: 3px;
+.table {
+  text-align: center;
+  margin-top: -700px;
+  margin-left: 120px;
+  margin-right: 300px;
+  width: 83%;
 }

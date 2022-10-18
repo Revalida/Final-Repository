@@ -24,6 +24,7 @@ import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
 import com.lmsrevalida.service.StudentService;
+import com.lmsrevalida.service.SubjectService;
 
 
 
@@ -129,12 +130,12 @@ public class LmsRevalidaApplication {
 	}
 	
 	@Autowired 
-	private AdminService Adminservice;
+	private SubjectService Subjectservice;
 	
 	@CrossOrigin("http://localhost:4200/")
-	@GetMapping("/admin")
-	public List<AdminTable> getAdmin() {
-		return Adminservice.getAdmin();
+	@GetMapping("/subjects")
+	public List<SubjectTable> getSubjectCS() {
+		return Subjectservice.getSubjectCS();
 	}
 	
 
