@@ -1,24 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
-  studentID: string = "";
+  studentNo: string = "";
+
   constructor(private http: HttpClient) {
-    const userInfo = localStorage.getItem("user")
-    if(userInfo){
-      this.studentID = JSON.parse(JSON.parse(JSON.stringify(userInfo))).user?.id?? JSON.parse(JSON.parse(JSON.stringify(userInfo))).id
-    }
+    // const userInfo = localStorage.getItem("user")
+    // if(userInfo){
+    //   this.studentID = JSON.parse(JSON.parse(JSON.stringify(userInfo))).user?.id?? JSON.parse(JSON.parse(JSON.stringify(userInfo))).id
+    // }
+
    }
-   getStudentCred = (data = this.studentID) => {
-  //  getStudentCred = (data = this.studentID): Observable<any> => {
-    // return this.http.get(`${environment.url}/users/${data}`).pipe(
-    //   tap(x => x)
-    // )
+  //  getStudentCred = (data = this.studentNo) => {
+    getStudentCred = (data = this.studentNo): Observable<any> => {
+    return this.http.get<any>('http://localhost:9191/student').pipe(
+      tap(x => x)
+    )
   }
 
   // updateStudentInfo = (data: Student) => {

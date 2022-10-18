@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,25 +15,28 @@ export interface ChangePassword {
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  showModal = false;
   studentForm: FormGroup;
   changePasswordForm: FormGroup;
   imageUrl: string = "";
-  dateNow = new Date();
+  data: any;
+  studentNo: any;
 
-  constructor(private fb: FormBuilder, 
+  constructor(
+    private fb: FormBuilder, 
+    private http: HttpClient,
     private studentService: StudentService, 
     private router: Router) { 
+
       this.studentForm = this.fb.group({
-        student_No: [''],
-        stud_firstName: ['', [Validators.required]],
-        stud_middleName: ['', [Validators.required]],
-        stud_lastName: ['', [Validators.required]],
-        stud_gender: ['', [Validators.required]],
-        bday: [''],
-        parent: [''],
-  
+        firstName: ['', [Validators.required]],
+        middleName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
+
       })
+
+      this.studentForm.patchValue({
+        
+      });
   
       this.changePasswordForm = this.fb.group({
         newPass: ['', [Validators.required]],
@@ -41,10 +45,26 @@ export class ProfileComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // this.studentService.getStudentCred().subscribe((x: any) => {
-    //   this.imageUrl = x.profile? "../../../../assets/profiles/" + x.profile : "../../../../assets/profiles/empty.png"
-    //   this.studentForm.patchValue(x)
+    //   this.studentService.getStudentCred().subscribe((data: any) => {
+    //   this.imageUrl = data.profile? "../../../../assets/profiles/" + data.profile : "../../../../assets/profiles/empty.png"
+    //   this.studentForm.patchValue(data)
     // })
+    this.http.get<any>('http://localhost:9191/student').subscribe(
+      (res) => {
+        const user = res.find((a: any) => {
+          return a.studentNo === sessionStorage.getItem('STUDENT_NO');
+        });
+        if (user) {
+          this.data = user;
+          console.log(this.data.birthDate);
+        } else {
+          console.log(res);
+        }
+      },
+      (err) => {
+        alert('Something went wrong!');
+      }
+    );
   }
 
   previewImage(e: any) {
@@ -54,7 +74,7 @@ export class ProfileComponent implements OnInit {
        reader.onload = (event: any) => {
          this.imageUrl = event.target.result;
        }
-      this.studentForm.get('profile')?.patchValue(e.target.files[0].name)
+      this.studentForm.get('student')?.patchValue(e.target.files[0].name)
     }
    }
 

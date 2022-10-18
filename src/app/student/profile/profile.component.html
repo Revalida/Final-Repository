@@ -44,45 +44,32 @@
                       <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="studentNo" class="form-label">Student No.</label>
-                            <input class="form-control" type="text" formControlName="studentNo" placeholder="SN-77GSI-0000" required/>
+                            <input class="form-control" type="text" formControlName="studentNo" [value]="data.studentNo"/>
                           </div>
 
                         <div class="mb-3 col-md-6">
                             <label for="acadYear" class="form-label">Academic Year</label>
-                            <input class="form-control" type="text" formControlName="acadYear" placeholder="2021 - 2022" required/>
+                            <input class="form-control" type="text" formControlName="acadYear" [value]="data.acadYear"/>
                         </div>
 
                         <div class="mb-3 col-md-6">
                           <label for="firstName" class="form-label">First Name</label>
-                          <input class="form-control" type="text" formControlName="firstName" placeholder="First Name" required/>
+                          <input class="form-control" type="text" formControlName="firstName" value={{data.firstName}}/>
+                          
                         </div>
                         <div class="mb-3 col-md-6">
                           <label for="lastName" class="form-label">Last Name</label>
-                          <input class="form-control" type="text" formControlName="lastName" placeholder="Last Name" required/>
+                          <input class="form-control" type="text" formControlName="lastName" [value]="data.lastName"/>
                         </div>
                         <div class="mb-3 col-md-6">
                           <label for="middleName" class="form-label">Middle Name</label>
-                          <input class="form-control" type="text" formControlName="middleName" placeholder="Middle Name" required/>
+                          <input class="form-control" type="text" formControlName="middleName" [value]="data.middletName" placeholder="Middle Name" required/>
                         </div>
                         <div class="mb-3 col-md-6">
-                          <label for="gender" class="form-label">Gender</label>
-                          <select class="form-control" formControlName="gender" placeholder="Gender" required>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+                          <label for="bday" class="form-label">Birthday</label>
+                          <input type="text" class="form-control" formControlName="bday" [value]="data.birthDate" placeholder="Birthday" required>
                         </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="bday">Birthday</label>
-                            <input type="date" formControlName="bday" class="form-control" placeholder="Date" required>
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="parent" class="form-label">Parent Name</label>
-                            <input class="form-control" type="text" formControlName="parentName" placeholder="Parent Name" required/>
-                          </div>
-                      </div>
-                      <div class="mt-2">
-                        <button type="submit" class="btn us-btn-primary me-2">Save changes</button>
-                        <button type="reset" class="btn us-btn-secondary">Cancel</button>
+
                       </div>
   
                     </div>
@@ -90,31 +77,28 @@
   
                   <div class="card mb-4">
                     <h5 class="card-header">More Student Info</h5>
-                    <div class="card-body info-group" formGroupName="info">
+                    <div class="card-body adress-group" formGroupName="address">
                       <div #target>
                         <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="courseD" class="form-label">Course Degree</label>
-                            <input class="form-control" formControlName="courseD" placeholder="Course Degree"/>
+                            <label for="course" class="form-label">Course Degree</label>
+                            <input class="form-control" formControlName="course" [value]="data.course"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="yearLevel" class="form-label">Year Level</label>
-                            <input class="form-control" type="text" formControlName="yearLevel" placeholder="Year Level" />
+                            <input class="form-control" type="text" formControlName="yearLevel" [value]="data.yearLevel"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="section" class="form-label">Section</label>
-                            <input class="form-control" formControlName="section" placeholder="Section"/>
+                            <input class="form-control" formControlName="section" [value]="data.section"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="sem" class="form-label">Semester</label>
-                            <input class="form-control" type="text" formControlName="sem" placeholder="Semester" />
+                            <input class="form-control" type="text" formControlName="sem" [value]="data.sem"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="status" class="form-label">Student Status</label>
-                            <select class="form-control" formControlName="status" placeholder="Status">
-                                <option value="Regular">Regular</option>
-                                <option value="Irregular">Irregular</option>
-                            </select>
+                            <input class="form-control" type="text" formControlName="status" [value]="data.status"/>
                           </div>
                         </div>
                       </div>
