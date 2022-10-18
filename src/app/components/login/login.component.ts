@@ -73,8 +73,8 @@ export class LoginComponent implements OnInit {
       (res) => {
         const user = res.find((a: any) => {
           return (
-            a.studNo === this.loginForm.value.username &&
-            a.studPassword === this.loginForm.value.password
+            a.studentNo === this.loginForm.value.username &&
+            a.studentPassword === this.loginForm.value.password
           );
         });
         if (user) {
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['studentdashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
-          sessionStorage.setItem('STUDENT_NO', user.studNo);
+          sessionStorage.setItem('STUDENT_NO', user.studentNo);
           console.log(user);
         } else {
           alert('User not found!');
@@ -110,8 +110,6 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['parentdashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
-          sessionStorage.setItem('STUD_NO', user.studentNo);
-          console.log(user);
         } else {
           alert('User not found!');
           this.loginForm.reset();

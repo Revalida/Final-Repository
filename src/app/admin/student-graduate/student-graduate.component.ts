@@ -47,7 +47,7 @@ export class StudentGraduateComponent implements OnInit {
 
   addParent(p: NgForm) {
     this.data = p.form.value;
-    this.data.studentNo = this.studentNo;
+    this.data.studNo = this.studentNo;
     this.http
       .post('http://localhost:9191/parent/addparent', this.data)
       .subscribe((result) => {
