@@ -7,6 +7,11 @@ ng-sidebar-container {
   margin-top: -6px;
 }
 
+img{
+  background-color: #fff;
+  border-radius: 10px;
+}
+
 ::ng-deep .ng-sidebar {
   position: absolute;
   left: 0;

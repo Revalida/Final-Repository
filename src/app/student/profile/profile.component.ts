@@ -15,7 +15,7 @@ export interface ChangePassword {
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  studentForm: FormGroup;
+  studentForm!: FormGroup;
   changePasswordForm: FormGroup;
   imageUrl: string = "";
   data: any;
@@ -24,39 +24,16 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private http: HttpClient,
-    private studentService: StudentService, 
-    private router: Router) { 
+    private studentService: StudentService) { 
 
-      this.studentForm = this.fb.group({
-        firstName: ['', [Validators.required]],
-        middleName: ['', [Validators.required]],
-        lastName: ['', [Validators.required]],
-
-      })
-
-      this.studentForm.patchValue({
-        
-      });
-  
-      this.changePasswordForm = this.fb.group({
-        newPass: ['', [Validators.required]],
-        confirmPass: ['', [Validators.required]]
-      })
-    }
-
-  ngOnInit(): void {
-    //   this.studentService.getStudentCred().subscribe((data: any) => {
-    //   this.imageUrl = data.profile? "../../../../assets/profiles/" + data.profile : "../../../../assets/profiles/empty.png"
-    //   this.studentForm.patchValue(data)
-    // })
-    this.http.get<any>('http://localhost:9191/student').subscribe(
+      this.http.get<any>('http://localhost:9191/student').subscribe(
       (res) => {
         const user = res.find((a: any) => {
           return a.studentNo === sessionStorage.getItem('STUDENT_NO');
         });
         if (user) {
           this.data = user;
-          console.log(this.data.birthDate);
+          console.log(this.data);
         } else {
           console.log(res);
         }
@@ -65,18 +42,32 @@ export class ProfileComponent implements OnInit {
         alert('Something went wrong!');
       }
     );
+
+
+      this.changePasswordForm = this.fb.group({
+        newPass: ['', [Validators.required]],
+        confirmPass: ['', [Validators.required]]
+      })
+    }
+
+  ngOnInit(): void {
+      this.studentService.getStudentCred().subscribe((data: any) => {
+      this.imageUrl = data.profile? "../../../../assets/profiles/" + data.profile : "../../../../assets/img/maleuser.png"
+      // this.studentForm.patchValue(data)
+    })
+    
   }
 
-  previewImage(e: any) {
-    if(e.target.files) {
-       const reader = new FileReader();
-       reader.readAsDataURL(e.target.files[0]);
-       reader.onload = (event: any) => {
-         this.imageUrl = event.target.result;
-       }
-      this.studentForm.get('student')?.patchValue(e.target.files[0].name)
-    }
-   }
+  // previewImage(e: any) {
+  //   if(e.target.files) {
+  //      const reader = new FileReader();
+  //      reader.readAsDataURL(e.target.files[0]);
+  //      reader.onload = (event: any) => {
+  //        this.imageUrl = event.target.result;
+  //      }
+  //     this.studentForm.get('student')?.patchValue(e.target.files[0].name)
+  //   }
+  //  }
 
    submit =() => {
     // const userData = this.studentForm.getRawValue() as Student
