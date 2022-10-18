@@ -2,6 +2,7 @@ package com.lmsrevalida;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jooq.revalida.model.tables.pojos.AdminTable;
+import com.jooq.revalida.model.tables.AdminDetails;
 import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
@@ -37,7 +38,7 @@ public class LmsRevalidaApplication {
 	
 	@CrossOrigin("http://localhost:4200/")
 	@GetMapping("/admin")
-	public List<AdminTable> getAdmin() {
+	public List<AdminDetails> getAdmin() {
 		return Adminservice.getAdmin();
 	}
 	

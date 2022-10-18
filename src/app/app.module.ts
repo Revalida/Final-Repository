@@ -11,7 +11,6 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { RouterModule } from '@angular/router';
-import { SidebarModule } from 'ng-sidebar';
 import { ParentComponent } from './components/parental access module/parent/parent.component';
 import { AdminStudentListComponent } from './admin/admin-student-list/admin-student-list.component';
 import { AdminParentListComponent } from './admin/admin-parent-list/admin-parent-list.component';
@@ -34,6 +33,8 @@ import { StudentIrregularComponent } from './admin/student-irregular/student-irr
 import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
 import { FacultySidenavComponent } from './components/Faculty Management module/faculty.sidenav/faculty-sidenav.component';
 import { SidebarDirective } from './student/sidebar-directives/sidebar.directive';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { SidebarDirective } from './student/sidebar-directives/sidebar.directive
     FormsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    SidebarModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   exports: [HeaderComponent],
   providers: [FormBuilder],
