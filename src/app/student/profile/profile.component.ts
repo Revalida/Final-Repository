@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 
 export interface ChangePassword {
@@ -69,17 +68,6 @@ export class ProfileComponent implements OnInit {
   //   }
   //  }
 
-   submit =() => {
-    // const userData = this.studentForm.getRawValue() as Student
-    // this.studentService.updateStudentInfo(userData).subscribe( x => {
-    //   let userInfo = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("user"))))
-    //   localStorage.setItem("user", JSON.stringify({accessToken: userInfo.accessToken, user: x}));
-    //   if(!x.error){
-    //     this.alert.success("Successful");
-    //   }
-      
-    // })
-   }
    onChangePassword = (): any => {
     // const userCred = this.changePasswordForm.getRawValue() as ChangePassword
     // if(!userCred.newPass || !userCred.confirmPass) {
