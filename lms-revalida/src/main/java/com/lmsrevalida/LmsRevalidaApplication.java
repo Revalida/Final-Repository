@@ -31,7 +31,7 @@ import com.lmsrevalida.service.SubjectService;
 @SpringBootApplication
 @RestController
 public class LmsRevalidaApplication {
-	
+
 	@Autowired 
 	private AdminService Adminservice;
 	
@@ -288,3 +288,4 @@ public class LmsRevalidaApplication {
 	}
 	
 }
+
