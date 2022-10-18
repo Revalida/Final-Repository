@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,12 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { RouterModule } from '@angular/router';
-
-import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
 import { SidebarModule } from 'ng-sidebar';
-
 import { ParentComponent } from './components/parental access module/parent/parent.component';
-
 import { AdminStudentListComponent } from './admin/admin-student-list/admin-student-list.component';
 import { AdminParentListComponent } from './admin/admin-parent-list/admin-parent-list.component';
 import { AdminFacultyListComponent } from './admin/admin-faculty-list/admin-faculty-list.component';
@@ -38,6 +33,8 @@ import { StudentRegularComponent } from './admin/student-regular/student-regular
 import { StudentIrregularComponent } from './admin/student-irregular/student-irregular.component';
 import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
 import { FacultySidenavComponent } from './components/Faculty Management module/faculty.sidenav/faculty-sidenav.component';
+import { SidebarDirective } from './student/sidebar-directives/sidebar.directive';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +45,6 @@ import { FacultySidenavComponent } from './components/Faculty Management module/
     AdminParentListComponent,
     AdminFacultyListComponent,
     AdminSidenavComponent,
-    StudentdashboardComponent,
     LoginComponent,
     WelcomepageComponent,
     FacultyComponent,
@@ -71,6 +67,7 @@ import { FacultySidenavComponent } from './components/Faculty Management module/
     StudentIrregularComponent,
     StudentGraduateComponent,
     FacultySidenavComponent,
+    SidebarDirective,
   ],
   imports: [
     RouterModule,

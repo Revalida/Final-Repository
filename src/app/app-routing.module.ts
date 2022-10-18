@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AdminGuard } from './guards/admin.guard';
 import { AdminFacultyListComponent } from './admin/admin-faculty-list/admin-faculty-list.component';
 import { AdminParentListComponent } from './admin/admin-parent-list/admin-parent-list.component';
 import { AdminStudentListComponent } from './admin/admin-student-list/admin-student-list.component';
 import { LoginComponent } from './components/login/login.component';
-import { StudentdashboardComponent } from './student/studentdashboard/studentdashboard.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
-
 import { ProfessorGuard } from './guards/professor.guard';
 import { ParentGuard } from './guards/parent.guard';
-
 import { ProfileComponent } from './student/profile/profile.component';
 import { PreAssignedComponent } from './student/pre-assigned/pre-assigned.component';
 import { CoursesListComponent } from './student/courses-list/courses-list.component';
@@ -28,8 +24,7 @@ import { CourseBseeComponent } from './admin/course-bsee/course-bsee.component';
 import { StudentRegularComponent } from './admin/student-regular/student-regular.component';
 import { StudentIrregularComponent } from './admin/student-irregular/student-irregular.component';
 import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
-
-// import { UserGuard } from './guards/user.guard';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {
@@ -42,9 +37,9 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'studentdashboard',
-    component: StudentdashboardComponent,
-    // canActivate: [UserGuard],
+    path: 'student-profile',
+    component: ProfileComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'admindashboard',
