@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
         });
         if (user) {
           this.loginForm.reset();
-          this._router.navigate(['studentdashboard']);
+          this._router.navigate(['profile']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
           sessionStorage.setItem('STUDENT_NO', user.studentNo);
