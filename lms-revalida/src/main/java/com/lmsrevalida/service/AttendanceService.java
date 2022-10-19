@@ -27,4 +27,6 @@ public class AttendanceService {
 		.values(attendance.getStudentNo(),attendance.getFirstName(),attendance.getMiddleName(),attendance.getLastName(),attendance.getStatus()
 ,attendance.getSubjectCode()).execute();
 	}
+	
+	
 }

@@ -21,4 +21,11 @@ public class AdminService {
 		return dslContext.selectFrom(Tables.ADMIN_DETAILS)
 				.fetchInto(AdminDetails.class);
 	}
+	
+	public void updateAdminPassword(AdminDetails admin, int admin_id) {
+		dslContext.update(Tables.ADMIN_DETAILS)
+		.set(Tables.ADMIN_DETAILS.ADMIN_PASSWORD, admin.getAdminPassword())
+		.where(Tables.ADMIN_DETAILS.ADMIN_ID.eq(admin_id))
+		.execute();
+	}
 }

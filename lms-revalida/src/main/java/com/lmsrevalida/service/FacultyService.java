@@ -27,5 +27,12 @@ public class FacultyService {
 				,Tables.FACULTY_DETAILS.WORK,Tables.FACULTY_DETAILS.STATUS,Tables.FACULTY_DETAILS.ACTIVE_DEACTIVE)
 		.values(faculty.getFacultyName(),faculty.getWork(),faculty.getStatus(),faculty.getActiveDeactive()).execute();
 	}
+	
+	public void updateFacultyPassword(FacultyDetails faculty, int Id) {
+		dslContext.update(Tables.FACULTY_DETAILS)
+		.set(Tables.FACULTY_DETAILS.FACULTY_PASSWORD, faculty.getFacultyPassword())
+		.where(Tables.FACULTY_DETAILS.ID.eq(Id))
+		.execute();
+	}
 
 }

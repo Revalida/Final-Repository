@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
         const user = res.find((a: any) => {
           return (
             a.studentNo === this.loginForm.value.username &&
-            a.password === this.loginForm.value.password
+            a.studentPassword === this.loginForm.value.password
           );
         });
         if (user) {
@@ -95,7 +95,6 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         this.toast.error('Something went wrong!');
-       
       }
     );
   }
