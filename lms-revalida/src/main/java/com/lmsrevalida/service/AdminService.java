@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jooq.revalida.model.Tables;
-import com.jooq.revalida.model.tables.AdminDetails;
+import com.jooq.revalida.model.tables.pojos.AdminDetails;
 
 
 @Service
