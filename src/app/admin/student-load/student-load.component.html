@@ -1,0 +1,49 @@
+<app-header></app-header>
+<app-admin-sidenav></app-admin-sidenav>
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 1BSIT-1A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Pre-Requisites</th>
+      <th>Course</th>
+      <th>Professor</th>
+      <th>Schedule</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data11 of bsit11">
+      <td>
+        <span>{{ data11.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data11.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data11.units }}</span>
+      </td>
+      <td>
+        <span>{{ data11.prerequisites }}</span>
+      </td>
+      <td>
+        <span>{{ data11.course }}</span>
+      </td>
+      <td>
+        <div class="dropdown">
+          <button class="dropbtn">Dropdown</button>
+          <div class="dropdown-content" *ngFor="let profs of prof">
+            <a value="profs.facultyName">{{ profs.facultyName }}</a>
+            <a value="profs.facultyName">{{ profs.facultyName }}</a>
+            <a value="profs.facultyName">{{ profs.facultyName }}</a>
+          </div>
+        </div>
+      </td>
+      <td>
+        <input />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button style="margin-left: 900px" (click)="trial()">Assign</button>

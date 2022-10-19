@@ -95,7 +95,6 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         this.toast.error('Something went wrong!');
-       
       }
     );
   }
@@ -144,6 +143,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['facultydashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
+          sessionStorage.setItem('ID', user.id);
           sessionStorage.setItem('PROF_NO', user.facultyNo);
         } else {
           this.toast.error('Professor account not found!');

@@ -3,91 +3,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap");
 
-.sidebar-container {
-  position: fixed;
-  width: 235px;
-  height: 970px;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  background: #1a1a1a;
-  color: #fff;
-}
-
 .content-container {
   padding-top: 20px;
-}
-.sidebar-navigation {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  position: relative;
-}
-.sidebar-navigation li {
-  background-color: transparent;
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  font-weight: bold;
-  font-size: larger;
-  line-height: 20px;
-  padding: 20px 15px 30px 20px;
-  display: block;
-  margin-top: 8%;
-  color: #fff;
-  transition: transform 0.2s;
-  -webkit-transition: background-color 1s ease-out;
-  -moz-transition: background-color 1s ease-out;
-  -o-transition: background-color 1s ease-out;
-  transition: background-color 1s ease-out;
-}
-.sidebar-navigation li:hover {
-  background-color: #c92d2d;
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.sidebar-navigation li .fa {
-  margin-right: 10px;
-}
-
-.sidebar-navigation li a:active,
-.sidebar-navigation li a:hover,
-.sidebar-navigation li a:focus {
-  text-decoration: none;
-  outline: none;
-}
-
-.sidebar-navigation li::before {
-  background-color: #13584f;
-
-  content: "";
-  height: 100%;
-  left: 0;
-  top: 0;
-  -webkit-transition: width 0.2s ease-in;
-  transition: width 0.2s ease-in;
-  width: 3px;
-  z-index: -1;
-}
-
-.sidebar-navigation li:hover::before {
-  width: 100%;
-}
-
-.sidebar-navigation .header {
-  font-size: 12px;
-  text-transform: uppercase;
-  background-color: #151515;
-  padding: 10px 15px 10px 30px;
-}
-
-.sidebar-navigation .header::before {
-  background-color: transparent;
 }
 
 .content-container {
   padding-left: 220px;
+  margin-top: 60px;
 }
 #userimg {
   width: 100px;

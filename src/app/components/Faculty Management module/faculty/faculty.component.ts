@@ -44,6 +44,8 @@ export class FacultyComponent implements OnInit {
         });
         if (user) {
           this.data = user;
+          this.imageUrl = this.data.imgUrl;
+          console.log(this.imageUrl);
         } else {
         }
       },

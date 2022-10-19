@@ -20,6 +20,7 @@ export class FacultyAttendanceComponent implements OnInit {
   ngOnInit(): void {
     let response = this.http.get('http://localhost:9191/student');
     response.subscribe((data) => (this.students = data));
+    console.log(this.students);
   }
 
   present(data: any) {
@@ -28,6 +29,7 @@ export class FacultyAttendanceComponent implements OnInit {
     console.log(this.studAtt);
     this.canClick = true;
     this.cantClick = false;
+    console.log(this.studAtt);
     this.http
       .post('http://localhost:9191/attendance/addattendance', this.studAtt)
       .subscribe((result) => {
