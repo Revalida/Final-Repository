@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pre-assigned.component.scss']
 })
 export class PreAssignedComponent implements OnInit {
-
-  constructor() { }
+  load: any;
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    let response = this.http.get('http://localhost:9191/load');
+    response.subscribe((data) => (this.load = data));
   }
-
+  
 }
+

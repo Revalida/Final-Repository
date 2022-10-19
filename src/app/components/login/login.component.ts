@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Professor } from 'src/app/models/professor';
 import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
     private _service: LoginService,
     private http: HttpClient,
     private _router: Router,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -74,24 +76,26 @@ export class LoginComponent implements OnInit {
         const user = res.find((a: any) => {
           return (
             a.studentNo === this.loginForm.value.username &&
-            a.studentPassword === this.loginForm.value.password
+            a.password === this.loginForm.value.password
           );
         });
         if (user) {
           this.loginForm.reset();
+          this.toast.success('Login Successfully!');
           this._router.navigate(['profile']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
           sessionStorage.setItem('STUDENT_NO', user.studentNo);
           console.log(user);
         } else {
-          alert('User not found!');
+          this.toast.error('User not found!');
           this.loginForm.reset();
           console.log(res);
         }
       },
       (err) => {
-        alert('Something went wrong!');
+        this.toast.error('Something went wrong!');
+       
       }
     );
   }
@@ -107,19 +111,20 @@ export class LoginComponent implements OnInit {
         });
         if (user) {
           this.loginForm.reset();
+          this.toast.success('Login Successfully!');
           this._router.navigate(['parentdashboard']);
           console.log(user);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
           sessionStorage.setItem('STUDENT_NO', user.studentNo);
         } else {
-          alert('User not found!');
+          this.toast.error('User not found!');
           this.loginForm.reset();
           console.log(res);
         }
       },
       (err) => {
-        alert('Something went wrong!');
+        this.toast.error('Something went wrong!');
       }
     );
   }
@@ -135,18 +140,19 @@ export class LoginComponent implements OnInit {
         });
         if (user) {
           this.loginForm.reset();
+          this.toast.success('Login Successfully!');
           this._router.navigate(['facultydashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
           sessionStorage.setItem('PROF_NO', user.facultyNo);
         } else {
-          alert('User not found!');
+          this.toast.error('User not found!');
           this.loginForm.reset();
           console.log(res);
         }
       },
       (err) => {
-        alert('Something went wrong!');
+        this.toast.error('Something went wrong!');
       }
     );
   }
@@ -162,18 +168,19 @@ export class LoginComponent implements OnInit {
         });
         if (user) {
           this.loginForm.reset();
+          this.toast.success('Login Successfully!');
           this._router.navigate(['admindashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
           console.log(user);
         } else {
-          alert('User not found!');
+          this.toast.error('User not found!');
           this.loginForm.reset();
           console.log(res);
         }
       },
       (err) => {
-        alert('Something went wrong!');
+        this.toast.error('Something went wrong!');
       }
     );
   }

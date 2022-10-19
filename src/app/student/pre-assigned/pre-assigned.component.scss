@@ -1,5 +1,13 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css");
 
+.table {
+  text-align: center;
+  // margin-top: 50px;
+  // margin-left: 200px;
+  // margin-right: 300px;
+  // width: fit-content;
+}
+
 body {
   position: relative;
   overflow-x: hidden;
@@ -18,7 +26,7 @@ img{
 }
 
 .profile{
-  padding: 2em 2em;
+  padding: 3em 2em;
 }
 
 i {

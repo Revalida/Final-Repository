@@ -6,13 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./faculty-sidenav.component.scss'],
 })
 export class FacultySidenavComponent implements OnInit {
-  closeResult: any;
-  opened = false;
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  toogleSidebar() {
-    this.opened = !this.opened;
-  }
 }

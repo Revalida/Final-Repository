@@ -54,6 +54,48 @@
         <div class="row">
             <!-- PAGE CONTENTS -->
             <h1>Pre-assigned Course Works!</h1>
+            <div class="table">
+              <div class="row">
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Load ID</th>
+                      <th>Subject Code</th>
+                      <th>Section</th>
+                      <th>Year Level</th>
+                      <th>Schedule</th>
+                      <th>Professor ID</th>
+                      <th>Semester</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of load">
+                      <td>
+                        <span>{{ data.loadId }}</span>
+                      </td>
+                      <td>
+                        <span>{{ data.subjectCode }}</span>
+                      </td>
+                      <td>
+                        <span>{{ data.section }}</span>
+                      </td>
+                      <td>
+                        <span>{{ data.yearLevel }}</span>
+                      </td>
+                      <td>
+                        <span>{{ data.schedule }}</span>
+                      </td>
+                      <td>
+                        <span>{{ data.profId }}</span>
+                      </td>
+                      <td>
+                        <span>{{ data.sem }}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
         </div>
     </div>
