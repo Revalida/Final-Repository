@@ -48,8 +48,4 @@ export class FacultyAttendanceComponent implements OnInit {
         console.log(result);
       });
   }
-
-  toogleSidebar() {
-    this.opened = !this.opened;
-  }
 }

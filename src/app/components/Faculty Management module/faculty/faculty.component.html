@@ -1,2 +1,234 @@
 <app-header></app-header>
 <app-faculty-sidenav></app-faculty-sidenav>
+<!-- Layout wrapper -->
+
+<div class="d-flex flex-row justify-content-center">
+  <div class="layout-container-page">
+    <div class="layout-page">
+      <form [formGroup]="profForm" (ngSubmit)="submit()">
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y" id="profile">
+            <h4 class="fw-bold py-3 mb-4">
+              <span class="text-muted fw-light">Account Settings /</span>
+              Professor Profile
+            </h4>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card mb-4">
+                  <h5 class="card-header">Profile Details</h5>
+                  <!-- Account -->
+                  <div class="card-body">
+                    <div
+                      class="d-flex align-items-start align-items-sm-center gap-4"
+                    >
+                      <img
+                        width="50"
+                        [src]="imageUrl"
+                        alt="prof-avatar"
+                        class="d-block rounded"
+                        height="100"
+                        width="100"
+                        id="uploadedAvatar"
+                      />
+                      <div class="button-wrapper">
+                        <div
+                          class="d-flex flex-row justify-content-center align-items-center"
+                        >
+                          <label
+                            for="upload"
+                            class="btn us-btn-primary me-2 mb-4"
+                            tabindex="0"
+                          >
+                            <span class="d-none d-sm-block"
+                              >Upload new photo</span
+                            >
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload"
+                              class="account-file-input"
+                              hidden
+                              (change)="previewImage($event)"
+                              accept="image/png, image/jpeg"
+                            />
+                          </label>
+                          <button
+                            type="button"
+                            class="btn us-btn-secondary account-image-reset mb-4"
+                          >
+                            <i class="bx bx-reset d-block d-sm-none"></i>
+                            <span
+                              class="d-none d-sm-block"
+                              (click)="
+                                imageUrl =
+                                  '../../../../assets/img/maleprofessor.png'
+                              "
+                              >Reset</span
+                            >
+                          </button>
+                        </div>
+
+                        <p class="text-muted mb-0">
+                          Allowed JPG, JPEG or PNG. Max size of 1MB
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-body info-group">
+                    <div class="row">
+                      <div class="mb-3 col-md-6">
+                        <label for="studentNo" class="form-label"
+                          >Professor No.</label
+                        >
+                        <input
+                          class="form-control"
+                          type="text"
+                          [disabled]="true"
+                          [value]="data?.facultyNo"
+                        />
+                      </div>
+
+                      <div class="mb-3 col-md-6">
+                        <label for="firstName" class="form-label">Name</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          [disabled]="true"
+                          [value]="data?.facultyName"
+                        />
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="bday" class="form-label">Work</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          [disabled]="true"
+                          [value]="data?.work"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card mb-4">
+                  <h5 class="card-header">More Professor Info</h5>
+                  <div class="card-body adress-group">
+                    <div #target>
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label for="course" class="form-label">Gender</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            [disabled]="true"
+                            [value]="data?.gender"
+                          />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="yearLevel" class="form-label"
+                            >Status</label
+                          >
+                          <input
+                            class="form-control"
+                            type="text"
+                            [disabled]="true"
+                            [value]="data?.status"
+                          />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="section" class="form-label"
+                            >Birthdate <br />(YYYY-MM-DD)</label
+                          >
+                          <input
+                            class="form-control"
+                            type="text"
+                            [disabled]="true"
+                            [value]="data?.birthdate"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card mb-4">
+                  <h5 class="card-header">Change password</h5>
+                  <div class="card-body address-group">
+                    <form
+                      #target
+                      [formGroup]="changePasswordForm"
+                      (ngSubmit)="onChangePassword()"
+                    >
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label for="lastName" class="form-label"
+                            >New Password</label
+                          >
+                          <input
+                            class="form-control ng-untounched ng-pristine ng-invalid"
+                            formControlName="newPass"
+                            type="password"
+                            placeholder="New Password"
+                            ng-reflect-name="newPass"
+                          />
+                          <span
+                            class="text-danger"
+                            *ngIf="
+                              changePasswordForm.controls['newPass'].dirty &&
+                              changePasswordForm.hasError('required', 'newPass')
+                            "
+                            >This field is required</span
+                          >
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="email" class="form-label"
+                            >Confirm Password</label
+                          >
+                          <input
+                            class="form-control ng-untounched ng-pristine ng-invalid"
+                            formControlName="confirmPass"
+                            type="password"
+                            placeholder="Confirm Password"
+                          />
+                          <span
+                            class="text-danger"
+                            *ngIf="
+                              changePasswordForm.controls['confirmPass']
+                                .dirty &&
+                              changePasswordForm.hasError(
+                                'required',
+                                'confirmPass'
+                              )
+                            "
+                            >This field is required</span
+                          >
+                        </div>
+                      </div>
+                      <div class="mt-2">
+                        <button type="submit" class="btn us-btn-primary me-2">
+                          Save changes
+                        </button>
+                        <button type="reset" class="btn us-btn-secondary">
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- / Content -->
+        </div>
+        <!-- Content wrapper -->
+      </form>
+    </div>
+    <!-- / Layout page -->
+  </div>
+  <!-- Overlay -->
+</div>

@@ -1,92 +1,87 @@
-@import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap");
-
-//Sidebar
-ng-sidebar-container {
-  height: 100vh;
-}
-
-::ng-deep .ng-sidebar {
-  position: absolute;
-  left: 0;
+#layout-menu {
+  width: 15%;
+  bottom: 0;
   top: 0;
-  height: 115%;
-  width: 225px;
-  background: #11101d;
-  // padding: 6em 3em;
-  z-index: 99;
-  transition: all 0.5s ease;
-  box-shadow: 0 0 2.5em rgba(85, 85, 0.5);
 }
 
-.profile {
-  position: relative;
-  padding-left: 2em;
+img {
+  border: 2px solid black;
+  width: 200px !important;
+  height: 150px;
 }
 
-.sidebar i {
-  color: #fff;
-  height: 60px;
-  min-width: 50px;
-  font-size: 28px;
-  text-align: center;
-  line-height: 60px;
+.layout-page {
+  overflow: hidden !important;
 }
 
-.sidebar .nav-list {
-  margin-top: 25px;
-  margin-left: -10%;
-  margin-right: 10px;
-  height: 100%;
-  display: block;
+.container {
+  margin-left: 250px;
 }
 
-.sidebar.open .nav-list {
-  margin-top: 20px;
-  margin-left: -15%;
-  height: 100%;
-  display: block;
-}
-
-.sidebar li {
-  position: relative;
-  margin: 8px 0;
-  list-style: none;
-}
-
-.sidebar li a {
-  display: flex;
-  height: 100%;
-  width: 100;
-  border-radius: 10px;
-  align-items: center;
-  transition: all 0.4s ease;
-}
-.sidebar li a:hover {
-  background: #fff;
-  cursor: pointer;
-}
-
-.sidebar li a .links_name {
-  color: #fff;
-  font-size: 15px;
-  font-weight: 400;
-  white-space: nowrap;
-  pointer-events: none;
-  transition: 0.4s;
-}
-
-.sidebar li a:hover .links_name,
-.sidebar li a:hover i {
-  transition: all 0.5s ease;
-  color: #11101d;
-}
-
-.sidebar li i {
-  height: 50px;
-  line-height: 50px;
+.us-btn-primary {
   font-size: 18px;
-  border-radius: 12px;
+  font-weight: bolder;
+  background-color: #ffc13b !important;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.0784314),
+    0 7px 14px rgba(50, 50, 93, 0.101961) !important;
 }
 
-// Content
+.us-btn-secondary {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #fff;
+  background-color: #851313 !important;
+  border: 2px solid #3b3b3b !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.0784314),
+    0 7px 14px rgba(50, 50, 93, 0.101961) !important;
+}
+
+.us-btn-danger {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #fff;
+  background-color: #c31414 !important;
+  border: 2px solid #c31414 !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.0784314),
+    0 7px 14px rgba(50, 50, 93, 0.101961) !important;
+}
+
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 20px;
+  margin: 1rem;
+
+  .page-nav {
+    font-size: 28px;
+    font-weight: 700;
+  }
+}
+
+.btn-us-primary {
+  background: #ffc836;
+  font-size: larger;
+  font-weight: 500;
+  color: #fff;
+}
+
+.form-control {
+  border: 2px solid black !important;
+  height: 3rem !important;
+}
+
+.ng-invalid:not(form, .info-group) {
+  border: 2px solid black;
+}
+
+.ng-valid:not(form, .info-group) {
+  border: 2px solid #ffc836 !important;
+}
+
+.bg-us-primary {
+  background: #ffc836 !important;
+}

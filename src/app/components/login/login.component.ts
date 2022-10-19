@@ -108,8 +108,10 @@ export class LoginComponent implements OnInit {
         if (user) {
           this.loginForm.reset();
           this._router.navigate(['parentdashboard']);
+          console.log(user);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
+          sessionStorage.setItem('STUDENT_NO', user.studentNo);
         } else {
           alert('User not found!');
           this.loginForm.reset();
@@ -136,6 +138,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['facultydashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
+          sessionStorage.setItem('PROF_NO', user.facultyNo);
         } else {
           alert('User not found!');
           this.loginForm.reset();
