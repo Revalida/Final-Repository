@@ -52,4 +52,11 @@ public class StudentService {
 		.values(student.getStudentFirstname(),student.getStudentMiddlename(),student.getStudentLastname(),student.getCourse(),student.getSection()
 ,student.getSem(),student.getYearLevel()).execute();
 	}
+	
+	public void updateStudent(StudentDetails student, int Id) {
+        dslContext.update(Tables.STUDENT_DETAILS)
+        .set(Tables.STUDENT_DETAILS.STUDENT_PASSWORD, student.getStudentPassword())
+        .where(Tables.STUDENT_DETAILS.ID.eq(Id))
+        .execute();
+    }
 }
