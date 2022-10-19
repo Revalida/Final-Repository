@@ -113,8 +113,10 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           this.toast.success('Login Successfully!');
           this._router.navigate(['parentdashboard']);
+          console.log(user);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
+          sessionStorage.setItem('STUDENT_NO', user.studentNo);
         } else {
           this.toast.error('User not found!');
           this.loginForm.reset();
@@ -142,6 +144,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['facultydashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
+          sessionStorage.setItem('PROF_NO', user.facultyNo);
         } else {
           this.toast.error('User not found!');
           this.loginForm.reset();

@@ -21,11 +21,11 @@ public class AttendanceService {
 	}
 	
 	public void insertAttendance(Attendance attendance) {
-		dslContext.insertInto(Tables.ATTENDANCE,Tables.ATTENDANCE.STUD_NO
+		dslContext.insertInto(Tables.ATTENDANCE,Tables.ATTENDANCE.STUDENT_NO
 				,Tables.ATTENDANCE.FIRST_NAME,Tables.ATTENDANCE.MIDDLE_NAME,Tables.ATTENDANCE.LAST_NAME
-				,Tables.ATTENDANCE.STATUS,Tables.ATTENDANCE.SUBJECT)
-		.values(attendance.getStudNo(),attendance.getFirstName(),attendance.getMiddleName(),attendance.getLastName(),attendance.getStatus()
-,attendance.getSubject()).execute();
+				,Tables.ATTENDANCE.STATUS,Tables.ATTENDANCE.SUBJECT_CODE)
+		.values(attendance.getStudentNo(),attendance.getFirstName(),attendance.getMiddleName(),attendance.getLastName(),attendance.getStatus()
+,attendance.getSubjectCode()).execute();
 	}
 
 }

@@ -125,7 +125,7 @@ public class LmsRevalidaApplication {
 	
 	@CrossOrigin("http://localhost:4200/")
 	@PostMapping("/attendance/addattendance")
-	public StudentDetails AddAttendance(@RequestBody Attendance attendance) {
+	public Attendance AddAttendance(@RequestBody Attendance attendance) {
 		Attendanceservice.insertAttendance(attendance);
 		return null;
 	}
