@@ -25,6 +25,8 @@ import { StudentRegularComponent } from './admin/student-regular/student-regular
 import { StudentIrregularComponent } from './admin/student-irregular/student-irregular.component';
 import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
 import { UserGuard } from './guards/user.guard';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { StudentLoadComponent } from './admin/student-load/student-load.component';
 
 const routes: Routes = [
   {
@@ -119,6 +121,14 @@ const routes: Routes = [
   {
     path: 'faculty-attendance',
     component: FacultyAttendanceComponent,
+  },
+  {
+    path: 'admin-profile',
+    component: AdminProfileComponent,
+  },
+  {
+    path: 'student-load',
+    component: StudentLoadComponent,
   },
 ];
 

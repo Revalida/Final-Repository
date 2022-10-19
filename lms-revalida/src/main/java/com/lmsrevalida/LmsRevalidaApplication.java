@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,13 +19,14 @@ import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
-
+import com.jooq.revalida.model.tables.pojos.StudentLoad;
 import com.jooq.revalida.model.tables.pojos.SubjectTable;
 
 import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
+import com.lmsrevalida.service.StudentLoadService;
 import com.lmsrevalida.service.StudentService;
 import com.lmsrevalida.service.SubjectService;
 
@@ -38,6 +40,11 @@ public class LmsRevalidaApplication {
 	@Autowired 
 	private AdminService Adminservice;
 	
+	@PatchMapping("updateadminpassword/{admin_id}")
+	public String updateAdminPassword(@RequestBody AdminDetails admin, @PathVariable int admin_id) {
+		Adminservice.updateAdminPassword(admin, admin_id);
+		return null;
+	}
 	
 	@GetMapping("/admin")
 	public List<AdminDetails> getAdmin() {
@@ -47,7 +54,24 @@ public class LmsRevalidaApplication {
 	@Autowired
 	private StudentService Studentservice;
 	
+
+	@PatchMapping("updatestudentpassword/{Id}")
+	public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
+		Studentservice.updateStudentPassword(student, Id);
+		return null;
+	}
 	
+	@PatchMapping("updatestudent/{Id}")
+	public String updateStudent(@RequestBody StudentDetails student, @PathVariable int Id) {
+		Studentservice.updateStudent(student, Id);
+		return null;
+	}
+	
+	@GetMapping("/studentsection")
+	public List<StudentDetails> getStudentSection(String Section) {
+		return Studentservice.getStudentSection(Section);
+	}
+
 	
 	@GetMapping("/student/regular")
 	public List<StudentDetails> getRegularStudents() {
@@ -292,6 +316,20 @@ public class LmsRevalidaApplication {
 	@GetMapping("/BSIT42")
 	public List<SubjectTable> getBSIT42() {
 		return Subjectservice.getBSIT42();
+	}
+	
+	@Autowired
+	private
+	StudentLoadService Studentloadservice;
+	
+	public List<StudentLoad> getStudentLoad() {
+		return Studentloadservice.getStudentLoad();
+	}
+	
+	@PostMapping("/student/load")
+	public StudentLoad insertStudentLoad(@RequestBody StudentLoad load) {
+		Studentloadservice.insertStudentLoad(load);
+		return null;
 	}
 	
 	

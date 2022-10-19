@@ -27,6 +27,13 @@ public class ParentService {
 				,Tables.PARENT_DETAILS.PARENT_LASTNAME,Tables.PARENT_DETAILS.STUDENT_NO)
 		.values(parent.getParentFirstname(),parent.getParentLastname(),parent.getStudentNo()).execute();
 	}
+	
+	public void updateParentPassword(ParentDetails parent, int Id) {
+		dslContext.update(Tables.PARENT_DETAILS)
+		.set(Tables.PARENT_DETAILS.PARENT_PASSWORD, parent.getParentPassword())
+		.where(Tables.PARENT_DETAILS.ID.eq(Id))
+		.execute();
+	}
 }
 
 

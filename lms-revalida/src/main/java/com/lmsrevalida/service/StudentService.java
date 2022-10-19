@@ -15,6 +15,13 @@ public class StudentService {
 	@Autowired
 	private DSLContext dslContext;
 	
+	public List<StudentDetails> getStudentSection(String Section) {
+		return dslContext.selectFrom(Tables.STUDENT_DETAILS)
+				.where(Tables.STUDENT_DETAILS.SECTION.eq(Section))
+				.fetchInto(StudentDetails.class);
+	}
+	
+	
 	public List<StudentDetails> getRegularStudents() {
 		return dslContext.selectFrom(Tables.STUDENT_DETAILS)
 				.where(Tables.STUDENT_DETAILS.STATUS.eq("Regular"))
@@ -51,5 +58,19 @@ public class StudentService {
 				,Tables.STUDENT_DETAILS.YEAR_LEVEL)
 		.values(student.getStudentFirstname(),student.getStudentMiddlename(),student.getStudentLastname(),student.getCourse(),student.getSection()
 ,student.getSem(),student.getYearLevel()).execute();
+	}
+	
+	public void updateStudent(StudentDetails student, int Id) {
+		dslContext.update(Tables.STUDENT_DETAILS)
+		.set(Tables.STUDENT_DETAILS.PARENT_FIRSTNAME, student.getParentFirstname())
+		.where(Tables.STUDENT_DETAILS.ID.eq(Id))
+		.execute();
+	}
+	
+	public void updateStudentPassword(StudentDetails student, int Id) {
+		dslContext.update(Tables.STUDENT_DETAILS)
+		.set(Tables.STUDENT_DETAILS.STUDENT_PASSWORD, student.getStudentPassword())
+		.where(Tables.STUDENT_DETAILS.ID.eq(Id))
+		.execute();
 	}
 }

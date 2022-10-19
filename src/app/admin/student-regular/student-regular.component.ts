@@ -14,6 +14,7 @@ export class StudentRegularComponent implements OnInit {
   closeResult: any;
   studentNo = '';
   data: any;
+  parentNo: any;
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
@@ -51,6 +52,13 @@ export class StudentRegularComponent implements OnInit {
     this.data.studNo = this.studentNo;
     this.http
       .post('http://localhost:9191/parent/addparent', this.data)
+      .subscribe((result) => {
+        this.ngOnInit(); // reload the table
+      });
+    this.data = p.form.value;
+    this.data.parentNo = this.parentNo;
+    this.http
+      .patch('http://localhost:9191/updatestudent/', this.data)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
