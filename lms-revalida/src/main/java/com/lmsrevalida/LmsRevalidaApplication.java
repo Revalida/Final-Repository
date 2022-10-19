@@ -54,6 +54,7 @@ public class LmsRevalidaApplication {
 	@Autowired
 	private StudentService Studentservice;
 	
+
 	@PatchMapping("updatestudentpassword/{Id}")
 	public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
 		Studentservice.updateStudentPassword(student, Id);
@@ -70,11 +71,14 @@ public class LmsRevalidaApplication {
 	public List<StudentDetails> getStudentSection(String Section) {
 		return Studentservice.getStudentSection(Section);
 	}
+
 	
 	@GetMapping("/student/regular")
 	public List<StudentDetails> getRegularStudents() {
 		return Studentservice.getRegularStudents();
 	}
+	
+	
 	
 	 
 	@GetMapping("/student/irregular")
@@ -142,11 +146,17 @@ public class LmsRevalidaApplication {
 	@Autowired
 	private AttendanceService Attendanceservice;
 	
+	@GetMapping("attendance/{studentNo}")
+	public List<Attendance> getStudentAttendance(@PathVariable String studentNo) {
+        return Attendanceservice.getStudentAttendance(studentNo);
+    }
 	 
 	@GetMapping("/attendance")
 	public List<Attendance> getAttendance() {
 		return Attendanceservice.getAttendance();
 	}
+	
+	
 	
 	 
 	@PostMapping("/attendance/addattendance")
