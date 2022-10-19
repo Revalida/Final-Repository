@@ -2,7 +2,6 @@ package com.lmsrevalida;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,8 +28,6 @@ import com.lmsrevalida.service.ParentService;
 import com.lmsrevalida.service.StudentLoadService;
 import com.lmsrevalida.service.StudentService;
 import com.lmsrevalida.service.SubjectService;
-
-
 
 @SpringBootApplication
 @RestController
@@ -339,3 +336,123 @@ public class LmsRevalidaApplication {
 	
 }
 
+    @GetMapping("/BSCS12")
+    public List<SubjectTable> getBSCS12() {
+        return Subjectservice.getBSCS12();
+    }
+
+    @GetMapping("/BSCS21")
+    public List<SubjectTable> getBSCS21() {
+        return Subjectservice.getBSCS21();
+    }
+
+    @GetMapping("/BSCS22")
+    public List<SubjectTable> getBSCS22() {
+        return Subjectservice.getBSCS22();
+    }
+
+    @GetMapping("/BSCS31")
+    public List<SubjectTable> getBSCS31() {
+        return Subjectservice.getBSCS31();
+    }
+
+    @GetMapping("/BSCS32")
+    public List<SubjectTable> getBSCS32() {
+        return Subjectservice.getBSCS32();
+    }
+
+    @GetMapping("/BSCS41")
+    public List<SubjectTable> getBSCS41() {
+        return Subjectservice.getBSCS41();
+    }
+
+    @GetMapping("/BSCS42")
+    public List<SubjectTable> getBSCS42() {
+        return Subjectservice.getBSCS42();
+    }
+
+    @GetMapping("/BSEE11")
+    public List<SubjectTable> getBSEE11() {
+        return Subjectservice.getBSEE11();
+    }
+
+    @GetMapping("/BSEE12")
+    public List<SubjectTable> getBSEE12() {
+        return Subjectservice.getBSEE12();
+    }
+
+    @GetMapping("/BSEE21")
+    public List<SubjectTable> getBSEE21() {
+        return Subjectservice.getBSEE21();
+    }
+
+    @GetMapping("/BSEE22")
+    public List<SubjectTable> getBSEE22() {
+        return Subjectservice.getBSEE22();
+    }
+
+    @GetMapping("/BSEE31")
+    public List<SubjectTable> getBSEE31() {
+        return Subjectservice.getBSEE31();
+    }
+
+    @GetMapping("/BSEE32")
+    public List<SubjectTable> getBSEE32() {
+        return Subjectservice.getBSEE32();
+    }
+
+    @GetMapping("/BSEE41")
+    public List<SubjectTable> getBSEE41() {
+        return Subjectservice.getBSEE41();
+    }
+
+    @GetMapping("/BSEE42")
+    public List<SubjectTable> getBSEE42() {
+        return Subjectservice.getBSEE42();
+    }
+
+    @GetMapping("/BSIT11")
+    public List<SubjectTable> getBSIT11() {
+        return Subjectservice.getBSIT11();
+    }
+
+    @GetMapping("/BSIT12")
+    public List<SubjectTable> getBSIT12() {
+        return Subjectservice.getBSIT12();
+    }
+
+    @GetMapping("/BSIT21")
+    public List<SubjectTable> getBSIT21() {
+        return Subjectservice.getBSIT21();
+    }
+
+    @GetMapping("/BSIT22")
+    public List<SubjectTable> getBSIT22() {
+        return Subjectservice.getBSIT22();
+    }
+
+    @GetMapping("/BSIT31")
+    public List<SubjectTable> getBSIT31() {
+        return Subjectservice.getBSIT31();
+    }
+
+    @GetMapping("/BSIT32")
+    public List<SubjectTable> getBSIT32() {
+        return Subjectservice.getBSIT32();
+    }
+
+    @GetMapping("/BSIT41")
+    public List<SubjectTable> getBSIT41() {
+        return Subjectservice.getBSIT41();
+    }
+
+    @GetMapping("/BSIT42")
+    public List<SubjectTable> getBSIT42() {
+        return Subjectservice.getBSIT42();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(LmsRevalidaApplication.class, args);
+    }
+
+}
