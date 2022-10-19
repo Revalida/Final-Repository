@@ -18,18 +18,10 @@ export class AttendanceParentComponent implements OnInit {
     this.studNo = this.studNo.replace(/"/g, '');
     console.log(this.studNo);
 
-    this.http.get<any>('http://localhost:9191/attendance').subscribe(
+    this.http.get('http://localhost:9191/attendance/' + this.studNo).subscribe(
       (res) => {
-        const user = res.find((a: any) => {
-          return a.studentNo === this.studNo;
-        });
-        if (user) {
-          this.datas = user;
-          console.log(this.datas.studentNo);
-        } else {
-          alert('User not found!');
-          console.log(user);
-        }
+        this.datas = res;
+        console.log(this.datas);
       },
       (err) => {
         alert('Something went wrong!');

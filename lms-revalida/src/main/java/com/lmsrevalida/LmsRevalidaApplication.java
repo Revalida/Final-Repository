@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,10 +47,14 @@ public class LmsRevalidaApplication {
 	@Autowired
 	private StudentService Studentservice;
 	
+	
+	
 	@GetMapping("/student/regular")
 	public List<StudentDetails> getRegularStudents() {
 		return Studentservice.getRegularStudents();
 	}
+	
+	
 	
 	 
 	@GetMapping("/student/irregular")
@@ -117,11 +122,17 @@ public class LmsRevalidaApplication {
 	@Autowired
 	private AttendanceService Attendanceservice;
 	
+	@GetMapping("attendance/{studentNo}")
+	public List<Attendance> getStudentAttendance(@PathVariable String studentNo) {
+        return Attendanceservice.getStudentAttendance(studentNo);
+    }
 	 
 	@GetMapping("/attendance")
 	public List<Attendance> getAttendance() {
 		return Attendanceservice.getAttendance();
 	}
+	
+	
 	
 	 
 	@PostMapping("/attendance/addattendance")

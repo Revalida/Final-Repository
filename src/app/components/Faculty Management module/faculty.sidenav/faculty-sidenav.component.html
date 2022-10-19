@@ -1,50 +1,66 @@
-<!-- <ng-sidebar-container>
-  <ng-sidebar [opened]="opened">
-    <div class="sidebar">
-      <a (click)="toogleSidebar()">
-        <i class="fa fa-bars"></i>
-      </a>
+<div id="wrapper" [ngClass]="ref.click === true ? 'toggled' : ''">
+  <div
+    class="overlay"
+    [ngStyle]="{ disply: ref.click === true ? 'block' : 'none' }"
+  ></div>
+  <!-- Sidebar -->
+  <nav
+    class="navbar navbar-inverse navbar-fixed-top"
+    id="sidebar-wrapper"
+    role="navigation"
+  >
+    <ul class="nav sidebar-nav">
       <div class="profile">
-        <img [src]="'assets/img/male.png'" width="150" height="150" />
+        <img [src]="'assets/img/maleuser.png'" width="150" height="150" />
       </div>
-      <ul class="nav-list">
-        <li>
-          <a routerLink="/facultydashboard">
-            <i class="fa fa-user"></i>
-            <span class="links_name">Account Profile</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/pre-assigned">
-            <i class="fa fa-check"></i>
-            <span class="links_name">Courses and Schedule</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/courses-list">
-            <i class="fa fa-list"></i>
-            <span class="links_name">Files</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/faculty-attendance">
-            <i class="fa fa-clipboard"></i>
-            <span class="links_name">Attendance</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/grades">
-            <i class="fa fa-graduation-cap"></i>
-            <span class="links_name">Courses Marks</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </ng-sidebar>
-  <div ng-sidebar-content>
-    <button (click)="toogleSidebar()">
-      <i class="fa fa-bars"></i>
+      <li>
+        <a routerLink="/facultydashboard">
+          <i class="fa fa-user"></i>
+          <span class="links_name">Account Profile</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="">
+          <i class="fa fa-check"></i>
+          <span class="links_name">Courses and Schedule</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="">
+          <i class="fa fa-list"></i>
+          <span class="links_name">Files</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/faculty-attendance">
+          <i class="fa fa-clipboard"></i>
+          <span class="links_name">Attendance</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="">
+          <i class="fa fa-graduation-cap"></i>
+          <span class="links_name">Courses Marks</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <button
+      appSidebar
+      #ref="appSidebar"
+      type="button"
+      class="hamburger is-closed"
+      data-toggle="offcanvas"
+    >
+      <span class="hamb-top"></span>
+      <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
     </button>
-    <div></div>
   </div>
-</ng-sidebar-container> -->
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
