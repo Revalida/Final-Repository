@@ -18,13 +18,14 @@ import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
-
+import com.jooq.revalida.model.tables.pojos.StudentLoad;
 import com.jooq.revalida.model.tables.pojos.SubjectTable;
 
 import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
+import com.lmsrevalida.service.StudentLoadService;
 import com.lmsrevalida.service.StudentService;
 import com.lmsrevalida.service.SubjectService;
 
@@ -75,13 +76,16 @@ public class LmsRevalidaApplication {
         return null;
     }
 
-    @PatchMapping("updatestudentpassword/{Id}")
+    @PatchMapping("/updatestudentpassword/{Id}")
     public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
         Studentservice.updateStudentPassword(student, Id);
         return null;
     }
     
-    @GetMapping("attendance/{studentNo}")
+    @Autowired
+    private AttendanceService Attendanceservice;
+ 
+    @GetMapping("/attendance/{studentNo}")
     public List<Attendance> getStudentAttendance(@PathVariable String studentNo) {
         return Attendanceservice.getStudentAttendance(studentNo);
     }
@@ -90,9 +94,6 @@ public class LmsRevalidaApplication {
 	public List<Attendance> getAttendance() {
 		return Attendanceservice.getAttendance();
 	}
-	
-	
-	
 	 
 	@PostMapping("/attendance/addattendance")
 	public Attendance AddAttendance(@RequestBody Attendance attendance) {
@@ -205,20 +206,6 @@ public class LmsRevalidaApplication {
 	public List<SubjectTable> getBSIT42() {
 		return Subjectservice.getBSIT42();
 	}
-	
-	@Autowired
-	private
-	StudentLoadService Studentloadservice;
-	
-	public List<StudentLoad> getStudentLoad() {
-		return Studentloadservice.getStudentLoad();
-	}
-	
-	@PostMapping("/student/load")
-	public StudentLoad insertStudentLoad(@RequestBody StudentLoad load) {
-		Studentloadservice.insertStudentLoad(load);
-		return null;
-	}
 
     @GetMapping("/BSEE11")
     public List<SubjectTable> getBSEE11() {
@@ -259,10 +246,25 @@ public class LmsRevalidaApplication {
     public List<SubjectTable> getBSEE42() {
         return Subjectservice.getBSEE42();
     }
-
+    
+    @Autowired
+    private
+    StudentLoadService Studentloadservice;
+    
+    @GetMapping("/load/{studentNo}")
+    public List<StudentLoad> getStudentLoad(@PathVariable String studentNo) {
+        return Studentloadservice.getStudentLoad(studentNo);
+    }
+    
+    @PostMapping("/student/load")
+    public StudentLoad insertStudentLoad(@RequestBody StudentLoad load) {
+        Studentloadservice.insertStudentLoad(load);
+        return null;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(LmsRevalidaApplication.class, args);
+        
     }
 
 }

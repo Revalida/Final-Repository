@@ -17,7 +17,6 @@ export interface ChangePassword {
 })
 export class ProfileComponent implements OnInit {
   clock!: Observable<Date>;
-  studentForm!: FormGroup;
   changePasswordForm: FormGroup;
   imageUrl: string = "";
   data: any;
@@ -29,7 +28,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder, 
     private http: HttpClient,
     private studentService: StudentService,
-    private toast: ToastrService) { 
+    private toast: ToastrService
+    ) { 
 
       this.http.get<any>('http://localhost:9191/student').subscribe(
       (res) => {
@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
       return  this.toast.error("Password does not match!");
     }
     // this.http
-    //   .patch('http://localhost:9191/student/' + this.updateId, .value)
+    //   .patch('http://localhost:9191/updatestudentpassword/' + this.updateId, f.valueOf)
     //   .subscribe((result) => {
     //     console.log(result);
     //   });

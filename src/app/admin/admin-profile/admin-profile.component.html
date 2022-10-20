@@ -8,8 +8,8 @@
           <!-- Content -->
           <div class="container-xxl flex-grow-1 container-p-y" id="profile">
             <h4 class="fw-bold py-3 mb-4">
-              <span class="text-muted fw-light">Admin Profile /</span> Account
-              Settings
+              <span class="text-muted fw-light">Account Settings/</span> Admin
+              Profile
             </h4>
 
             <div class="row">
@@ -40,10 +40,8 @@
                             >
                             <input
                               class="form-control"
-                              formControlName="adminId"
                               type="text"
-                              formControlName="adminId"
-                              value=""
+                              value={{data?.adminId}}
                               [attr.disabled]="true"
                             />
                           </div>
@@ -61,7 +59,7 @@
                         <input
                           class="form-control"
                           type="text"
-                          value=""
+                          value={{data?.adminFirstname}}
                           [attr.disabled]="true"
                         />
                       </div>
@@ -72,7 +70,7 @@
                         <input
                           class="form-control"
                           type="text"
-                          value=""
+                          value={{data?.adminLastname}}
                           [attr.disabled]="true"
                         />
                       </div>
@@ -81,7 +79,7 @@
                         <input
                           class="form-control"
                           type="text"
-                          value=""
+                          value={{data?.adminEmail}}
                           [attr.disabled]="true"
                         />
                       </div>
@@ -90,7 +88,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          value=""
+                          value={{data?.type}}
                           [attr.disabled]="true"
                         />
                       </div>
@@ -100,7 +98,7 @@
 
                 <div class="card mb-4">
                   <h5 class="card-header">Change password</h5>
-                  <div class="card-body address-group" formGroupName="address">
+                  <div class="card-body address-group">
                     <form
                       #target
                       [formGroup]="changePasswordForm"

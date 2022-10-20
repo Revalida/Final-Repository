@@ -5,35 +5,49 @@
     <div class="table">
         <div class="row">
             <div class="card">
-              <div class="header">
-                <h2 class="title">Pre-assigned Course</h2>
+              <div class="d-flex flex-row justify-content-center align-items-center ">
+              <div class="mb-1 col-md-3">
+                <label for="yearLevel" class="form-label">Year Level</label>
+                <input class="form-control" type="text" value={{data?.yearLevel}} [attr.disabled]="true"/>
               </div>
+              <div class="mb-1 col-md-3">
+                <label for="section" class="form-label">Section</label>
+                <input class="form-control" value={{data?.section}} [attr.disabled]="true"/>
+              </div>
+              <div class="mb-1 col-md-3">
+                <label for="sem" class="form-label">Semester</label>
+                <input class="form-control" type="text" value={{data?.sem}} [attr.disabled]="true"/>
+              </div>
+            </div>
             </div>&nbsp; 
+
             <div class="card" >
               <div class="table-responsive">
                 <table class="table table-bordered table-striped table-centered table-hover mb-0" id="datatable">
                   <thead>
                     <tr>
                       <th class="border-top-0" scope="col">Subject Code</th>
-                      <th class="border-top-0" scope="col">Schedule</th>
+                      <th class="border-top-0" scope="col">Schedule (Day & Time)</th>
                       <th class="border-top-0" scope="col">Professor ID</th>
                       <th class="border-top-0" scope="col" style="width:120px">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr >
-                      <td><span></span></td>
-                      <td><span></span></td>
-                      <td><span></span></td>
+                    <tr>
+                      <td><span> {{data?.subjectCode}} </span></td>
+                      <td><span> {{data?.schedule}} </span></td>
+                      <td><span> {{data?.facultyNo}} </span></td>
                       <td style="white-space: nowrap">
-                        <button class="btn btn-secondary">Edit</button>&nbsp;
+                        <button class="btn us-btn-secondary" (click)="edit()">Edit</button>&nbsp;
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-            <button class="btn btn-success" style="width:120px; margin-left: auto; margin-right: auto; margin-top: 50px;" >Submit</button>
+            <button class="btn us-btn-primary" 
+                    style="width:120px; margin-left: auto; margin-right: auto; margin-top: 50px;" 
+                    (click)="submit()">Submit</button>
         </div>
      </div>
 </div>
