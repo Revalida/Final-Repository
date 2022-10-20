@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ClockService } from 'src/app/services/clock.service';
+
 
 @Component({
   selector: 'app-grades',
@@ -10,10 +10,10 @@ import { ClockService } from 'src/app/services/clock.service';
 export class GradesComponent implements OnInit {
   clock!: Observable<Date>;
 
-  constructor(private clockService: ClockService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.clock = this.clockService.getClock();
+
   }
 
 }
