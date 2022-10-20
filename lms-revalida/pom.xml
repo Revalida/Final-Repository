@@ -70,7 +70,7 @@
 								<driver>org.postgresql.Driver</driver>
 								<url>jdbc:postgresql://localhost:5432/lms_revalida</url>
 								<user>postgres</user>
-								<password>dbangge</password>
+								<password>ecarreon77</password>
 							</jdbc>
 							<generator>
 								<database>
