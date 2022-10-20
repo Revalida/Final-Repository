@@ -212,5 +212,6 @@ public class SubjectService {
 						Tables.SUBJECT_TABLE.SEM.eq("2nd"))
 				.fetchInto(SubjectTable.class);
 	}
+	
 
 }

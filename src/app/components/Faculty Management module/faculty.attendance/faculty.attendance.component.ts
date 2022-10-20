@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class FacultyAttendanceComponent implements OnInit {
   students: any;
   studAtt: any;
-  status = '';
+  status: string = 'Present';
   canClick = false;
   cantClick = false;
   comp: any;
@@ -25,7 +25,7 @@ export class FacultyAttendanceComponent implements OnInit {
 
   present(data: any) {
     this.studAtt = data;
-    this.studAtt.status = 'Present';
+    this.studAtt.status = this.status;
     console.log(this.studAtt);
     this.canClick = true;
     this.cantClick = false;

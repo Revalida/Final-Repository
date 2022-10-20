@@ -36,11 +36,23 @@ public class LmsRevalidaApplication {
     @Autowired
     private AdminService Adminservice;
 
+
+	@PatchMapping("updatestudentpassword/{Id}")
+	public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
+		Studentservice.updateStudentPassword(student, Id);
+		return null;
+	}
+	
+	
+	@GetMapping("/studentsection")
+	public List<StudentDetails> getStudentSection(String Section) {
+		return Studentservice.getStudentSection(Section);
+	}
+
     @GetMapping("/admin")
     public List<AdminDetails> getAdmin() {
         return Adminservice.getAdmin();
     }
-
     @Autowired
     private StudentService Studentservice;
 

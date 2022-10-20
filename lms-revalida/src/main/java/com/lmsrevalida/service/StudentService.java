@@ -53,6 +53,7 @@ public class StudentService {
 ,student.getSem(),student.getYearLevel()).execute();
 	}
 	
+
 	public void updateStudentPassword(StudentDetails student, int Id) {
         dslContext.update(Tables.STUDENT_DETAILS)
         .set(Tables.STUDENT_DETAILS.STUDENT_PASSWORD, student.getStudentPassword())
