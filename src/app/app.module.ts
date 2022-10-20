@@ -32,11 +32,12 @@ import { StudentRegularComponent } from './admin/student-regular/student-regular
 import { StudentIrregularComponent } from './admin/student-irregular/student-irregular.component';
 import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
 import { FacultySidenavComponent } from './components/Faculty Management module/faculty.sidenav/faculty-sidenav.component';
-import { SidebarDirective } from './student/sidebar-directives/sidebar.directive';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { StudentLoadComponent } from './admin/student-load/student-load.component';
+import { StudentSidenavComponent } from './student/student-sidenav/student-sidenav.component';
+
 
 @NgModule({
   declarations: [
@@ -69,9 +70,9 @@ import { StudentLoadComponent } from './admin/student-load/student-load.componen
     StudentIrregularComponent,
     StudentGraduateComponent,
     FacultySidenavComponent,
-    SidebarDirective,
     AdminProfileComponent,
     StudentLoadComponent,
+    StudentSidenavComponent,
   ],
   imports: [
     RouterModule,

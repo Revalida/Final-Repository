@@ -1,0 +1,68 @@
+  <div class="sidebar-container fixed-left">
+    <ul class="sidebar-navigation">
+      <div class="card" style="width: 235px; background-color: #cc4f4f">
+        <div id="userimg" style="width: 150px">
+          <img
+            [src]="'assets/img/admin.png'"
+            alt="Card image"
+            style="width: 100%"
+          />
+        </div>
+        <div style="margin-left: auto; margin-right: auto" class="card-body">
+          <h4 style="font-weight: bolder" class="card-title">
+            <b>STUDENT</b>
+          </h4>
+        </div>
+      </div>
+
+      <li>
+        <i
+          class="fa fa-user"
+          style="font-size: 25px"
+          aria-hidden="true"
+          [routerLink]="['/profile']"
+          ><b>&nbsp;&nbsp;Account Profile</b></i
+        >
+      </li>
+
+      <li>
+        <i
+          class="fa fa-check"
+          style="font-size: 25px"
+          aria-hidden="true"
+          [routerLink]="['/pre-assigned']"
+          ><b>&nbsp;&nbsp;Pre-assigned Courses</b></i
+        >
+      </li>
+      <li>
+        <i
+          class="fa fa-list"
+          style="font-size: 25px"
+          aria-hidden="true"
+          [routerLink]="['/courses-list']"
+          ><b>&nbsp;&nbsp;Courses List</b></i
+        >
+      </li>
+
+      <li>
+        <i
+          class="fa fa-clipboard"
+          style="font-size: 24px"
+          aria-hidden="true"
+          [routerLink]="['/attendance']"
+          ><b>&nbsp;&nbsp;Attendance</b></i
+        >
+      </li>
+
+      <li>
+        <i
+          class="fa fa-graduation-cap"
+          style="font-size: 24px"
+          aria-hidden="true"
+          [routerLink]="['/grades']"
+          ><b>&nbsp;&nbsp;Courses Marks</b></i
+        >
+      </li>
+      <p>Today is . . . <br>{{ clock | async | date:'MMM d, y, h:mm:ss a'}}</p>
+    </ul>
+  </div>

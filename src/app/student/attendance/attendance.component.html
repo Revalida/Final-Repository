@@ -1,94 +1,45 @@
 <app-header></app-header>
+<app-student-sidenav></app-student-sidenav>
 
-<div id="wrapper"  [ngClass]="ref.click === true? 'toggled' :''" >
-  <div class="overlay" [ngStyle]="{disply:ref.click === true? 'block' :'none'}" ></div>
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-      <ul class="nav sidebar-nav">
-          <div class="profile">
-              <img [src]="'assets/img/maleuser.png'" width="150" height="150" />
-            </div>
-          <li>
-              <a routerLink="/profile">
-                <i class="fa fa-user"></i>
-                <span class="links_name">Account Profile</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/pre-assigned">
-                <i class="fa fa-check"></i>
-                <span class="links_name">Pre-assigned Courses</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/courses-list">
-                <i class="fa fa-list"></i>
-                <span class="links_name">Courses List </span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/attendance">
-                <i class="fa fa-clipboard"></i>
-                <span class="links_name">Attendance</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/grades">
-                <i class="fa fa-graduation-cap"></i>
-                <span class="links_name">Courses Marks</span>
-              </a>
-            </li>
-            <p>Today is . . . <br>{{ clock | async | date:'MMM d, y, h:mm:ss a'}}</p>
-      </ul>
-  </nav>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-<div id="page-content-wrapper">
-      <button appSidebar  #ref="appSidebar" type="button" class="hamburger is-closed" data-toggle="offcanvas">
-          <span class="hamb-top"></span>
-          <span class="hamb-middle"></span>
-          <span class="hamb-bottom"></span>
-      </button>
-    <div class="container">
-        <div class="row">
-            <!-- PAGE CONTENTS -->
-            <h1>Attendance</h1>
-            <div class="table">
-              <div class="row">
-                <table class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>Subject Code</th>
-                      <th>Subject Title</th>
-                      <th>Day [Time]</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let data of datas">
-                      <td>
-                        <span>{{ data.subjectCode }}</span>
-                      </td>
-                      <td>
-                        <span>{{ data.subjectTitle }}</span>
-                      </td>
-                      <td>
-                        <span>{{ data.timestamp }}</span>
-                      </td>
-                      <td>
-                        <span>{{ data.status }}</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-        </div>
+<div class="container">
+  <!-- PAGE CONTENTS -->
+<div class="table">
+<div class="row">
+    <div class="card">
+      <div class="header">
+        <h2 class="title">Attendance</h2>
+      </div>
+    </div>&nbsp; 
+    <div class="card" >
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-centered table-hover">
+          <thead>
+            <tr>
+              <th>Subject Code</th>
+              <th>Subject Title</th>
+              <th>Day [Time]</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of datas">
+              <td>
+                <span>{{ data.subjectCode }}</span>
+              </td>
+              <td>
+                <span>{{ data.subjectTitle }}</span>
+              </td>
+              <td>
+                <span>{{ data.timestamp }}</span>
+              </td>
+              <td>
+                <span>{{ data.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 </div>
-<!-- /#page-content-wrapper -->
-
 </div>
-<!-- /#wrapper -->
+</div>

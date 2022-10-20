@@ -18,14 +18,13 @@ import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
-import com.jooq.revalida.model.tables.pojos.StudentLoad;
+
 import com.jooq.revalida.model.tables.pojos.SubjectTable;
 
 import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
-import com.lmsrevalida.service.StudentLoadService;
 import com.lmsrevalida.service.StudentService;
 import com.lmsrevalida.service.SubjectService;
 
@@ -34,117 +33,56 @@ import com.lmsrevalida.service.SubjectService;
 @CrossOrigin("http://localhost:4200/")
 public class LmsRevalidaApplication {
 
-	@Autowired 
-	private AdminService Adminservice;
-	
-	@PatchMapping("updateadminpassword/{admin_id}")
-	public String updateAdminPassword(@RequestBody AdminDetails admin, @PathVariable int admin_id) {
-		Adminservice.updateAdminPassword(admin, admin_id);
-		return null;
-	}
-	
-	@GetMapping("/admin")
-	public List<AdminDetails> getAdmin() {
-		return Adminservice.getAdmin();
-	}
-	
-	@Autowired
-	private StudentService Studentservice;
-	
+    @Autowired
+    private AdminService Adminservice;
 
-	@PatchMapping("updatestudentpassword/{Id}")
-	public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
-		Studentservice.updateStudentPassword(student, Id);
-		return null;
-	}
-	
-	@PatchMapping("updatestudent/{Id}")
-	public String updateStudent(@RequestBody StudentDetails student, @PathVariable int Id) {
-		Studentservice.updateStudent(student, Id);
-		return null;
-	}
-	
-	@GetMapping("/studentsection")
-	public List<StudentDetails> getStudentSection(String Section) {
-		return Studentservice.getStudentSection(Section);
-	}
+    @GetMapping("/admin")
+    public List<AdminDetails> getAdmin() {
+        return Adminservice.getAdmin();
+    }
 
-	
-	@GetMapping("/student/regular")
-	public List<StudentDetails> getRegularStudents() {
-		return Studentservice.getRegularStudents();
-	}
-	
-	
-	
-	 
-	@GetMapping("/student/irregular")
-	public List<StudentDetails> getIrregularStudents() {
-		return Studentservice.getIrregularStudents();
-	}
-	
-	 
-	@GetMapping("/student")
-	public List<StudentDetails> getStudents() {
-		return Studentservice.getStudents();
-	}
-	
-	 
-	@GetMapping("/student/active")
-	public List<StudentDetails> getActiveStudents() {
-		return Studentservice.getActiveStudents();
-	}
-	
-	 
-	@GetMapping("/student/graduate")
-	public List<StudentDetails> getGraduateStudents() {
-		return Studentservice.getGraduateStudents();
-	}
-	
-	 
-	@PostMapping("/student/addstudent")
-	public StudentDetails AddStudent(@RequestBody StudentDetails student) {
-		Studentservice.insertStudent(student);
-		return null;
-	}
-	
-	@Autowired 
-	private ParentService Parentservice;
-	
-	 
-	@GetMapping("/parent")
-	public List<ParentDetails> getParents() {
-		return Parentservice.getParents();
-	}
-	
-	 
-	@PostMapping("/parent/addparent")
-	public ParentDetails AddParent(@RequestBody ParentDetails parent) {
-		Parentservice.insertParent(parent);
-		return null;
-	}
-	
-	@Autowired
-	private FacultyService Facultyservice;
-	
-	 
-	@GetMapping("/faculty")
-	public List<FacultyDetails> getFaculty() {
-		return Facultyservice.getFaculty();
-	}
-	
-	 
-	@PostMapping("/faculty/addfaculty")
-	public FacultyDetails AddFaculty(@RequestBody FacultyDetails faculty) {
-		Facultyservice.insertFaculty(faculty);
-		return null;
-	}
-	
-	@Autowired
-	private AttendanceService Attendanceservice;
-	
-	@GetMapping("attendance/{studentNo}")
-	public List<Attendance> getStudentAttendance(@PathVariable String studentNo) {
+    @Autowired
+    private StudentService Studentservice;
+
+    @GetMapping("/student/regular")
+    public List<StudentDetails> getRegularStudents() {
+        return Studentservice.getRegularStudents();
+    }
+
+    @GetMapping("/student/irregular")
+    public List<StudentDetails> getIrregularStudents() {
+        return Studentservice.getIrregularStudents();
+    }
+
+    @GetMapping("/student")
+    public List<StudentDetails> getStudents() {
+        return Studentservice.getStudents();
+    }
+
+    @GetMapping("/student/active")
+    public List<StudentDetails> getActiveStudents() {
+        return Studentservice.getActiveStudents();
+    }
+
+    @GetMapping("/student/graduate")
+    public List<StudentDetails> getGraduateStudents() {
+        return Studentservice.getGraduateStudents();
+    }
+
+    @PostMapping("/student/addstudent")
+    public StudentDetails AddStudent(@RequestBody StudentDetails student) {
+        Studentservice.insertStudent(student);
+        return null;
+    }
+
+    @PatchMapping("updatestudentpassword/{Id}")
+    public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
+        Studentservice.updateStudentPassword(student, Id);
+        return null;
+    }
+    
+    @GetMapping("attendance/{studentNo}")
+    public List<Attendance> getStudentAttendance(@PathVariable String studentNo) {
         return Attendanceservice.getStudentAttendance(studentNo);
     }
 	 

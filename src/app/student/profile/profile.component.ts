@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { ClockService } from 'src/app/services/clock.service';
 import { StudentService } from 'src/app/services/student.service';
 
 export interface ChangePassword {
@@ -27,7 +26,6 @@ export class ProfileComponent implements OnInit {
   form: any;
 
   constructor(
-    private clockService: ClockService,
     private fb: FormBuilder, 
     private http: HttpClient,
     private studentService: StudentService,
@@ -46,7 +44,7 @@ export class ProfileComponent implements OnInit {
         }
       },
       (err) => {
-        alert('Something went wrong!');
+        this.toast.error('Something went wrong!');
       }
     );
 
@@ -61,7 +59,6 @@ export class ProfileComponent implements OnInit {
       this.imageUrl = data.profile? "../../../../assets/profiles/" + data.profile : "../../../../assets/img/maleuser.png"
       // this.studentForm.patchValue(data)
     })
-    this.clock = this.clockService.getClock();
     
   }
 

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ClockService } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-pre-assigned',
@@ -10,17 +9,32 @@ import { ClockService } from 'src/app/services/clock.service';
 })
 export class PreAssignedComponent implements OnInit {
   clock!: Observable<Date>;
-  load: any;
-  
-  constructor(
-    private clockService: ClockService,
-    private http: HttpClient) { }
+ 
+  feedback: any = {};
 
-  ngOnInit(): void {
-    this.clock = this.clockService.getClock();
-    // let response = this.http.get('http://localhost:9191/load');
-    // response.subscribe((data) => (this.load = data));
+  constructor() {
   }
+
+  ngOnInit() {
+    this.search();
+  }
+
+  search(): void {
+  
+  }
+
+  select(): void {
+
+  }
+
+  delete(): void {
+
+  }
+  // ngOnInit(): void {
+  //   let response = this.http.get('http://localhost:9191/load');
+  //   response.subscribe((data) => (this.load = data));
+
+  // }
   
 }
 
