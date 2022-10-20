@@ -1,58 +1,5 @@
 <app-header></app-header>
-
-<div id="wrapper"  [ngClass]="ref.click === true? 'toggled' :''" >
-  <div class="overlay" [ngStyle]="{disply:ref.click === true? 'block' :'none'}" ></div>
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-      <ul class="nav sidebar-nav">
-          <div class="profile">
-              <img [src]="'assets/img/maleuser.png'" width="150" height="150" />
-            </div>
-          <li>
-              <a routerLink="/profile">
-                <i class="fa fa-user"></i>
-                <span class="links_name">Account Profile</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/pre-assigned">
-                <i class="fa fa-check"></i>
-                <span class="links_name">Pre-assigned Courses</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/courses-list">
-                <i class="fa fa-list"></i>
-                <span class="links_name">Courses List </span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/attendance">
-                <i class="fa fa-clipboard"></i>
-                <span class="links_name">Attendance</span>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/grades">
-                <i class="fa fa-graduation-cap"></i>
-                <span class="links_name">Courses Marks</span>
-              </a>
-            </li>
-         
-      </ul>
-  </nav>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-      <button appSidebar  #ref="appSidebar" type="button" class="hamburger is-closed" data-toggle="offcanvas">
-          <span class="hamb-top"></span>
-          <span class="hamb-middle"></span>
-          <span class="hamb-bottom"></span>
-      </button>
-      <div class="container">
-      <div class="row">
-      
+<app-student-sidenav></app-student-sidenav>
 <!-- Layout wrapper -->
 <div class="d-flex flex-row justify-content-center">
     <div class="layout-container-page">
@@ -62,7 +9,7 @@
           <div class="content-wrapper">
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y" id="profile">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Student Profile /</span> Account Settings</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings/</span>Student Profile </h4>
   
               <div class="row">
                 <div class="col-md-12">
@@ -77,11 +24,11 @@
                           <div class="d-flex flex-row justify-content-center align-items-center ">
                             <div class="mb-25 col-md-5">
                               <label for="studentNo" class="form-label">Student No.</label>
-                              <input class="form-control" formControlName="studentNo" type="text" formControlName="studentNo" value={{data.studentNo}} [attr.disabled]="true"/>
+                              <input class="form-control" type="text" value={{data?.studentNo}} [attr.disabled]="true"/>
                             </div><p style="padding: 15px; margin: 15px"></p>
                             <div class="mb-25 col-md-5">  
                               <label for="acadYear" class="form-label">Academic Year</label>
-                              <input class="form-control" formControlName="acadYear" type="text" formControlName="acadYear" value={{data.acadYear}} [attr.disabled]="true"/>
+                              <input class="form-control" type="text" value={{data?.acadYear}} [attr.disabled]="true"/>
                           </div>
                           </div>
                         </div>
@@ -93,27 +40,30 @@
 
                         <div class="mb-3 col-md-6">
                           <label for="firstName" class="form-label">First Name</label>
-                          <input class="form-control" type="text" value={{data.firstName}} [attr.disabled]="true"/>
+                          <input class="form-control" type="text" value={{data?.studentFirstname}} [attr.disabled]="true"/>
                         </div>
                         <div class="mb-3 col-md-6">
                           <label for="lastName" class="form-label">Last Name</label>
-                          <input class="form-control" type="text" value={{data.lastName}} [attr.disabled]="true"/>
+                          <input class="form-control" type="text" value={{data?.studentLastname}} [attr.disabled]="true"/>
                         </div>
                         <div class="mb-3 col-md-6">
                           <label for="middleName" class="form-label">Middle Name</label>
-                          <input class="form-control" type="text" value={{data.middleName}} [attr.disabled]="true"/>
+                          <input class="form-control" type="text" value={{data?.studentMiddlename}} [attr.disabled]="true"/>
                         </div>
                         <div class="mb-3 col-md-6">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="text" class="form-control" value={{data?.email}} [attr.disabled]="true"/>
+                        </div>  
+                        <div class="mb-3 col-md-6">
                           <label for="bday" class="form-label">Birthday</label>
-                          <input type="text" class="form-control" value={{data.birthDate}} [attr.disabled]="true"/>
+                          <input type="text" class="form-control" value={{data?.birthDate}} [attr.disabled]="true"/>
                         </div>
                         <div class="mb-3 col-md-6">
                           <label for="gender" class="form-label">Gender</label>
-                          <input type="text" class="form-control" value={{data.gender}} [attr.disabled]="true"/>
+                          <input type="text" class="form-control" value={{data?.gender}} [attr.disabled]="true"/>
                         </div>
 
                       </div>
-  
                     </div>
                   </div>
   
@@ -124,23 +74,27 @@
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="course" class="form-label">Course Degree</label>
-                            <input class="form-control" value={{data.course}} [attr.disabled]="true"/>
+                            <input class="form-control" value={{data?.course}} [attr.disabled]="true"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="yearLevel" class="form-label">Year Level</label>
-                            <input class="form-control" type="text" value={{data.yearLevel}} [attr.disabled]="true"/>
+                            <input class="form-control" type="text" value={{data?.yearLevel}} [attr.disabled]="true"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="section" class="form-label">Section</label>
-                            <input class="form-control" value={{data.section}} [attr.disabled]="true"/>
+                            <input class="form-control" value={{data?.section}} [attr.disabled]="true"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="sem" class="form-label">Semester</label>
-                            <input class="form-control" type="text" value={{data.sem}} [attr.disabled]="true"/>
+                            <input class="form-control" type="text" value={{data?.sem}} [attr.disabled]="true"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="status" class="form-label">Student Status</label>
-                            <input class="form-control" type="text" value={{data.status}} [attr.disabled]="true"/>
+                            <input class="form-control" type="text" value={{data?.status}} [attr.disabled]="true"/>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="parent" class="form-label">Parent/Guardian</label>
+                            <input type="text" class="form-control" value={{data?.parentFirstname}} [attr.disabled]="true"/>
                           </div>
                         </div>
                       </div>
@@ -149,8 +103,8 @@
   
                   <div class="card mb-4">
                     <h5 class="card-header">Change password</h5>
-                    <div class="card-body address-group" formGroupName="address">
-                      <form #target [formGroup]="changePasswordForm" (ngSubmit)="onChangePassword()">
+                    <div class="card-body address-group">
+                      <form #f="ngForm" [formGroup]="changePasswordForm" (ngSubmit)="onChangePassword()">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="newPass" class="form-label">New Password</label>
@@ -184,11 +138,3 @@
     </div>
     <!-- Overlay -->
   </div>
-
-</div>
-</div>
-</div>
-<!-- /#page-content-wrapper -->
-
-</div>
-<!-- /#wrapper -->

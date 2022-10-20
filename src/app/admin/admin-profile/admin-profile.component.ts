@@ -36,6 +36,7 @@ export class AdminProfileComponent implements OnInit {
       newPass: ['', [Validators.required]],
       confirmPass: ['', [Validators.required]],
     });
+    console.log(this);
   }
 
   ngOnInit(): void {}

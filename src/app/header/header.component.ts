@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,11 @@ export class HeaderComponent implements OnInit {
   role = '';
   title = '';
 
-  constructor(private _router: Router) {}
+  constructor(
+    private toast: ToastrService,
+    private _router: Router) {
+      
+    }
 
   ngOnInit(): void {
     this.role = JSON.stringify(sessionStorage.getItem('ROLE') || '{}');
@@ -29,6 +34,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     sessionStorage.clear();
+    this.toast.success("Logout Successfully!");
     this._router.navigate(['/login']);
   }
 }

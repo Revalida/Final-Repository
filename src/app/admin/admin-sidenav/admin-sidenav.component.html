@@ -37,6 +37,16 @@
 
       <li>
         <i
+          class="fa fa-home"
+          style="font-size: 25px"
+          aria-hidden="true"
+          [routerLink]="['/admin-profile']"
+          ><b>&nbsp;&nbsp;Admin Profile</b></i
+        >
+      </li>
+
+      <li>
+        <i
           class="fa fa-plus"
           style="font-size: 25px"
           aria-hidden="true"
@@ -80,40 +90,40 @@
     <div class="modal-body">
       <form #s="ngForm" (ngSubmit)="addStudent(s)">
         <div class="form-group">
-          <label for="firstName">Firstname</label>
+          <label for="studentFirstname">Firstname</label>
           <div class="input-group">
             <input
-              id="firstName"
+              id="studentFirstname"
               class="form-control"
-              name="firstName"
-              placeholder="Firstname"
-              #firstname="ngModel"
+              name="studentFirstname"
+              placeholder="studentFirstname"
+              #studentFirstname="ngModel"
               ngModel
             />
           </div>
         </div>
         <div class="form-group">
-          <label for="middleName">Middlename</label>
+          <label for="studentMiddlename">Middlename</label>
           <div class="input-group">
             <input
-              id="middleName"
+              id="studentMiddlename"
               class="form-control"
-              name="middleName"
-              placeholder="Middlename"
-              #middleName="ngModel"
+              name="studentMiddlename"
+              placeholder="studentMiddlename"
+              #studentMiddlename="ngModel"
               ngModel
             />
           </div>
         </div>
         <div class="form-group">
-          <label for="lastName">Lastname</label>
+          <label for="studentLastname">Lastname</label>
           <div class="input-group">
             <input
-              id="lastName"
+              id="studentLastname"
               class="form-control"
-              name="lastName"
-              placeholder="Lastname"
-              #lastname="ngModel"
+              name="studentLastname"
+              placeholder="studentLastname"
+              #studentLastname="ngModel"
               ngModel
             />
           </div>

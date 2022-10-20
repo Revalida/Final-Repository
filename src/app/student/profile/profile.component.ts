@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { StudentService } from 'src/app/services/student.service';
 
 export interface ChangePassword {
@@ -14,16 +16,20 @@ export interface ChangePassword {
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  clock!: Observable<Date>;
   studentForm!: FormGroup;
   changePasswordForm: FormGroup;
   imageUrl: string = "";
   data: any;
   studentNo: any;
+  updateId: any;
+  form: any;
 
   constructor(
     private fb: FormBuilder, 
     private http: HttpClient,
-    private studentService: StudentService) { 
+    private studentService: StudentService,
+    private toast: ToastrService) { 
 
       this.http.get<any>('http://localhost:9191/student').subscribe(
       (res) => {
@@ -38,10 +44,9 @@ export class ProfileComponent implements OnInit {
         }
       },
       (err) => {
-        alert('Something went wrong!');
+        this.toast.error('Something went wrong!');
       }
     );
-
 
       this.changePasswordForm = this.fb.group({
         newPass: ['', [Validators.required]],
@@ -69,23 +74,19 @@ export class ProfileComponent implements OnInit {
   //  }
 
    onChangePassword = (): any => {
-    // const userCred = this.changePasswordForm.getRawValue() as ChangePassword
-    // if(!userCred.newPass || !userCred.confirmPass) {
-    //   return this.alert.error("Please fill all the required fields!")
-    // }
+    const userCred = this.changePasswordForm.getRawValue() as ChangePassword
+    if(!userCred.newPass || !userCred.confirmPass) {
+      return this.toast.error("Please fill all the required fields!")
+    }
 
-    // if(userCred.newPass !== userCred.confirmPass) {
-    //   return  this.alert.error("Password does not match!");
-    // }
-
-    // const data = { password: userCred.newPass, email: this.studentForm.get('email')?.getRawValue()} as Users
-    
-    // this.studentService.updateStudentInfo(data).subscribe( x => {
-    //   if(!x.error){
-    //     this.alert.success("Password successfully changed!");
-    //   }
-    // })
-
+    if(userCred.newPass !== userCred.confirmPass) {
+      return  this.toast.error("Password does not match!");
+    }
+    // this.http
+    //   .patch('http://localhost:9191/student/' + this.updateId, .value)
+    //   .subscribe((result) => {
+    //     console.log(result);
+    //   });
    }
 
 }

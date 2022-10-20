@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -13,7 +14,8 @@ export class AdminSidenavComponent implements OnInit {
   closeResult: any;
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
+
   openStudent(student: any) {
     this.modalService
       .open(student, { ariaLabelledBy: 'modal-basic-title' })

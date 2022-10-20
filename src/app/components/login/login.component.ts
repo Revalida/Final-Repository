@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('STUDENT_NO', user.studentNo);
           console.log(user);
         } else {
-          this.toast.error('User not found!');
+          this.toast.error('Student account not found!');
           this.loginForm.reset();
           console.log(res);
         }
@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('ROLE', user.type);
           sessionStorage.setItem('STUDENT_NO', user.studentNo);
         } else {
-          this.toast.error('User not found!');
+          this.toast.error('Parent Account not found!');
           this.loginForm.reset();
           console.log(res);
         }
@@ -146,7 +146,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('ID', user.id);
           sessionStorage.setItem('PROF_NO', user.facultyNo);
         } else {
-          this.toast.error('User not found!');
+          this.toast.error('Professor account not found!');
           this.loginForm.reset();
           console.log(res);
         }
@@ -174,7 +174,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('ROLE', user.type);
           console.log(user);
         } else {
-          this.toast.error('User not found!');
+          this.toast.error('Admin account not found!');
           this.loginForm.reset();
           console.log(res);
         }
@@ -185,9 +185,9 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  print() {
-    this.http.get('http://localhost:9191/admin').subscribe((res) => {
-      console.log(res);
-    });
-  }
+  // print() {
+  //   this.http.get('http://localhost:9191/admin').subscribe((res) => {
+  //     console.log(res);
+  //   });
+  // }
 }

@@ -2,7 +2,6 @@ package com.lmsrevalida;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,41 +18,24 @@ import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
-import com.jooq.revalida.model.tables.pojos.StudentLoad;
+
 import com.jooq.revalida.model.tables.pojos.SubjectTable;
 
 import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
-import com.lmsrevalida.service.StudentLoadService;
 import com.lmsrevalida.service.StudentService;
 import com.lmsrevalida.service.SubjectService;
-
-
 
 @SpringBootApplication
 @RestController
 @CrossOrigin("http://localhost:4200/")
 public class LmsRevalidaApplication {
 
-	@Autowired 
-	private AdminService Adminservice;
-	
-	@PatchMapping("updateadminpassword/{admin_id}")
-	public String updateAdminPassword(@RequestBody AdminDetails admin, @PathVariable int admin_id) {
-		Adminservice.updateAdminPassword(admin, admin_id);
-		return null;
-	}
-	
-	@GetMapping("/admin")
-	public List<AdminDetails> getAdmin() {
-		return Adminservice.getAdmin();
-	}
-	
-	@Autowired
-	private StudentService Studentservice;
-	
+    @Autowired
+    private AdminService Adminservice;
+
 
 	@PatchMapping("updatestudentpassword/{Id}")
 	public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
@@ -67,82 +49,52 @@ public class LmsRevalidaApplication {
 		return Studentservice.getStudentSection(Section);
 	}
 
-	
-	@GetMapping("/student/regular")
-	public List<StudentDetails> getRegularStudents() {
-		return Studentservice.getRegularStudents();
-	}
-	
-	
-	
-	 
-	@GetMapping("/student/irregular")
-	public List<StudentDetails> getIrregularStudents() {
-		return Studentservice.getIrregularStudents();
-	}
-	
-	 
-	@GetMapping("/student")
-	public List<StudentDetails> getStudents() {
-		return Studentservice.getStudents();
-	}
-	
-	 
-	@GetMapping("/student/active")
-	public List<StudentDetails> getActiveStudents() {
-		return Studentservice.getActiveStudents();
-	}
-	
-	 
-	@GetMapping("/student/graduate")
-	public List<StudentDetails> getGraduateStudents() {
-		return Studentservice.getGraduateStudents();
-	}
-	
-	 
-	@PostMapping("/student/addstudent")
-	public StudentDetails AddStudent(@RequestBody StudentDetails student) {
-		Studentservice.insertStudent(student);
-		return null;
-	}
-	
-	@Autowired 
-	private ParentService Parentservice;
-	
-	 
-	@GetMapping("/parent")
-	public List<ParentDetails> getParents() {
-		return Parentservice.getParents();
-	}
-	
-	 
-	@PostMapping("/parent/addparent")
-	public ParentDetails AddParent(@RequestBody ParentDetails parent) {
-		Parentservice.insertParent(parent);
-		return null;
-	}
-	
-	@Autowired
-	private FacultyService Facultyservice;
-	
-	 
-	@GetMapping("/faculty")
-	public List<FacultyDetails> getFaculty() {
-		return Facultyservice.getFaculty();
-	}
-	
-	 
-	@PostMapping("/faculty/addfaculty")
-	public FacultyDetails AddFaculty(@RequestBody FacultyDetails faculty) {
-		Facultyservice.insertFaculty(faculty);
-		return null;
-	}
-	
-	@Autowired
-	private AttendanceService Attendanceservice;
-	
-	@GetMapping("attendance/{studentNo}")
-	public List<Attendance> getStudentAttendance(@PathVariable String studentNo) {
+    @GetMapping("/admin")
+    public List<AdminDetails> getAdmin() {
+        return Adminservice.getAdmin();
+    }
+    @Autowired
+    private StudentService Studentservice;
+
+    @GetMapping("/student/regular")
+    public List<StudentDetails> getRegularStudents() {
+        return Studentservice.getRegularStudents();
+    }
+
+    @GetMapping("/student/irregular")
+    public List<StudentDetails> getIrregularStudents() {
+        return Studentservice.getIrregularStudents();
+    }
+
+    @GetMapping("/student")
+    public List<StudentDetails> getStudents() {
+        return Studentservice.getStudents();
+    }
+
+    @GetMapping("/student/active")
+    public List<StudentDetails> getActiveStudents() {
+        return Studentservice.getActiveStudents();
+    }
+
+    @GetMapping("/student/graduate")
+    public List<StudentDetails> getGraduateStudents() {
+        return Studentservice.getGraduateStudents();
+    }
+
+    @PostMapping("/student/addstudent")
+    public StudentDetails AddStudent(@RequestBody StudentDetails student) {
+        Studentservice.insertStudent(student);
+        return null;
+    }
+
+    @PatchMapping("updatestudentpassword/{Id}")
+    public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
+        Studentservice.updateStudentPassword(student, Id);
+        return null;
+    }
+    
+    @GetMapping("attendance/{studentNo}")
+    public List<Attendance> getStudentAttendance(@PathVariable String studentNo) {
         return Attendanceservice.getStudentAttendance(studentNo);
     }
 	 
@@ -217,53 +169,6 @@ public class LmsRevalidaApplication {
 		return Subjectservice.getBSCS42();
 	}
 	
-	 
-	@GetMapping("/BSEE11")
-	public List<SubjectTable> getBSEE11() {
-		return Subjectservice.getBSEE11();
-	}
-	
-	 
-	@GetMapping("/BSEE12")
-	public List<SubjectTable> getBSEE12() {
-		return Subjectservice.getBSEE12();
-	}
-	
-	 
-	@GetMapping("/BSEE21")
-	public List<SubjectTable> getBSEE21() {
-		return Subjectservice.getBSEE21();
-	}
-	
-	 
-	@GetMapping("/BSEE22")
-	public List<SubjectTable> getBSEE22() {
-		return Subjectservice.getBSEE22();
-	}
-	
-	 
-	@GetMapping("/BSEE31")
-	public List<SubjectTable> getBSEE31() {
-		return Subjectservice.getBSEE31();
-	}
-	
-	 
-	@GetMapping("/BSEE32")
-	public List<SubjectTable> getBSEE32() {
-		return Subjectservice.getBSEE32();
-	}
-	
-	 
-	@GetMapping("/BSEE41")
-	public List<SubjectTable> getBSEE41() {
-		return Subjectservice.getBSEE41();
-	}
-	
-	 
-	@GetMapping("/BSEE42")
-	public List<SubjectTable> getBSEE42() {
-		return Subjectservice.getBSEE42();
-	}
 	
 	 
 	@GetMapping("/BSIT11")
@@ -326,11 +231,50 @@ public class LmsRevalidaApplication {
 		Studentloadservice.insertStudentLoad(load);
 		return null;
 	}
-	
-	
-	public static void main(String[] args) {
-		SpringApplication.run(LmsRevalidaApplication.class, args);
-	}
-	
-}
 
+    @GetMapping("/BSEE11")
+    public List<SubjectTable> getBSEE11() {
+        return Subjectservice.getBSEE11();
+    }
+
+    @GetMapping("/BSEE12")
+    public List<SubjectTable> getBSEE12() {
+        return Subjectservice.getBSEE12();
+    }
+
+    @GetMapping("/BSEE21")
+    public List<SubjectTable> getBSEE21() {
+        return Subjectservice.getBSEE21();
+    }
+
+    @GetMapping("/BSEE22")
+    public List<SubjectTable> getBSEE22() {
+        return Subjectservice.getBSEE22();
+    }
+
+    @GetMapping("/BSEE31")
+    public List<SubjectTable> getBSEE31() {
+        return Subjectservice.getBSEE31();
+    }
+
+    @GetMapping("/BSEE32")
+    public List<SubjectTable> getBSEE32() {
+        return Subjectservice.getBSEE32();
+    }
+
+    @GetMapping("/BSEE41")
+    public List<SubjectTable> getBSEE41() {
+        return Subjectservice.getBSEE41();
+    }
+
+    @GetMapping("/BSEE42")
+    public List<SubjectTable> getBSEE42() {
+        return Subjectservice.getBSEE42();
+    }
+
+
+    public static void main(String[] args) {
+        SpringApplication.run(LmsRevalidaApplication.class, args);
+    }
+
+}

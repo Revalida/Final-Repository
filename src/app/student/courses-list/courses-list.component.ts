@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-courses-list',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
+  clock!: Observable<Date>;
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
