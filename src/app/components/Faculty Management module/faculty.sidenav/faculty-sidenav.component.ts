@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ClockService } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-faculty-sidenav',
@@ -9,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class FacultySidenavComponent implements OnInit {
   imageUrl: string = '';
   name = '';
-  constructor(private http: HttpClient) {}
+  clock!: Observable<Date>;
+  
+  constructor(private http: HttpClient, private clockService: ClockService) {}
 
   ngOnInit(): void {
     this.http.get<any>('http://localhost:9191/faculty').subscribe(
@@ -27,5 +31,6 @@ export class FacultySidenavComponent implements OnInit {
         alert('Something went wrong!');
       }
     );
+    this.clock = this.clockService.getClock();
   }
 }

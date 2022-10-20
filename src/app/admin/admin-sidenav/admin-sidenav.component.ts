@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { ClockService } from 'src/app/services/clock.service';
 
 @Component({
   selector: 'app-admin-sidenav',
@@ -12,9 +15,33 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class AdminSidenavComponent implements OnInit {
   students: any;
   closeResult: any;
-  constructor(private http: HttpClient, private modalService: NgbModal) {}
+  clock!: Observable<Date>;
+  data: any;
+  
+  constructor(private http: HttpClient, 
+    private modalService: NgbModal, 
+    private clockService: ClockService,
+    private toast: ToastrService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.http.get<any>('http://localhost:9191/admin').subscribe( 
+      (res) => {
+      const user = res.find((a: any) => {
+        return a.adminEmail === sessionStorage.getItem('ADMIN_EMAIL');
+      });
+      if (user) {
+        this.data = user;
+        console.log(this.data);
+      } else {
+        console.log(res);
+      }
+    },
+    (err) => {
+      this.toast.error('Something went wrong!');
+    }
+  );
+    this.clock = this.clockService.getClock();
+  }
 
   openStudent(student: any) {
     this.modalService
