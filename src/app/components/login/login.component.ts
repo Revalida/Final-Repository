@@ -172,6 +172,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['admindashboard']);
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
+          sessionStorage.setItem('ADMIN_EMAIL', user.adminEmail);
           console.log(user);
         } else {
           this.toast.error('Admin account not found!');

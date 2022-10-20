@@ -16,8 +16,7 @@
           <thead>
             <tr>
               <th>Subject Code</th>
-              <th>Subject Title</th>
-              <th>Day [Time]</th>
+              <th>Date [Time]</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -25,9 +24,6 @@
             <tr *ngFor="let data of datas">
               <td>
                 <span>{{ data.subjectCode }}</span>
-              </td>
-              <td>
-                <span>{{ data.subjectTitle }}</span>
               </td>
               <td>
                 <span>{{ data.timestamp }}</span>

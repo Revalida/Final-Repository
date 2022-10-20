@@ -28,9 +28,9 @@ public class AttendanceService {
 ,attendance.getSubjectCode()).execute();
 	}
 	
-	public List<Attendance> getStudentAttendance(String studentNo) {
+	public List<Attendance> getStudentAttendance(String id) {
         return dslContext.selectFrom(Tables.ATTENDANCE)
-                .where(Tables.ATTENDANCE.STUDENT_NO.eq(studentNo))
+                .where(Tables.ATTENDANCE.STUDENT_NO.eq(id))
                 .fetchInto(Attendance.class);
     }
 }
