@@ -83,66 +83,14 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3 col-sm-6" *ngFor="let datas of data">
         <div class="team-thumb">
           <div class="team-image">
-            <img
-              src="assets/images/author-image1.jpg"
-              class="img-responsive"
-              alt=""
-            />
+            <img [src]="datas?.imgUrl" class="img-responsive" alt="" />
           </div>
           <div class="team-info">
-            <h3>Mark Wilson</h3>
-            <span>I love Teaching.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="team-thumb">
-          <div class="team-image">
-            <img
-              src="assets/images/author-image2.jpg"
-              class="img-responsive"
-              alt=""
-            />
-          </div>
-          <div class="team-info">
-            <h3>Catherine Smith</h3>
-            <span>Education is the key!</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="team-thumb">
-          <div class="team-image">
-            <img
-              src="assets/images/author-image3.jpg"
-              class="img-responsive"
-              alt=""
-            />
-          </div>
-          <div class="team-info">
-            <h3>Jessie Ca</h3>
-            <span>I like SSIT organization.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="team-thumb">
-          <div class="team-image">
-            <img
-              src="assets/images/author-image4.jpg"
-              class="img-responsive"
-              alt=""
-            />
-          </div>
-          <div class="team-info">
-            <h3>Andrew Berti</h3>
-            <span>Learning is fun!</span>
+            <h3>{{ datas.facultyName }}</h3>
+            <span>Specialty: {{ datas.work }}</span>
           </div>
         </div>
       </div>

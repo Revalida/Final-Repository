@@ -61,11 +61,6 @@ public class LmsRevalidaApplication {
 		return null;
 	}
 	
-	@PatchMapping("updatestudent/{Id}")
-	public String updateStudent(@RequestBody StudentDetails student, @PathVariable int Id) {
-		Studentservice.updateStudent(student, Id);
-		return null;
-	}
 	
 	@GetMapping("/studentsection")
 	public List<StudentDetails> getStudentSection(String Section) {

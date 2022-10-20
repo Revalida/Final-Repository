@@ -15,13 +15,9 @@ export class FacultyComponent implements OnInit {
   imageUrl: string = '';
   data: any;
   studentNo: any;
+  showButton = true;
 
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-
-    private router: Router
-  ) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.profForm = this.fb.group({
       firstName: ['', [Validators.required]],
       middleName: ['', [Validators.required]],
@@ -46,7 +42,6 @@ export class FacultyComponent implements OnInit {
           this.data = user;
           this.imageUrl = this.data.imgUrl;
           console.log(this.imageUrl);
-        } else {
         }
       },
       (err) => {
@@ -56,14 +51,19 @@ export class FacultyComponent implements OnInit {
   }
 
   previewImage(e: any) {
+    this.showButton = false;
     if (e.target.files) {
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = (event: any) => {
         this.imageUrl = event.target.result;
+        console.log(event.target.result);
       };
       this.profForm.get('professor')?.patchValue(e.target.files[0].name);
     }
+    console.log(
+      this.profForm.get('professor')?.patchValue(e.target.files[0].name)
+    );
   }
 
   submit = () => {

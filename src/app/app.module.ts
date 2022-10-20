@@ -37,6 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { StudentLoadComponent } from './admin/student-load/student-load.component';
+import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { StudentLoadComponent } from './admin/student-load/student-load.componen
     SidebarDirective,
     AdminProfileComponent,
     StudentLoadComponent,
+    FacultyGradesComponent,
   ],
   imports: [
     RouterModule,

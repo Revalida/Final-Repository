@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -7,12 +8,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./welcomepage.component.css'],
 })
 export class WelcomepageComponent implements OnInit {
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private _router: Router
-  ) {}
+  data: any;
+  constructor(private _router: Router, private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.http.get<any>('http://localhost:9191/faculty').subscribe((res) => {
+      if (res.imgUrl == null) {
+        this.data = res;
+        this.data.imgUrl == 'assets/img/admin.png';
+      }
+      this.data = res;
+      console.log(this.data);
+    });
+  }
 
   navigate() {
     this._router.navigate(['/login']);

@@ -27,6 +27,7 @@ import { StudentGraduateComponent } from './admin/student-graduate/student-gradu
 import { UserGuard } from './guards/user.guard';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { StudentLoadComponent } from './admin/student-load/student-load.component';
+import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
 
 const routes: Routes = [
   {
@@ -129,6 +130,10 @@ const routes: Routes = [
   {
     path: 'student-load',
     component: StudentLoadComponent,
+  },
+  {
+    path: 'grading-system',
+    component: FacultyGradesComponent,
   },
 ];
 

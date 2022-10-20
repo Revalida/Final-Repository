@@ -1,66 +1,64 @@
-<div id="wrapper" [ngClass]="ref.click === true ? 'toggled' : ''">
-  <div
-    class="overlay"
-    [ngStyle]="{ disply: ref.click === true ? 'block' : 'none' }"
-  ></div>
-  <!-- Sidebar -->
-  <nav
-    class="navbar navbar-inverse navbar-fixed-top"
-    id="sidebar-wrapper"
-    role="navigation"
-  >
-    <ul class="nav sidebar-nav">
-      <div class="profile">
-        <img [src]="'assets/img/maleuser.png'" width="150" height="150" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <div class="sidebar-container fixed-left">
+    <ul class="sidebar-navigation">
+      <div class="card" style="width: 235px; background-color: #cc4f4f">
+        <div id="userimg" style="width: 150px">
+          <img [src]="imageUrl" alt="Card image" style="width: 100%" />
+        </div>
+        <div style="margin-left: auto; margin-right: auto" class="card-body">
+          <h4 style="font-weight: bolder" class="card-title">
+            <b>{{ name }}</b>
+          </h4>
+        </div>
       </div>
+
       <li>
-        <a routerLink="/facultydashboard">
-          <i class="fa fa-user"></i>
-          <span class="links_name">Account Profile</span>
-        </a>
+        <i
+          class="fa fa-home"
+          style="font-size: 25px"
+          aria-hidden="true"
+          [routerLink]="['/facultydashboard']"
+          ><b>&nbsp;&nbsp;Account Profile</b></i
+        >
+      </li>
+
+      <li>
+        <i class="fa fa-plus" style="font-size: 25px" aria-hidden="true"
+          ><b>&nbsp;&nbsp;Courses and Schedule</b></i
+        >
       </li>
       <li>
-        <a routerLink="">
-          <i class="fa fa-check"></i>
-          <span class="links_name">Courses and Schedule</span>
-        </a>
+        <i class="fa fa-cart-plus" style="font-size: 25px" aria-hidden="true"
+          ><b>&nbsp;&nbsp;Files</b></i
+        >
+      </li>
+
+      <li>
+        <i
+          class="fa fa-list"
+          style="font-size: 24px"
+          aria-hidden="true"
+          [routerLink]="['/faculty-attendance']"
+          ><b>&nbsp;&nbsp;Attendance</b></i
+        >
       </li>
       <li>
-        <a routerLink="">
-          <i class="fa fa-list"></i>
-          <span class="links_name">Files</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/faculty-attendance">
-          <i class="fa fa-clipboard"></i>
-          <span class="links_name">Attendance</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="">
-          <i class="fa fa-graduation-cap"></i>
-          <span class="links_name">Courses Marks</span>
-        </a>
+        <i
+          class="fa fa-list"
+          style="font-size: 24px"
+          aria-hidden="true"
+          [routerLink]="['/grading-system']"
+          ><b>&nbsp;&nbsp;Course Marks</b></i
+        >
       </li>
     </ul>
-  </nav>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-    <button
-      appSidebar
-      #ref="appSidebar"
-      type="button"
-      class="hamburger is-closed"
-      data-toggle="offcanvas"
-    >
-      <span class="hamb-top"></span>
-      <span class="hamb-middle"></span>
-      <span class="hamb-bottom"></span>
-    </button>
   </div>
-  <!-- /#page-content-wrapper -->
-</div>
-<!-- /#wrapper -->
+</html>
