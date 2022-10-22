@@ -293,6 +293,11 @@ public class LmsRevalidaApplication {
         return Studentloadservice.getStudentLoad(studentNo);
     }
     
+    @GetMapping("studentload")
+    public List<StudentLoad> getStudentLoad() {
+    	return Studentloadservice.getStudentLoad();
+    }
+    
     @PostMapping("/student/load")
     public StudentLoad insertStudentLoad(@RequestBody StudentLoad load) {
         Studentloadservice.insertStudentLoad(load);

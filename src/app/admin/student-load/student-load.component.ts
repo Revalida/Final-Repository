@@ -16,12 +16,12 @@ export class StudentLoadComponent implements OnInit {
   bsit11: any;
   prof: any;
   studLoad: any;
-  canClick = false;
-  cantClick = false;
   closeResult: any;
   data: any;
   updateId: any;
-  loadId = '';
+  loading = '';
+  lodi: any;
+  updateLoad = '';
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
@@ -30,6 +30,10 @@ export class StudentLoadComponent implements OnInit {
 
     let res = this.http.get('http://localhost:9191/faculty');
     res.subscribe((data1) => (this.prof = data1));
+
+    let res1 = this.http.get('http://localhost:9191/studentload');
+    res1.subscribe((data2) => (this.lodi = data2));
+    console.log(this);
   }
 
   // load(data: any, prof: any) {
@@ -48,10 +52,9 @@ export class StudentLoadComponent implements OnInit {
   // }
 
   openStudent(student: any, data: any) {
+    console.log(this.updateLoad);
     this.updateId = student.id;
     this.studLoad = data;
-    this.canClick = true;
-    this.cantClick = false;
     console.log(this.studLoad);
     this.modalService
 
@@ -70,8 +73,11 @@ export class StudentLoadComponent implements OnInit {
         console.log(result);
       });
 
-    this.loadId = data.lId;
-    console.log(this.loadId);
+    this.loading = data.subjectId;
+    console.log(this.loading);
+
+    // this.updateLoad = lodi.loadId;
+    // console.log(this.updateLoad);
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -85,10 +91,10 @@ export class StudentLoadComponent implements OnInit {
 
   addSchedule(s: NgForm) {
     this.data = s.form.value;
-    this.data.lId = this.loadId;
-    console.log(s.form.value);
+    this.data.lId = this.loading;
+    this.data.console.log(s.form.value);
     this.http
-      .patch('http://localhost:9191/updateload/' + this.loadId, s.value)
+      .patch('http://localhost:9191/updateload/' + this.loading, s.value)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
