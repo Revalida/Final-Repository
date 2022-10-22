@@ -50,6 +50,12 @@ public class LmsRevalidaApplication {
         return Facultyservice.getFaculty();
     }
     
+    @PostMapping("/faculty/addfaculty")
+	public FacultyDetails insertFaculty(@RequestBody FacultyDetails faculty) {
+		Facultyservice.insertFaculty(faculty);
+		return null;
+	}
+    
     @Autowired
     private StudentService Studentservice;
 
@@ -96,6 +102,22 @@ public class LmsRevalidaApplication {
         Studentservice.insertStudent(student);
         return null;
     }
+    
+    @Autowired 
+	private ParentService Parentservice;
+	
+	 
+	@GetMapping("/parent")
+	public List<ParentDetails> getParents() {
+		return Parentservice.getParents();
+	}
+	
+	 
+	@PostMapping("/parent/addparent")
+	public ParentDetails insertParent(@RequestBody ParentDetails parent) {
+		Parentservice.insertParent(parent);
+		return null;
+	}
 
     @Autowired
     private AttendanceService Attendanceservice;
@@ -276,6 +298,12 @@ public class LmsRevalidaApplication {
         Studentloadservice.insertStudentLoad(load);
         return null;
     }
+    
+    @PatchMapping("updateload/{load_id}")
+	public String updateStudentLoad(@RequestBody StudentLoad load, @PathVariable int load_id) {
+		Studentloadservice.updateStudentLoad(load, load_id);
+		return null;
+	}
 
     public static void main(String[] args) {
         SpringApplication.run(LmsRevalidaApplication.class, args);

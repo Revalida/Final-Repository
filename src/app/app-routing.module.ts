@@ -28,6 +28,7 @@ import { UserGuard } from './guards/user.guard';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { StudentLoadComponent } from './admin/student-load/student-load.component';
 import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
+import { StudentActiveComponent } from './admin/student-active/student-active.component';
 
 const routes: Routes = [
   {
@@ -134,6 +135,10 @@ const routes: Routes = [
   {
     path: 'grading-system',
     component: FacultyGradesComponent,
+  },
+  {
+    path: 'student-active',
+    component: StudentActiveComponent,
   },
 ];
 

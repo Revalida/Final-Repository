@@ -64,7 +64,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of regStudents">
+        <tr *ngFor="let student of students">
           <td>
             <span>{{ student.studentNo }}</span>
           </td>
@@ -121,27 +121,27 @@
   <div class="modal-body">
     <form #p="ngForm" (ngSubmit)="addParent(p)">
       <div class="form-group">
-        <label for="parentFirstname">Parent Firstname</label>
+        <label for="parentFirstName">Parent Firstname</label>
         <div class="input-group">
           <input
-            id="parentFirstname"
+            id="parentFirstName"
             class="form-control"
-            name="parentFirstname"
-            placeholder="parentFirstname"
-            #parentFirstname="ngModel"
+            name="parentFirstName"
+            placeholder="ParentFirstName"
+            #parentFirstName="ngModel"
             ngModel
           />
         </div>
       </div>
       <div class="form-group">
-        <label for="parentLastname">Parent Lastname</label>
+        <label for="parentLastName">Parent Lastname</label>
         <div class="input-group">
           <input
-            id="parentLastname"
+            id="parentLastName"
             class="form-control"
-            name="parentLastname"
-            placeholder="parentLastname"
-            #parentLastname="ngModel"
+            name="parentLastName"
+            placeholder="ParentLastName"
+            #parentLastName="ngModel"
             ngModel
           />
         </div>

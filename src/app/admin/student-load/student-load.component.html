@@ -7,43 +7,105 @@
       <th>Subject Code</th>
       <th>Subject Title</th>
       <th>Units</th>
-      <th>Pre-Requisites</th>
       <th>Course</th>
-      <th>Professor</th>
-      <th>Schedule</th>
+      <th>Year Level</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data11 of bsit11">
+    <tr *ngFor="let data of bsit11">
       <td>
-        <span>{{ data11.subjectCode }}</span>
+        <span>{{ data.subjectCode }}</span>
       </td>
       <td>
-        <span>{{ data11.subjectTitle }}</span>
+        <span>{{ data.subjectTitle }}</span>
       </td>
       <td>
-        <span>{{ data11.units }}</span>
+        <span>{{ data.units }}</span>
       </td>
       <td>
-        <span>{{ data11.prerequisites }}</span>
+        <span>{{ data.course }}</span>
       </td>
       <td>
-        <span>{{ data11.course }}</span>
+        <span>{{ data.yearLevel }}</span>
       </td>
       <td>
-        <div class="dropdown">
-          <button class="dropbtn">Dropdown</button>
-          <div class="dropdown-content" *ngFor="let profs of prof">
-            <a value="profs.facultyName">{{ profs.facultyName }}</a>
-            <a value="profs.facultyName">{{ profs.facultyName }}</a>
-            <a value="profs.facultyName">{{ profs.facultyName }}</a>
-          </div>
-        </div>
-      </td>
-      <td>
-        <input />
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
       </td>
     </tr>
   </tbody>
 </table>
-<button style="margin-left: 900px" (click)="trial()">Assign</button>
+<ng-template #student let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Assign Schedule</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #s="ngForm" (ngSubmit)="addSchedule(s)">
+      <div class="form-group">
+        <div>
+          <select
+            id="facultyNo"
+            class="form-control"
+            name="facultyNo"
+            #facultyNo
+            ngModel
+          >
+            <option *ngFor="let profs of prof" [value]="profs.facultyNo">
+              {{ profs.facultyNo }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="section">Section</label>
+        <div class="input-group">
+          <input
+            id="section"
+            class="form-control"
+            name="section"
+            placeholder="section"
+            #section="ngModel"
+            ngModel
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="schedule">Schedule</label>
+        <div class="input-group">
+          <input
+            id="schedule"
+            class="form-control"
+            name="schedule"
+            placeholder="schedule"
+            #schedule="ngModel"
+            ngModel
+          />
+        </div>
+      </div>
+
+      <br />
+      <div class="text-center">
+        <button data-dismiss="modal" class="btn btn-info">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Cancel
+    </button>
+  </div>
+</ng-template>

@@ -40,6 +40,7 @@ import { StudentLoadComponent } from './admin/student-load/student-load.componen
 import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
 
 import { StudentSidenavComponent } from './student/student-sidenav/student-sidenav.component';
+import { StudentActiveComponent } from './admin/student-active/student-active.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { StudentSidenavComponent } from './student/student-sidenav/student-siden
     FacultyGradesComponent,
 
     StudentSidenavComponent,
+      StudentActiveComponent,
 
   ],
   imports: [

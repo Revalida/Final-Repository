@@ -1,16 +1,15 @@
-import { AnimateTimings } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-student-regular',
-  templateUrl: './student-regular.component.html',
-  styleUrls: ['./student-regular.component.scss'],
+  selector: 'app-student-active',
+  templateUrl: './student-active.component.html',
+  styleUrls: ['./student-active.component.scss'],
 })
-export class StudentRegularComponent implements OnInit {
-  regStudents: any;
+export class StudentActiveComponent implements OnInit {
+  students: any;
   closeResult: any;
   studentNo = '';
   data: any;
@@ -18,8 +17,8 @@ export class StudentRegularComponent implements OnInit {
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    let response = this.http.get('http://localhost:9191/student/regular');
-    response.subscribe((data) => (this.regStudents = data));
+    let response = this.http.get('http://localhost:9191/student');
+    response.subscribe((data) => (this.students = data));
   }
   openParent(parent: any, data: any) {
     this.modalService
@@ -50,19 +49,18 @@ export class StudentRegularComponent implements OnInit {
   addParent(p: NgForm) {
     this.data = p.form.value;
     this.data.studNo = this.studentNo;
-    console.log(this.studentNo);
     this.http
       .post('http://localhost:9191/parent/addparent', this.data)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
-    // this.data = p.form.value;
-    // this.data.parentNo = this.parentNo;
-    // this.http
-    //   .patch('http://localhost:9191/updatestudent/', this.data)
-    //   .subscribe((result) => {
-    //     this.ngOnInit(); // reload the table
-    //   });
+    this.data = p.form.value;
+    this.data.parentNo = this.parentNo;
+    this.http
+      .patch('http://localhost:9191/updatestudent/', this.data)
+      .subscribe((result) => {
+        this.ngOnInit(); // reload the table
+      });
     this.modalService.dismissAll(); // dismiss the modal
   }
 }
