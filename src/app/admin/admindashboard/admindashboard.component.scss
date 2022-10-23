@@ -11,6 +11,7 @@
   padding-left: 220px;
   margin-top: 60px;
 }
+
 #userimg {
   width: 100px;
   height: 150px;
@@ -19,6 +20,7 @@
   margin-top: 5%;
   margin-right: auto;
 }
+
 .home-section {
   position: relative;
   background: #e4e9f7;
@@ -38,10 +40,12 @@
   margin-top: 5%;
   margin-right: auto;
 }
+
 .container {
   margin-left: 23%;
   margin-top: 3%;
 }
+
 .dashboard-card {
   background-color: white;
   border-radius: 10px;
@@ -52,10 +56,12 @@
   margin: 2% 3% 5.5% 3%;
   padding: 3%;
 }
+
 .dashboard-card:hover {
   transform: scale(1.05);
   cursor: pointer;
 }
+
 .circle {
   border-radius: 50%;
   width: 30%;
@@ -63,11 +69,13 @@
   float: right;
   background-color: rgb(248, 246, 96);
 }
+
 #icons {
   margin-left: 26%;
   margin-top: 12%;
   font-size: 3.5em;
 }
+
 .text {
   font-family: "aladin";
   letter-spacing: 1px;
@@ -75,6 +83,7 @@
   font-weight: bolder;
   color: rgb(5, 44, 42);
 }
+
 .sub-text {
   font-family: "aladin";
   letter-spacing: 1px;
