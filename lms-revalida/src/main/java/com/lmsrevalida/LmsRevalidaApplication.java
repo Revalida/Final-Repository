@@ -18,12 +18,14 @@ import com.jooq.revalida.model.tables.pojos.AdminDetails;
 import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
+import com.jooq.revalida.model.tables.pojos.ProfessorLoad;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
 import com.jooq.revalida.model.tables.pojos.StudentLoad;
 import com.jooq.revalida.model.tables.pojos.SubjectTable;
 
 import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
+import com.lmsrevalida.service.FacultyLoadService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.ParentService;
 import com.lmsrevalida.service.StudentLoadService;
@@ -71,13 +73,6 @@ public class LmsRevalidaApplication {
 		Studentservice.updateStudentPassword(student, Id);
 		return null;
 	}
-	
-	
-//	@GetMapping("/studentsection")
-//	public List<StudentDetails> getStudentSection(String Section) {
-//		return Studentservice.getStudentSection(Section);
-//	}
-
 
     @GetMapping("/student/regular")
     public List<StudentDetails> getRegularStudents() {
@@ -147,6 +142,7 @@ public class LmsRevalidaApplication {
 	
 	@Autowired 
 	private SubjectService Subjectservice;
+	
 	
 	 
 	@GetMapping("/subjects")
@@ -294,11 +290,6 @@ public class LmsRevalidaApplication {
     private
     StudentLoadService Studentloadservice;
     
-    @GetMapping("/studLoad")
-    public List<StudentLoad> getStudLoad() {
-        return Studentloadservice.getStudLoad();
-    }
-    
     @GetMapping("/load/{studentNo}")
     public List<StudentLoad> getStudentLoad(@PathVariable String studentNo) {
         return Studentloadservice.getStudentLoad(studentNo);
@@ -315,11 +306,16 @@ public class LmsRevalidaApplication {
         return null;
     }
     
-    @PatchMapping("updateload/{load_id}")
-	public String updateStudentLoad(@RequestBody StudentLoad load, @PathVariable int load_id) {
-		Studentloadservice.updateStudentLoad(load, load_id);
-		return null;
-	}
+    @Autowired
+    private
+    FacultyLoadService Facultyloadservice;
+    
+    @PostMapping("/faculty/load")
+    public ProfessorLoad insertFacultyLoad(@RequestBody ProfessorLoad load) {
+    	Facultyloadservice.insertFacultyLoad(load);
+    	return null;
+    }
+    
 
     public static void main(String[] args) {
         SpringApplication.run(LmsRevalidaApplication.class, args);

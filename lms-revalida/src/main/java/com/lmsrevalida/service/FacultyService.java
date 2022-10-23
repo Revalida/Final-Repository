@@ -20,6 +20,12 @@ public class FacultyService {
 		return dslContext.selectFrom(Tables.FACULTY_DETAILS)
 				.fetchInto(FacultyDetails.class);
 	}
+	
+	public List<FacultyDetails> getFacultySubject(FacultyDetails faculty) {
+		return dslContext.selectFrom(Tables.FACULTY_DETAILS)
+				.where(Tables.FACULTY_DETAILS.WORK.eq(faculty.getWork()))
+				.fetchInto(FacultyDetails.class);
+	}
 
 	
 	public void insertFaculty(FacultyDetails faculty) {
