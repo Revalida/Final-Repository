@@ -40,10 +40,14 @@ import { StudentLoadComponent } from './admin/studentload/student-load/student-l
 import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
 
 import { StudentSidenavComponent } from './student/student-sidenav/student-sidenav.component';
-import { StudentActiveComponent } from './admin/student-list/student-active/student-active.component';
+
+import { StudentActiveComponent } from './admin/student-active/student-active.component';
+import { FacultyScheduleComponent } from './components/Faculty Management module/faculty-schedule/faculty-schedule.component';
+import { ParentSidenavComponent } from './components/parental access module/parent-sidenav/parent-sidenav.component';
 import { StudentLoadBsitComponent } from './admin/studentload/student-load-bsit/student-load-bsit.component';
 import { StudentLoadBscsComponent } from './admin/studentload/student-load-bscs/student-load-bscs.component';
 import { StudentLoadBseeComponent } from './admin/studentload/student-load-bsee/student-load-bsee.component';
+
 
 @NgModule({
   declarations: [
@@ -81,9 +85,12 @@ import { StudentLoadBseeComponent } from './admin/studentload/student-load-bsee/
     FacultyGradesComponent,
     StudentSidenavComponent,
     StudentActiveComponent,
+    FacultyScheduleComponent,
+    ParentSidenavComponent,
     StudentLoadBsitComponent,
     StudentLoadBscsComponent,
     StudentLoadBseeComponent,
+
   ],
   imports: [
     RouterModule,

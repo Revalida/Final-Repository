@@ -28,10 +28,14 @@ import { UserGuard } from './guards/user.guard';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { StudentLoadComponent } from './admin/studentload/student-load/student-load.component';
 import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
+
+import { FacultyScheduleComponent } from './components/Faculty Management module/faculty-schedule/faculty-schedule.component';
+
 import { StudentActiveComponent } from './admin/student-list/student-active/student-active.component';
 import { StudentLoadBsitComponent } from './admin/studentload/student-load-bsit/student-load-bsit.component';
 import { StudentLoadBscsComponent } from './admin/studentload/student-load-bscs/student-load-bscs.component';
 import { StudentLoadBseeComponent } from './admin/studentload/student-load-bsee/student-load-bsee.component';
+
 
 const routes: Routes = [
   {
@@ -144,6 +148,11 @@ const routes: Routes = [
     component: StudentActiveComponent,
   },
   {
+
+    path: 'faculty-schedule',
+    component: FacultyScheduleComponent,
+},
+{
     path: 'student-load-bsit',
     component: StudentLoadBsitComponent,
   },
@@ -154,6 +163,7 @@ const routes: Routes = [
   {
     path: 'student-load-bsee',
     component: StudentLoadBseeComponent,
+
   },
 ];
 

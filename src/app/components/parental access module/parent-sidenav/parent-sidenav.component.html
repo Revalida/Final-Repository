@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <div class="sidebar-container fixed-left">
+    <ul class="sidebar-navigation">
+      <div class="card" style="width: 235px; background-color: #cc4f4f">
+        <div id="userimg" style="width: 150px">
+          <img [src]="imageUrl" alt="Card image" style="width: 100%" />
+        </div>
+        <div style="margin-left: auto; margin-right: auto" class="card-body">
+          <h4 style="font-weight: bolder" class="card-title">
+            <b>{{ name }}</b>
+          </h4>
+        </div>
+      </div>
+
+      <li>
+        <i
+          class="fa fa-user"
+          style="font-size: 25px"
+          aria-hidden="true"
+          [routerLink]="['/facultydashboard']"
+          ><b>&nbsp;&nbsp;Account Profile</b></i
+        >
+      </li>
+
+      <li>
+        <i
+          class="fa fa-plus"
+          style="font-size: 25px"
+          aria-hidden="true"
+          [routerLink]="['/faculty-schedule']"
+          ><b>&nbsp;&nbsp;Courses & Schedule</b></i
+        >
+      </li>
+
+      <li>
+        <i
+          class="fa fa-list"
+          style="font-size: 24px"
+          aria-hidden="true"
+          [routerLink]="['/faculty-attendance']"
+          ><b>&nbsp;&nbsp;Attendance and Evaluation</b></i
+        >
+      </li>
+      <p>
+        Today is . . . <br />{{ clock | async | date: "MMM d, y, h:mm:ss a" }}
+      </p>
+    </ul>
+  </div>
+</html>
