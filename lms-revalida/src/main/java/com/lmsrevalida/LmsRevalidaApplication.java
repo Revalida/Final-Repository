@@ -80,6 +80,12 @@ public class LmsRevalidaApplication {
 		Studentservice.updateStudentPassword(student, Id);
 		return null;
 	}
+	
+	@PutMapping("updatestudentparent/{Id}")
+	public String updateStudentParent(@RequestBody StudentDetails student, @PathVariable int Id) {
+		Studentservice.updateStudentParent(student, Id);
+		return null;
+	}
 
     @GetMapping("/student/regular")
     public List<StudentDetails> getRegularStudents() {

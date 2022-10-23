@@ -61,5 +61,12 @@ public class StudentService {
         .execute();
     }
 	
+	public void updateStudentParent(StudentDetails student, int Id) {
+		dslContext.update(Tables.STUDENT_DETAILS)
+		.set(Tables.STUDENT_DETAILS.PARENT_FIRSTNAME, student.getParentFirstname())
+		.where(Tables.STUDENT_DETAILS.ID.eq(Id))
+		.execute();
+	}
+	
 
 }

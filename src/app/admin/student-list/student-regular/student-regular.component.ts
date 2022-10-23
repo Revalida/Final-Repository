@@ -4,6 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+export class Student {
+  constructor(public id: number, public parentFirstname: string) {}
+}
+
 @Component({
   selector: 'app-student-regular',
   templateUrl: './student-regular.component.html',
@@ -12,9 +16,11 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class StudentRegularComponent implements OnInit {
   regStudents: any;
   closeResult: any;
-  studentNo = '';
+  studNo: any;
   data: any;
   parentNo: any;
+  updateId: any;
+  updateParent: any;
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
@@ -32,9 +38,6 @@ export class StudentRegularComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
-
-    this.studentNo = data.studNo;
-    console.log(this.studentNo);
   }
 
   private getDismissReason(reason: any): string {
@@ -47,22 +50,16 @@ export class StudentRegularComponent implements OnInit {
     }
   }
 
-  addParent(p: NgForm) {
-    this.data = p.form.value;
-    this.data.studNo = this.studentNo;
-    console.log(this.studentNo);
+  addParent(p: NgForm, data: Student) {
+    // this.data = p.form.value;
+    console.log(this.regStudents.id);
+    this.studNo = data.id;
+    console.log(this.studNo);
     this.http
       .post('http://localhost:9191/parent/addparent', this.data)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
-    // this.data = p.form.value;
-    // this.data.parentNo = this.parentNo;
-    // this.http
-    //   .patch('http://localhost:9191/updatestudent/', this.data)
-    //   .subscribe((result) => {
-    //     this.ngOnInit(); // reload the table
-    //   });
     this.modalService.dismissAll(); // dismiss the modal
   }
 }
