@@ -18,8 +18,9 @@ export class FacultyGradesComponent implements OnInit {
       grade: ['', Validators.required],
       comment: ['', Validators.required],
     });
-    let response = this.http.get('http://localhost:9191/student');
-    response.subscribe((data) => (this.students = data));
+    this.http
+      .get('http://localhost:9191/student')
+      .subscribe((data) => (this.students = data));
     console.log(this.students);
   }
 

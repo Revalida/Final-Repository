@@ -12,14 +12,14 @@ export class FacultySidenavComponent implements OnInit {
   imageUrl: string = '';
   name = '';
   clock!: Observable<Date>;
-  
+
   constructor(private http: HttpClient, private clockService: ClockService) {}
 
   ngOnInit(): void {
     this.http.get<any>('http://localhost:9191/faculty').subscribe(
       (res) => {
         const user = res.find((a: any) => {
-          return a.facultyNo === sessionStorage.getItem('PROF_NO');
+          return a.facultyNo === sessionStorage.getItem('FACULTY_NO');
         });
         if (user) {
           this.imageUrl = user.imgUrl;
