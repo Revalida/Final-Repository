@@ -1,15 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-student-load',
-  templateUrl: './student-load.component.html',
-  styleUrls: ['./student-load.component.scss'],
+  selector: 'app-student-load-bscs',
+  templateUrl: './student-load-bscs.component.html',
+  styleUrls: ['./student-load-bscs.component.scss'],
 })
-export class StudentLoadComponent implements OnInit {
-  bsit11: any;
+export class StudentLoadBscsComponent implements OnInit {
+  bscs11: any;
+  bscs12: any;
+  bscs21: any;
+  bscs22: any;
+  bscs31: any;
+  bscs32: any;
+  bscs41: any;
+  bscs42: any;
   prof: any;
   studLoad: any;
   closeResult: any;
@@ -22,8 +29,29 @@ export class StudentLoadComponent implements OnInit {
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    let response = this.http.get('http://localhost:9191/BSIT11');
-    response.subscribe((data) => (this.bsit11 = data));
+    let response11 = this.http.get('http://localhost:9191/BSCS11');
+    response11.subscribe((data11) => (this.bscs11 = data11));
+
+    let response12 = this.http.get('http://localhost:9191/BSCS12');
+    response12.subscribe((data12) => (this.bscs12 = data12));
+
+    let response21 = this.http.get('http://localhost:9191/BSCS21');
+    response21.subscribe((data21) => (this.bscs21 = data21));
+
+    let response22 = this.http.get('http://localhost:9191/BSCS22');
+    response22.subscribe((data22) => (this.bscs22 = data22));
+
+    let response31 = this.http.get('http://localhost:9191/BSCS31');
+    response31.subscribe((data31) => (this.bscs31 = data31));
+
+    let response32 = this.http.get('http://localhost:9191/BSCS32');
+    response32.subscribe((data32) => (this.bscs32 = data32));
+
+    let response41 = this.http.get('http://localhost:9191/BSCS41');
+    response41.subscribe((data41) => (this.bscs41 = data41));
+
+    let response42 = this.http.get('http://localhost:9191/BSCS42');
+    response42.subscribe((data42) => (this.bscs42 = data42));
 
     let res = this.http.get('http://localhost:9191/faculty');
     res.subscribe((data1) => (this.prof = data1));
@@ -32,7 +60,6 @@ export class StudentLoadComponent implements OnInit {
     res1.subscribe((data2) => (this.load = data2));
     console.log(this);
   }
-
   openStudent(student: any, data: any) {
     this.updateLoad = data;
     console.log(this.updateLoad);
@@ -71,6 +98,12 @@ export class StudentLoadComponent implements OnInit {
 
     this.http
       .post('http://localhost:9191/student/load', this.studLoad)
+      .subscribe((result) => {
+        console.log(result);
+      });
+
+    this.http
+      .post('http://localhost:9191/faculty/load', this.studLoad)
       .subscribe((result) => {
         console.log(result);
       });

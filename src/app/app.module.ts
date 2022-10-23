@@ -24,23 +24,26 @@ import { GradesComponent } from './student/grades/grades.component';
 import { FacultyComponent } from './components/Faculty Management module/faculty/faculty.component';
 import { AttendanceParentComponent } from './components/parental access module/attendance.parent/attendance.parent.component';
 import { FacultyAttendanceComponent } from './components/Faculty Management module/faculty.attendance/faculty.attendance.component';
-import { AdminCourseListComponent } from './admin/admin-course-list/admin-course-list.component';
-import { CourseBsitComponent } from './admin/course-bsit/course-bsit.component';
-import { CourseBscsComponent } from './admin/course-bscs/course-bscs.component';
-import { CourseBseeComponent } from './admin/course-bsee/course-bsee.component';
-import { StudentRegularComponent } from './admin/student-regular/student-regular.component';
-import { StudentIrregularComponent } from './admin/student-irregular/student-irregular.component';
-import { StudentGraduateComponent } from './admin/student-graduate/student-graduate.component';
+import { AdminCourseListComponent } from './admin/course-list/admin-course-list/admin-course-list.component';
+import { CourseBsitComponent } from './admin/course-list/course-bsit/course-bsit.component';
+import { CourseBscsComponent } from './admin/course-list/course-bscs/course-bscs.component';
+import { CourseBseeComponent } from './admin/course-list/course-bsee/course-bsee.component';
+import { StudentRegularComponent } from './admin/student-list/student-regular/student-regular.component';
+import { StudentIrregularComponent } from './admin/student-list/student-irregular/student-irregular.component';
+import { StudentGraduateComponent } from './admin/student-list/student-graduate/student-graduate.component';
 import { FacultySidenavComponent } from './components/Faculty Management module/faculty.sidenav/faculty-sidenav.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
-import { StudentLoadComponent } from './admin/student-load/student-load.component';
+import { StudentLoadComponent } from './admin/studentload/student-load/student-load.component';
 
 import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
 
 import { StudentSidenavComponent } from './student/student-sidenav/student-sidenav.component';
-import { StudentActiveComponent } from './admin/student-active/student-active.component';
+import { StudentActiveComponent } from './admin/student-list/student-active/student-active.component';
+import { StudentLoadBsitComponent } from './admin/studentload/student-load-bsit/student-load-bsit.component';
+import { StudentLoadBscsComponent } from './admin/studentload/student-load-bscs/student-load-bscs.component';
+import { StudentLoadBseeComponent } from './admin/studentload/student-load-bsee/student-load-bsee.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +81,9 @@ import { StudentActiveComponent } from './admin/student-active/student-active.co
     FacultyGradesComponent,
     StudentSidenavComponent,
     StudentActiveComponent,
+    StudentLoadBsitComponent,
+    StudentLoadBscsComponent,
+    StudentLoadBseeComponent,
   ],
   imports: [
     RouterModule,
