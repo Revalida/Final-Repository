@@ -1,0 +1,831 @@
+<app-header></app-header>
+<app-admin-sidenav></app-admin-sidenav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm" style="margin-left: 200px">
+      <a
+        href="/student-load-bsit"
+        role="button"
+        class="btn btn-outline-primary btn-lg btn-block text-center"
+      >
+        <span><i class="fa fa-users"></i></span>
+        <br />BSIT
+      </a>
+    </div>
+    <div class="col-sm">
+      <a
+        href="/student-load-bscs"
+        role="button"
+        class="btn btn-outline-primary btn-lg btn-block text-center"
+      >
+        <span><i class="fa fa-users"></i></span>
+        <br />BSCS
+      </a>
+    </div>
+    <div class="col-sm">
+      <a
+        href="/student-load-bsee"
+        role="button"
+        class="btn btn-outline-primary btn-lg btn-block text-center"
+      >
+        <span><i class="fa fa-users"></i></span>
+        <br />BSEE
+      </a>
+    </div>
+
+    <div class="border"></div>
+  </div>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 1BSCS-1A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs11">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #student let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Assign Schedule</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #s="ngForm" (ngSubmit)="addSchedule(s)">
+      <label>Professor</label>
+      <div class="form-group">
+        <div class="dropdown">
+          <select
+            id="facultyNo"
+            class="form-control"
+            name="facultyNo"
+            #facultyNo
+            ngModel
+          >
+            <option *ngFor="let profs of prof" [value]="profs.facultyNo">
+              {{ profs.facultyNo }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="section">Section</label>
+        <div class="dropdown">
+          <select
+            id="section"
+            class="form-control"
+            name="section"
+            #section
+            ngModel
+          >
+            <option value="1BSCS-1A">1BSCS-1A</option>
+            <option value="1BSCS-1B">1BSCS-1B</option>
+            <option value="1BSCS-2A">1BSCS-2A</option>
+            <option value="1BSCS-2B">1BSCS-2B</option>
+            <option value="2BSCS-3A">2BSCS-3A</option>
+            <option value="2BSCS-3B">2BSCS-3B</option>
+            <option value="2BSCS-4A">2BSCS-4A</option>
+            <option value="2BSCS-4B">2BSCS-4B</option>
+            <option value="3BSCS-5A">3BSCS-5A</option>
+            <option value="3BSCS-5B">3BSCS-5B</option>
+            <option value="3BSCS-6A">3BSCS-6A</option>
+            <option value="3BSCS-6B">3BSCS-6B</option>
+            <option value="4BSCS-7A">4BSCS-7A</option>
+            <option value="4BSCS-7B">4BSCS-7B</option>
+            <option value="4BSCS-8A">4BSCS-8A</option>
+            <option value="4BSCS-8B">4BSCS-8B</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="schedule">Schedule</label>
+        <div class="dropdown">
+          <select
+            id="schedule"
+            class="form-control"
+            name="schedule"
+            #schedule
+            ngModel
+          >
+            <option></option>
+            <option value="Mon & Tue (7:00AM- 8:30AM)">
+              Mon & Tue (7:00AM- 8:30AM) - Section A - Morning
+            </option>
+            <option value="Mon & Tue (8:30AM- 10:00AM)">
+              Mon & Tue (8:30AM- 10:00AM) - Section A - Morning
+            </option>
+            <option value="Mon & Tue (10:00AM- 11:30AM)">
+              Mon & Tue (10:00AM- 11:30AM) - Section A - Morning
+            </option>
+            <option value="Thu & Fri (7:00AM- 9:30AM)">
+              Thu & Fri (7:00AM- 9:30AM) - Section A - Morning
+            </option>
+            <option value="Thu & Fri (9:30AM- 12:00NN)">
+              Thu & Fri (9:30AM- 12:00NN) - Section A - Morning
+            </option>
+
+            <option value="Mon & Tue (1:00PM- 2:30PM)">
+              Mon & Tue (1:00PM- 2:30PM) - Section B - Afternoon
+            </option>
+            <option value="Mon & Tue (2:30PM- 4:00PM)">
+              Mon & Tue (2:30PM- 4:00PM) - Section B - Afternoon
+            </option>
+            <option value="Mon & Tue (4:00PM- 5:30PM)">
+              Mon & Tue (4:00PM- 5:30PM) - Section B - Afternoon
+            </option>
+            <option value="Thu & Fri (1:00PM- 2:30PM)">
+              Thu & Fri (1:00PM- 2:30PM) - Section B - Afternoon
+            </option>
+            <option value="Thu & Fri (2:30PM- 4:00PM)">
+              Thu & Fri (2:30PM- 4:00PM) - Section B - Afternoon
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <br />
+      <div class="text-center">
+        <button data-dismiss="modal" class="btn btn-info">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Cancel
+    </button>
+  </div>
+</ng-template>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 1BSCS-1B</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs11">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 1BSCS-2A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs12">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 1BSCS-2B</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs12">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 2BSCS-3A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs21">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 2BSCS-3B</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs21">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 2BSCS-4A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs22">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 2BSCS-4B</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs22">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 3BSCS-5A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs31">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 3BSCS-5B</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs31">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 3BSCS-6A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs32">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 3BSCS-6B</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs32">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 4BSCS-7A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs32">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 4BSCS-7B</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs41">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 4BSCS-8A</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs42">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <p>Assign to Section 4BSCS-8B</p>
+    <tr>
+      <th>Subject Code</th>
+      <th>Subject Title</th>
+      <th>Units</th>
+      <th>Course</th>
+      <th>Semester</th>
+      <th>Year Level</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of bscs42">
+      <td>
+        <span>{{ data.subjectCode }}</span>
+      </td>
+      <td>
+        <span>{{ data.subjectTitle }}</span>
+      </td>
+      <td>
+        <span>{{ data.units }}</span>
+      </td>
+      <td>
+        <span>{{ data.course }}</span>
+      </td>
+      <td>
+        <span>{{ data.sem }}</span>
+      </td>
+      <td>
+        <span>{{ data.yearLevel }}</span>
+      </td>
+      <td>
+        <button class="fa fa-edit" (click)="openStudent(student, data)">
+          Assign Schedule
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

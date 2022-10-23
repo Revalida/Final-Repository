@@ -19,26 +19,31 @@ export class PreAssignedComponent implements OnInit {
   ngOnInit(): void {
     // let response = this.http.get('http://localhost:9191/load');
     // response.subscribe((data) => (this.data = data));
-    this.studentNo = JSON.stringify(sessionStorage.getItem('STUDENT_NO') || '{}');
-    this.studentNo = this.studentNo.replace(/"/g, '');
+
+    // this.studentNo = JSON.stringify(sessionStorage.getItem('STUDENT_NO') || '{}');
+    // this.studentNo = this.studentNo.replace(/"/g, '');
     
-    this.http.get('http://localhost:9191/student/load/' + this.studentNo).subscribe(
-      (res) => {
-        this.data = res;
-        console.log(this.data);
-      },
-      (err) => {
-        this.toast.error('Something went wrong!');
-      }
-    );
+    // this.http.get('http://localhost:9191/student/load/' + this.studentNo).subscribe(
+    //   (res) => {
+    //     this.data = res;
+    //     console.log(this.data);
+    //   },
+    //   (err) => {
+    //     this.toast.error('Something went wrong!');
+    //   }
+    // );
   }
 
-  edit = () => {
+  // edit = () => {
 
-  }
+  // }
 
   submit = () => {
+    this.toast.error("Something went wrong!")
+  }
 
+  save(){
+    this.toast.error("Sorry, Can't Save!")
   }
   
 }

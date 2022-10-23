@@ -2,6 +2,7 @@ package com.lmsrevalida;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +27,7 @@ import com.jooq.revalida.model.tables.pojos.SubjectTable;
 
 import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
+import com.lmsrevalida.service.FacultyLoadService;
 import com.lmsrevalida.service.FacultyService;
 import com.lmsrevalida.service.GradesService;
 import com.lmsrevalida.service.ParentService;
@@ -44,6 +47,12 @@ public class LmsRevalidaApplication {
     @GetMapping("/admin")
     public List<AdminDetails> getAdmin() {
         return Adminservice.getAdmin();
+    }
+    
+    @PutMapping("updateadminpassword/{admin_id}")
+    public String updateAdminPassword(@RequestBody AdminDetails admin, @PathVariable int admin_id) {
+    	Adminservice.updateAdminPassword(admin, admin_id);
+    	return null;
     }
     
     @Autowired
@@ -77,15 +86,20 @@ public class LmsRevalidaApplication {
         return null;
     }
     
+    @PutMapping("updatefacultypassword/{Id}")
+	public String updateFacultyPassword(@RequestBody FacultyDetails faculty, @PathVariable int Id) {
+    	Facultyservice.updateFacultyPassword(faculty, Id);
+		return null;
+	}
+    
     @Autowired
     private StudentService Studentservice;
 
-	@PatchMapping("updatestudentpassword/{Id}")
+	@PutMapping("updatestudentpassword/{Id}")
 	public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
 		Studentservice.updateStudentPassword(student, Id);
 		return null;
 	}
-	
 
 
     @GetMapping("/student/regular")
@@ -162,6 +176,7 @@ public class LmsRevalidaApplication {
 	@Autowired 
 	private SubjectService Subjectservice;
 	
+	
 	 
 	@GetMapping("/subjects")
 	public List<SubjectTable> getSubjectCS() {
@@ -215,7 +230,6 @@ public class LmsRevalidaApplication {
 	public List<SubjectTable> getBSCS42() {
 		return Subjectservice.getBSCS42();
 	}
-	
 	
 	 
 	@GetMapping("/BSIT11")
@@ -325,11 +339,16 @@ public class LmsRevalidaApplication {
         return null;
     }
     
-    @PatchMapping("updateload/{load_id}")
-	public String updateStudentLoad(@RequestBody StudentLoad load, @PathVariable int load_id) {
-		Studentloadservice.updateStudentLoad(load, load_id);
-		return null;
-	}
+    @Autowired
+    private
+    FacultyLoadService Facultyloadservice;
+    
+    @PostMapping("/faculty/load")
+    public ProfessorLoad insertFacultyLoad(@RequestBody ProfessorLoad load) {
+    	Facultyloadservice.insertFacultyLoad(load);
+    	return null;
+    }
+    
 
     public static void main(String[] args) {
         SpringApplication.run(LmsRevalidaApplication.class, args);
