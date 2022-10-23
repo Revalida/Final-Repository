@@ -42,7 +42,6 @@ import { FacultyGradesComponent } from './components/Faculty Management module/f
 import { StudentSidenavComponent } from './student/student-sidenav/student-sidenav.component';
 import { StudentActiveComponent } from './admin/student-active/student-active.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,8 +79,7 @@ import { StudentActiveComponent } from './admin/student-active/student-active.co
     FacultyGradesComponent,
 
     StudentSidenavComponent,
-      StudentActiveComponent,
-
+    StudentActiveComponent,
   ],
   imports: [
     RouterModule,

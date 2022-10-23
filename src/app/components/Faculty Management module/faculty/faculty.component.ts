@@ -36,18 +36,18 @@ export class FacultyComponent implements OnInit {
     this.http.get<any>('http://localhost:9191/faculty').subscribe(
       (res) => {
         const user = res.find((a: any) => {
-          return a.facultyNo === sessionStorage.getItem('PROF_NO');
+          return a.facultyNo === sessionStorage.getItem('FACULTY_NO');
         });
         if (user) {
           this.data = user;
           this.imageUrl = this.data.imgUrl;
-          console.log(this.imageUrl);
         }
       },
       (err) => {
         alert('Something went wrong!');
       }
     );
+    console.log(this.data);
   }
 
   previewImage(e: any) {
