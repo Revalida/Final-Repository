@@ -1,7 +1,12 @@
+import { AnimateTimings } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+export class Faculty {
+  constructor(public id: number, public facultyPassword: string) {}
+}
 
 @Component({
   selector: 'app-faculty',
@@ -16,6 +21,8 @@ export class FacultyComponent implements OnInit {
   data: any;
   studentNo: any;
   showButton = true;
+  updatePass: any;
+  updateId: any;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.profForm = this.fb.group({
@@ -76,21 +83,33 @@ export class FacultyComponent implements OnInit {
     //   }
     // })
   };
-  onChangePassword = (): any => {
-    // const userCred = this.changePasswordForm.getRawValue() as ChangePassword
-    // if(!userCred.newPass || !userCred.confirmPass) {
-    //   return this.alert.error("Please fill all the required fields!")
+
+  onChangePassword(f: NgForm, data: Faculty) {
+    console.log(f.form.value);
+    this.updatePass = data.facultyPassword;
+    this.updateId = data.id;
+    // console.log(this.updateId);
+    // console.log(data.facultyPassword);
+    // console.log(this.updatePass);
+    this.http
+      .put(
+        'http://localhost:9191/updatefacultypassword/' + this.updateId,
+        f.value
+      )
+      .subscribe((result) => {
+        this.ngOnInit(); // reload the table
+      });
+    // console.log(this.updatePass);
+    // console.log(this.data.adminPassword);
+    // const userCred = this.changePasswordForm.getRawValue() as ChangePassword;
+    // if (!userCred.newPass || !userCred.confirmPass) {
+    //   // return this.toast.error('Please fill all the required fields!');
     // }
-    // if(userCred.newPass !== userCred.confirmPass) {
-    //   return  this.alert.error("Password does not match!");
+
+    // if (userCred.newPass !== userCred.confirmPass) {
+    //   // return this.toast.error('Password does not match!');
     // }
-    // const data = { password: userCred.newPass, email: this.studentForm.get('email')?.getRawValue()} as Users
-    // this.studentService.updateStudentInfo(data).subscribe( x => {
-    //   if(!x.error){
-    //     this.alert.success("Password successfully changed!");
-    //   }
-    // })
-  };
+  }
 
   toogleSidebar() {
     this.opened = !this.opened;

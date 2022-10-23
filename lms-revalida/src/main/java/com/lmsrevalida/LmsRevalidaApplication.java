@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,7 +46,7 @@ public class LmsRevalidaApplication {
         return Adminservice.getAdmin();
     }
     
-    @PatchMapping("updateadminpassword/{admin_id}")
+    @PutMapping("updateadminpassword/{admin_id}")
     public String updateAdminPassword(@RequestBody AdminDetails admin, @PathVariable int admin_id) {
     	Adminservice.updateAdminPassword(admin, admin_id);
     	return null;
@@ -65,10 +66,16 @@ public class LmsRevalidaApplication {
 		return null;
 	}
     
+    @PutMapping("updatefacultypassword/{Id}")
+	public String updateFacultyPassword(@RequestBody FacultyDetails faculty, @PathVariable int Id) {
+    	Facultyservice.updateFacultyPassword(faculty, Id);
+		return null;
+	}
+    
     @Autowired
     private StudentService Studentservice;
 
-	@PatchMapping("updatestudentpassword/{Id}")
+	@PutMapping("updatestudentpassword/{Id}")
 	public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
 		Studentservice.updateStudentPassword(student, Id);
 		return null;

@@ -99,12 +99,21 @@
                 <div class="card mb-4">
                   <h5 class="card-header">Change password</h5>
                   <div class="card-body address-group">
-                    <form
-                      #target
-                      [formGroup]="changePasswordForm"
-                      (ngSubmit)="onChangePassword(data)"
-                    >
-                      <div class="row">
+                    <form #f="ngForm" (ngSubmit)="onChangePassword(f, data)">
+                      <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <div class="input-group">
+                          <input
+                            id="adminPassword"
+                            class="form-control"
+                            name="adminPassword"
+                            #adminPassword="ngModel"
+                            ngModel
+                          />
+                        </div>
+                      </div>
+
+                      <!-- <div class="row">
                         <div class="mb-3 col-md-6">
                           <label for="newPass" class="form-label"
                             >New Password</label
@@ -114,11 +123,11 @@
                             formControlName="adminPassword"
                             type="password"
                             placeholder="New Password"
-                          />
-                          <!-- <span *ngIf="studentForm.get('lastName').touched && studentForm.get('newPass').hasError('required')" class="errors">
+                          /> -->
+                      <!-- <span *ngIf="studentForm.get('lastName').touched && studentForm.get('newPass').hasError('required')" class="errors">
                               Field is required
                             </span> -->
-                        </div>
+                      <!-- </div>
                         <div class="mb-3 col-md-6">
                           <label for="email" class="form-label"
                             >Confirm Password</label
@@ -130,7 +139,7 @@
                             placeholder="Confirm Password"
                           />
                         </div>
-                      </div>
+                      </div> -->
                       <div class="mt-2">
                         <button type="submit" class="btn us-btn-primary me-2">
                           Save changes
