@@ -29,6 +29,7 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
 import { StudentLoadComponent } from './admin/student-load/student-load.component';
 import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
 import { StudentActiveComponent } from './admin/student-active/student-active.component';
+import { FacultyScheduleComponent } from './components/Faculty Management module/faculty-schedule/faculty-schedule.component';
 
 const routes: Routes = [
   {
@@ -139,6 +140,10 @@ const routes: Routes = [
   {
     path: 'student-active',
     component: StudentActiveComponent,
+  },
+  {
+    path: 'faculty-schedule',
+    component: FacultyScheduleComponent,
   },
 ];
 
