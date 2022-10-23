@@ -9,6 +9,10 @@ export interface ChangePassword {
   confirmPass: string;
 }
 
+export class Admin {
+  constructor(public adminId: number) {}
+}
+
 @Component({
   selector: 'app-admin-profile',
   templateUrl: './admin-profile.component.html',
@@ -23,6 +27,7 @@ export class AdminProfileComponent implements OnInit {
   students: any;
   closeResult: any;
   opened: any;
+  updatePass: any;
 
   constructor(
     private fb: FormBuilder,
@@ -30,31 +35,30 @@ export class AdminProfileComponent implements OnInit {
     private modalService: NgbModal,
     private toast: ToastrService
   ) {
-    this.http.get<any>('http://localhost:9191/admin').subscribe( 
+    this.http.get<any>('http://localhost:9191/admin').subscribe(
       (res) => {
-      const user = res.find((a: any) => {
-        return a.adminEmail === sessionStorage.getItem('ADMIN_EMAIL');
-      });
-      if (user) {
-        this.data = user;
-        console.log(this.data);
-      } else {
-        console.log(res);
+        const user = res.find((a: any) => {
+          return a.adminEmail === sessionStorage.getItem('ADMIN_EMAIL');
+        });
+        if (user) {
+          this.data = user;
+          console.log(this.data);
+        } else {
+          console.log(res);
+        }
+      },
+      (err) => {
+        this.toast.error('Something went wrong!');
       }
-    },
-    (err) => {
-      this.toast.error('Something went wrong!');
-    }
-  );
+    );
 
     this.changePasswordForm = this.fb.group({
-      newPass: ['', [Validators.required]],
+      adminPassword: ['', [Validators.required]],
       confirmPass: ['', [Validators.required]],
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   openStudent(student: any) {
     this.modalService
@@ -123,15 +127,27 @@ export class AdminProfileComponent implements OnInit {
   //   }
   //  }
 
-  onChangePassword = (): any => {
-    const userCred = this.changePasswordForm.getRawValue() as ChangePassword
-    if(!userCred.newPass || !userCred.confirmPass) {
-      return this.toast.error("Please fill all the required fields!")
+  onChangePassword(data: Admin) {
+    this.updatePass;
+    console.log(data.adminId);
+    console.log(this.updatePass);
+    this.http
+      .patch(
+        'http://localhost:9191/updateadminpassword/' + this.updatePass,
+        data
+      )
+      .subscribe((result) => {
+        this.ngOnInit(); // reload the table
+      });
+    console.log(this.updatePass);
+    console.log(this.data.adminPassword);
+    const userCred = this.changePasswordForm.getRawValue() as ChangePassword;
+    if (!userCred.newPass || !userCred.confirmPass) {
+      // return this.toast.error('Please fill all the required fields!');
     }
 
-    if(userCred.newPass !== userCred.confirmPass) {
-      return  this.toast.error("Password does not match!");
+    if (userCred.newPass !== userCred.confirmPass) {
+      // return this.toast.error('Password does not match!');
     }
-
   }
 }
