@@ -9,11 +9,13 @@
               <div class="mb-1 col-md-3">
                 <label for="yearLevel" class="form-label">Year Level</label>
                 <input class="form-control" type="text" value={{data?.yearLevel}} [attr.disabled]="true"/>
-              </div>
+              </div><p style="padding: 15px; margin: 15px"></p>
+              
               <div class="mb-1 col-md-3">
                 <label for="section" class="form-label">Section</label>
                 <input class="form-control" value={{data?.section}} [attr.disabled]="true"/>
-              </div>
+              </div><p style="padding: 15px; margin: 15px"></p>
+              
               <div class="mb-1 col-md-3">
                 <label for="sem" class="form-label">Semester</label>
                 <input class="form-control" type="text" value={{data?.sem}} [attr.disabled]="true"/>
@@ -33,12 +35,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr >
                       <td><span> {{data?.subjectCode}} </span></td>
                       <td><span> {{data?.schedule}} </span></td>
                       <td><span> {{data?.facultyNo}} </span></td>
                       <td style="white-space: nowrap">
-                        <button class="btn us-btn-secondary" (click)="edit()">Edit</button>&nbsp;
+                        <button class="btn us-btn-secondary" 
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCenter"
+                        >Edit</button>&nbsp;
                       </td>
                     </tr>
                   </tbody>
@@ -51,3 +56,49 @@
         </div>
      </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h2 class="modal-title" id="modalCenterTitle">Edit Pre-assigned Course</h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-mb-1">
+            <!-- First field -->
+            <label for="subjectCode" class="form-label">Subject Code</label>
+            <input class="form-control" type="text" value={{data?.subjectCode}}/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-1">
+            <!-- Second Field -->
+            <label for="sched" class="form-label">Schedule (Day & Time)</label>
+            <input class="form-control" type="text" value={{data?.schedule}}/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-1">
+            <!-- Third Field -->
+            <label for="profID" class="form-label">Professor ID</label>
+            <input class="form-control" type="text" value={{data?.facultyNo}}/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn us-btn-primary" data-bs-dismiss="modal" (click)="save()">Save</button>
+        <button type="button" class="btn us-btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->

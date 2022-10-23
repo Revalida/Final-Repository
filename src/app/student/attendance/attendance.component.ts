@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { applyStyles } from '@popperjs/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

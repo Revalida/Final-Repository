@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&family=Stick&display=swap");
 
+.logo{
+  margin-top: -10px;
+  margin-left: 15px;
+}
 .content {
   width: 100%;
   text-align: center;
@@ -480,6 +484,4 @@ li:hover {
   border-radius: 15px;
 }
 
-.footer {
-  height: 100px;
-}
+

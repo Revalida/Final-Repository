@@ -75,9 +75,7 @@ import { StudentActiveComponent } from './admin/student-active/student-active.co
     FacultySidenavComponent,
     AdminProfileComponent,
     StudentLoadComponent,
-
     FacultyGradesComponent,
-
     StudentSidenavComponent,
     StudentActiveComponent,
   ],

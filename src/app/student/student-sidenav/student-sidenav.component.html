@@ -10,7 +10,8 @@
         </div>
         <div style="margin-left: auto; margin-right: auto" class="card-body">
           <h4 style="font-weight: bolder" class="card-title">
-            <b>{{data?.studentFirstname}} {{data?.studentLastname}}</b>
+            <b>{{data?.studentLastname}}</b><br>
+            <b>{{data?.studentNo}}</b>
           </h4>
         </div>
       </div>
@@ -21,7 +22,7 @@
           style="font-size: 25px"
           aria-hidden="true"
           [routerLink]="['/profile']"
-          ><b>&nbsp;&nbsp;Account Profile</b></i
+          ><b>&nbsp;&nbsp;My Account Profile</b></i
         >
       </li>
 
@@ -31,7 +32,7 @@
           style="font-size: 25px"
           aria-hidden="true"
           [routerLink]="['/pre-assigned']"
-          ><b>&nbsp;&nbsp;Pre-assigned Courses</b></i
+          ><b>&nbsp;&nbsp;My Courses</b></i
         >
       </li>
       <li>
@@ -50,7 +51,7 @@
           style="font-size: 24px"
           aria-hidden="true"
           [routerLink]="['/attendance']"
-          ><b>&nbsp;&nbsp;Attendance</b></i
+          ><b>&nbsp;&nbsp;My Attendance</b></i
         >
       </li>
 
@@ -60,7 +61,7 @@
           style="font-size: 24px"
           aria-hidden="true"
           [routerLink]="['/grades']"
-          ><b>&nbsp;&nbsp;Courses Marks</b></i
+          ><b>&nbsp;&nbsp;My Courses Marks</b></i
         >
       </li>
       <p>Today is . . . <br>{{ clock | async | date:'MMM d, y, h:mm:ss a'}}</p>
