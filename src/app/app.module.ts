@@ -75,9 +75,7 @@ import { StudentSidenavComponent } from './student/student-sidenav/student-siden
     FacultySidenavComponent,
     AdminProfileComponent,
     StudentLoadComponent,
-
     FacultyGradesComponent,
-
     StudentSidenavComponent,
 
   ],

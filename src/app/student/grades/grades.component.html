@@ -1,9 +1,43 @@
 <app-header></app-header>
 <app-student-sidenav></app-student-sidenav>
-<div class="container">
-  <div class="row">
-            <!-- PAGE CONTENTS -->
-            <h1>Grades</h1>
 
-  </div>
+<div class="container">
+  <!-- PAGE CONTENTS -->
+<div class="table">
+<div class="row">
+    <div class="card">
+      <div class="header">
+        <h2 class="title">Grades</h2>
+      </div>
+    </div>&nbsp; 
+    <div class="card" >
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-centered table-hover">
+          <thead>
+            <tr>
+              <th>Subject Code</th>
+              <th>Grade</th>
+              <th>Comment</th>
+              <th>Remarks</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of datas">
+              <td>
+                <span>{{ data.subjectCode }}</span>
+              </td>
+              <td>
+                <span>{{ data.timestamp }}</span>
+              </td>
+              <td>
+                <span>{{ data.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+</div>
 </div>

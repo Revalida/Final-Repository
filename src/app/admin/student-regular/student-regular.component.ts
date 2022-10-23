@@ -55,13 +55,13 @@ export class StudentRegularComponent implements OnInit {
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
-    this.data = p.form.value;
-    this.data.parentNo = this.parentNo;
-    this.http
-      .patch('http://localhost:9191/updatestudent/', this.data)
-      .subscribe((result) => {
-        this.ngOnInit(); // reload the table
-      });
+    // this.data = p.form.value;
+    // this.data.parentNo = this.parentNo;
+    // this.http
+    //   .patch('http://localhost:9191/updatestudent/', this.data)
+    //   .subscribe((result) => {
+    //     this.ngOnInit(); // reload the table
+    //   });
     this.modalService.dismissAll(); // dismiss the modal
   }
 }

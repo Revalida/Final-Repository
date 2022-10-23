@@ -2,6 +2,7 @@ package com.lmsrevalida;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -172,7 +173,6 @@ public class LmsRevalidaApplication {
 	public List<SubjectTable> getBSCS42() {
 		return Subjectservice.getBSCS42();
 	}
-	
 	
 	 
 	@GetMapping("/BSIT11")
