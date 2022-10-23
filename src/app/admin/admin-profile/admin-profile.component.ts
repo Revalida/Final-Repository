@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { AstMemoryEfficientTransformer } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,7 +11,7 @@ export interface ChangePassword {
 }
 
 export class Admin {
-  constructor(public adminId: number) {}
+  constructor(public adminId: number, public adminPassword: string) {}
 }
 
 @Component({
@@ -28,6 +29,7 @@ export class AdminProfileComponent implements OnInit {
   closeResult: any;
   opened: any;
   updatePass: any;
+  updateId: any;
 
   constructor(
     private fb: FormBuilder,
@@ -56,6 +58,7 @@ export class AdminProfileComponent implements OnInit {
       adminPassword: ['', [Validators.required]],
       confirmPass: ['', [Validators.required]],
     });
+    console.log(this.fb.group);
   }
 
   ngOnInit(): void {}
@@ -127,20 +130,23 @@ export class AdminProfileComponent implements OnInit {
   //   }
   //  }
 
-  onChangePassword(data: Admin) {
-    this.updatePass;
-    console.log(data.adminId);
-    console.log(this.updatePass);
+  onChangePassword(f: NgForm, data: Admin) {
+    console.log(f.form.value);
+    this.updatePass = data.adminPassword;
+    this.updateId = data.adminId;
+    // console.log(this.updateId);
+    // console.log(data.adminPassword);
+    // console.log(this.updatePass);
     this.http
-      .patch(
-        'http://localhost:9191/updateadminpassword/' + this.updatePass,
-        data
+      .put(
+        'http://localhost:9191/updateadminpassword/' + this.updateId,
+        f.value
       )
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
-    console.log(this.updatePass);
-    console.log(this.data.adminPassword);
+    // console.log(this.updatePass);
+    // console.log(this.data.adminPassword);
     const userCred = this.changePasswordForm.getRawValue() as ChangePassword;
     if (!userCred.newPass || !userCred.confirmPass) {
       // return this.toast.error('Please fill all the required fields!');
