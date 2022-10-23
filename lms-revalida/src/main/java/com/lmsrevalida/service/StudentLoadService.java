@@ -43,4 +43,13 @@ public class StudentLoadService {
 		.where(Tables.STUDENT_LOAD.LOAD_ID.eq(load_id))
 		.execute();
 	}
+	
+	public List<StudentLoad> getStudLoad() {
+		return dslContext.selectFrom(Tables.STUDENT_LOAD)
+		.where(Tables.STUDENT_LOAD.LOAD_ID.eq(219))
+		.fetchInto(StudentLoad.class);
+	}
+	
+	
+	
 }

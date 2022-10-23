@@ -41,7 +41,7 @@
                             <input
                               class="form-control"
                               type="text"
-                              value={{data?.adminId}}
+                              value="{{ data?.adminId }}"
                               [attr.disabled]="true"
                             />
                           </div>
@@ -59,7 +59,7 @@
                         <input
                           class="form-control"
                           type="text"
-                          value={{data?.adminFirstname}}
+                          value="{{ data?.adminFirstname }}"
                           [attr.disabled]="true"
                         />
                       </div>
@@ -70,7 +70,7 @@
                         <input
                           class="form-control"
                           type="text"
-                          value={{data?.adminLastname}}
+                          value="{{ data?.adminLastname }}"
                           [attr.disabled]="true"
                         />
                       </div>
@@ -79,7 +79,7 @@
                         <input
                           class="form-control"
                           type="text"
-                          value={{data?.adminEmail}}
+                          value="{{ data?.adminEmail }}"
                           [attr.disabled]="true"
                         />
                       </div>
@@ -88,7 +88,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          value={{data?.type}}
+                          value="{{ data?.type }}"
                           [attr.disabled]="true"
                         />
                       </div>
@@ -102,7 +102,7 @@
                     <form
                       #target
                       [formGroup]="changePasswordForm"
-                      (ngSubmit)="onChangePassword()"
+                      (ngSubmit)="onChangePassword(data)"
                     >
                       <div class="row">
                         <div class="mb-3 col-md-6">
@@ -111,7 +111,7 @@
                           >
                           <input
                             class="form-control"
-                            formControlName="newPass"
+                            formControlName="adminPassword"
                             type="password"
                             placeholder="New Password"
                           />

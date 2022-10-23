@@ -3,10 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-export class StudentLoad {
-  constructor(public id: number) {}
-}
-
 @Component({
   selector: 'app-student-load',
   templateUrl: './student-load.component.html',
@@ -20,8 +16,9 @@ export class StudentLoadComponent implements OnInit {
   data: any;
   updateId: any;
   loading = '';
-  lodi: any;
-  updateLoad = '';
+  load: any;
+  updateLoad: any;
+  lods: any;
   constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
@@ -32,28 +29,13 @@ export class StudentLoadComponent implements OnInit {
     res.subscribe((data1) => (this.prof = data1));
 
     let res1 = this.http.get('http://localhost:9191/studentload');
-    res1.subscribe((data2) => (this.lodi = data2));
+    res1.subscribe((data2) => (this.load = data2));
     console.log(this);
   }
 
-  // load(data: any, prof: any) {
-  //   this.studLoad = data;
-  //   this.studLoad.facultyNo = prof.facultyNo;
-  //   console.log(this.studLoad);
-  //   this.canClick = true;
-  //   this.cantClick = false;
-  //   console.log(this.studLoad);
-  //   console.log(prof.facultyNo);
-  //   this.http
-  //     .post('http://localhost:9191/student/load', this.studLoad)
-  //     .subscribe((result) => {
-  //       console.log(result);
-  //     });
-  // }
-
   openStudent(student: any, data: any) {
+    this.updateLoad = data;
     console.log(this.updateLoad);
-    this.updateId = student.id;
     this.studLoad = data;
     console.log(this.studLoad);
     this.modalService
@@ -67,17 +49,8 @@ export class StudentLoadComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
-    this.http
-      .post('http://localhost:9191/student/load', this.studLoad)
-      .subscribe((result) => {
-        console.log(result);
-      });
 
-    this.loading = data.subjectId;
-    console.log(this.loading);
-
-    // this.updateLoad = lodi.loadId;
-    // console.log(this.updateLoad);
+    console.log(this.studLoad);
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -90,13 +63,16 @@ export class StudentLoadComponent implements OnInit {
   }
 
   addSchedule(s: NgForm) {
-    this.data = s.form.value;
-    this.data.lId = this.loading;
-    this.data.console.log(s.form.value);
+    this.studLoad.facultyNo = s.form.value.facultyNo;
+    this.studLoad.section = s.form.value.section;
+    this.studLoad.schedule = s.form.value.schedule;
+    console.log(this.studLoad);
+    console.log(s.form.value.subjectCode);
+
     this.http
-      .patch('http://localhost:9191/updateload/' + this.loading, s.value)
+      .post('http://localhost:9191/student/load', this.studLoad)
       .subscribe((result) => {
-        this.ngOnInit(); // reload the table
+        console.log(result);
       });
 
     this.modalService.dismissAll(); // dismiss the modal
