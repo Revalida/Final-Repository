@@ -17,7 +17,7 @@ export class StudentRegularComponent implements OnInit {
   student: any;
   regStudents: any;
   closeResult: any;
-  studNo: any;
+  studentNo: any;
   data: any;
   parentNo: any;
   updateId: any;
@@ -43,6 +43,8 @@ export class StudentRegularComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+    this.studentNo = data.studentNo;
+    console.log(this.studentNo);
   }
 
   private getDismissReason(reason: any): string {
@@ -55,27 +57,16 @@ export class StudentRegularComponent implements OnInit {
     }
   }
 
-  addParent(p: NgForm, data: Student) {
-    console.log(this);
+  addParent(p: NgForm) {
     this.data = p.form.value;
-    this.studNo = data.id;
-    console.log(this.studNo);
+    this.data.studentNo = this.studentNo;
+
+    console.log(this.studentNo);
     this.http
       .post('http://localhost:9191/parent/addparent', this.data)
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
-    console.log(p.form.value);
-    // this.updateId = data.id;
-    // console.log(this.updateId);
-    // this.http
-    //   .put(
-    //     'http://localhost:9191/updatestudentparent/' + this.updateId,
-    //     p.value
-    //   )
-    //   .subscribe((result) => {
-    //     this.ngOnInit(); // reload the table
-    //   });
     this.modalService.dismissAll(); // dismiss the modal
   }
 }

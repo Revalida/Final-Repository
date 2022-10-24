@@ -153,6 +153,12 @@ public class LmsRevalidaApplication {
 		return Parentservice.getParents();
 	}
 	
+	@PutMapping("updateparentpassword/{Id}")
+	public String updateParentPassword(@RequestBody ParentDetails parent, @PathVariable int Id) {
+		Parentservice.updateParentPassword(parent, Id);
+		return null;
+	}
+	
 	 
 	@PostMapping("/parent/addparent")
 	public ParentDetails insertParent(@RequestBody ParentDetails parent) {
