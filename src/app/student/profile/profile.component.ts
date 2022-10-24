@@ -21,7 +21,7 @@ export class Student {
 })
 export class ProfileComponent implements OnInit {
   clock!: Observable<Date>;
-  changePasswordForm: FormGroup;
+  ngForm: FormGroup;
   imageUrl: string = '';
   data: any;
   studentNo: any;
@@ -52,9 +52,8 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.changePasswordForm = this.fb.group({
-      newPass: ['', [Validators.required]],
-      confirmPass: ['', [Validators.required]],
+    this.ngForm = this.fb.group({
+      studentPassword: ['', [Validators.required]],
     });
   }
 
@@ -67,24 +66,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // previewImage(e: any) {
-  //   if(e.target.files) {
-  //      const reader = new FileReader();
-  //      reader.readAsDataURL(e.target.files[0]);
-  //      reader.onload = (event: any) => {
-  //        this.imageUrl = event.target.result;
-  //      }
-  //     this.studentForm.get('student')?.patchValue(e.target.files[0].name)
-  //   }
-  //  }
-
   onChangePassword(f: NgForm, data: Student) {
-    console.log(f.form.value);
+   
     this.updatePass = data.studentPassword;
     this.updateId = data.id;
-    console.log(this.updateId);
-    console.log(data.studentPassword);
-    console.log(this.updatePass);
+
     this.http
       .put(
         'http://localhost:9191/updatestudentpassword/' + this.updateId,
@@ -93,9 +79,8 @@ export class ProfileComponent implements OnInit {
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
-    // console.log(this.updatePass);
-    // console.log(this.data.adminPassword);
-    const userCred = this.changePasswordForm.getRawValue() as ChangePassword;
+      
+    const userCred = this.ngForm.getRawValue() as ChangePassword;
     if (!userCred.newPass || !userCred.confirmPass) {
       // return this.toast.error('Please fill all the required fields!');
     }

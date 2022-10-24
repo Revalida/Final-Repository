@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class GradesComponent implements OnInit {
   studentNo = '';
-  datas: any;
+  data: any;
 
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
@@ -19,8 +19,8 @@ export class GradesComponent implements OnInit {
 
     this.http.get('http://localhost:9191/grade/' + this.studentNo).subscribe(
       (res) => {
-        this.datas = res;
-        console.log(this.datas);
+        this.data = res;
+        // console.log(this.data);
       },
       (err) => {
         this.toast.error('Something went wrong!');

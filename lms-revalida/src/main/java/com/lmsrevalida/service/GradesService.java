@@ -26,8 +26,4 @@ public class GradesService {
                 .where(Tables.GRADES_TABLE.STUDENT_NO.eq(studentNo))
                 .fetchInto(GradesTable.class);
         }
-
- 
-    
-
 }

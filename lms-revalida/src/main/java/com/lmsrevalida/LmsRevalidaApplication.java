@@ -98,6 +98,17 @@ public class LmsRevalidaApplication {
         return null;
     }
     
+    @GetMapping("/grade/{studentNo}")
+    public List<GradesTable> getStudentGrade(@PathVariable String studentNo){
+        return Gradesservice.getStudentGrade(studentNo);
+    }
+    
+    @PutMapping("updatefacultypassword/{Id}")
+	public String updateFacultyPassword(@RequestBody FacultyDetails faculty, @PathVariable int Id) {
+    	Facultyservice.updateFacultyPassword(faculty, Id);
+		return null;
+	}
+    
     @Autowired
     private StudentService Studentservice;
 

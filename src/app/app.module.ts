@@ -36,19 +36,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { StudentLoadComponent } from './admin/studentload/student-load/student-load.component';
-
 import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
-
 import { StudentSidenavComponent } from './student/student-sidenav/student-sidenav.component';
 import { FacultyScheduleComponent } from './components/Faculty Management module/faculty-schedule/faculty-schedule.component';
-
 import { StudentLoadBsitComponent } from './admin/studentload/student-load-bsit/student-load-bsit.component';
 import { StudentLoadBscsComponent } from './admin/studentload/student-load-bscs/student-load-bscs.component';
 import { StudentLoadBseeComponent } from './admin/studentload/student-load-bsee/student-load-bsee.component';
-
 import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
-
 import { StudentActiveComponent } from './admin/student-list/student-active/student-active.component';
+import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
 import { ParentgradeComponent } from './parentgrade/parentgrade.component';
 import { ParentSidenavComponent } from './components/parental access module/parent-sidenav/parent-sidenav.component';
 

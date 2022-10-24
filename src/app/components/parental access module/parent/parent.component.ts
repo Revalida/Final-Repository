@@ -15,14 +15,14 @@ export class Parent {
   styleUrls: ['./parent.component.scss'],
 })
 export class ParentComponent implements OnInit {
-
-
+  clock!: Observable<Date>;
   imageUrl: string = '';
   data: any;
   studentNo: any;
   updatePass: any;
   updateId: any;
   form: any;
+
 
   constructor(
     private fb: FormBuilder,
