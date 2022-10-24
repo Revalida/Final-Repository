@@ -14,36 +14,38 @@ export class PreAssignedComponent implements OnInit {
   studentNo = '';
 
   constructor(private http: HttpClient, private toast: ToastrService) {
+    // let response = this.http.get<any>('http://localhost:9191/student');
+    // response.subscribe((data) => (this.data = data));
+
   }
 
   ngOnInit(): void {
-    // let response = this.http.get('http://localhost:9191/load');
-    // response.subscribe((data) => (this.data = data));
+    this.studentNo = JSON.stringify(sessionStorage.getItem('STUDENT_NO') || '{}');
+    this.studentNo = this.studentNo.replace(/"/g, '');
 
-    // this.studentNo = JSON.stringify(sessionStorage.getItem('STUDENT_NO') || '{}');
-    // this.studentNo = this.studentNo.replace(/"/g, '');
-    
-    // this.http.get('http://localhost:9191/student/load/' + this.studentNo).subscribe(
-    //   (res) => {
-    //     this.data = res;
-    //     console.log(this.data);
-    //   },
-    //   (err) => {
-    //     this.toast.error('Something went wrong!');
-    //   }
-    // );
+    this.http.get('http://localhost:9191/studentload/' + this.studentNo).subscribe(
+      (res) => {
+        this.data = res;
+        // console.log(this.data);
+      },
+      (err) => {
+        this.toast.error('Something went wrong!');
+      }
+    );
+
+
   }
 
   // edit = () => {
 
   // }
 
-  submit = () => {
-    this.toast.error("Something went wrong!")
+  onDecline = () => {
+    this.toast.error("Something went wrong...")
   }
 
-  save(){
-    this.toast.error("Sorry, Can't Save!")
+  onSubmit(){
+    this.toast.success("Sending to the admin...")
   }
   
 }
