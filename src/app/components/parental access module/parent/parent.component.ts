@@ -52,9 +52,6 @@ export class ParentComponent implements OnInit {
     console.log(f.form.value);
     this.updatePass = data.parentPassword;
     this.updateId = data.id;
-    // console.log(this.updateId);
-    // console.log(data.adminPassword);
-    // console.log(this.updatePass);
     this.http
       .put(
         'http://localhost:9191/updateparentpassword/' + this.updateId,
@@ -63,15 +60,5 @@ export class ParentComponent implements OnInit {
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
-    // console.log(this.updatePass);
-    // console.log(this.data.adminPassword);
-    // const userCred = this.changePasswordForm.getRawValue() as ChangePassword;
-    // if (!userCred.newPass || !userCred.confirmPass) {
-    //   // return this.toast.error('Please fill all the required fields!');
-    // }
-
-    // if (userCred.newPass !== userCred.confirmPass) {
-    //   // return this.toast.error('Password does not match!');
-    // }
   }
 }
