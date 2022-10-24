@@ -77,8 +77,20 @@ public class LmsRevalidaApplication {
     public List<ProfessorLoad> getSubject(@PathVariable String facultyNo) {
         return Professorservice.getSubject(facultyNo);
     }
+    
+    
+    @PutMapping("updatefacultypassword/{Id}")
+	public String updateFacultyPassword(@RequestBody FacultyDetails faculty, @PathVariable int Id) {
+    	Facultyservice.updateFacultyPassword(faculty, Id);
+		return null;
+	}
     @Autowired
     private GradesService Gradesservice;
+    
+    @GetMapping("/studgrades/{studentNo}")
+    public List<GradesTable> getStudentGrades(@PathVariable String studentNo) {
+        return Gradesservice.getStudentGrades(studentNo);
+    }
     
     @PostMapping("/grades/addgrade")
     public GradesTable insertGrade(@RequestBody GradesTable grades) {
@@ -103,6 +115,12 @@ public class LmsRevalidaApplication {
 	@PutMapping("updatestudentpassword/{Id}")
 	public String updateStudentPassword(@RequestBody StudentDetails student, @PathVariable int Id) {
 		Studentservice.updateStudentPassword(student, Id);
+		return null;
+	}
+	
+	@PutMapping("updatestudentparent/{Id}")
+	public String updateStudentParent(@RequestBody StudentDetails student, @PathVariable int Id) {
+		Studentservice.updateStudentParent(student, Id);
 		return null;
 	}
 
@@ -150,6 +168,12 @@ public class LmsRevalidaApplication {
 	@GetMapping("/parent")
 	public List<ParentDetails> getParents() {
 		return Parentservice.getParents();
+	}
+	
+	@PutMapping("updateparentpassword/{Id}")
+	public String updateParentPassword(@RequestBody ParentDetails parent, @PathVariable int Id) {
+		Parentservice.updateParentPassword(parent, Id);
+		return null;
 	}
 	
 	 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jooq.revalida.model.Tables;
 import com.jooq.revalida.model.tables.pojos.GradesTable;
+import com.jooq.revalida.model.tables.pojos.ProfessorLoad;
 
 
 @Service
@@ -19,11 +20,10 @@ public class GradesService {
                 ,Tables.GRADES_TABLE.REMARKS,Tables.GRADES_TABLE.STUDENT_NO, Tables.GRADES_TABLE.SUBJECT_CODE,Tables.GRADES_TABLE.SECTION, Tables.GRADES_TABLE.GRADE)
         .values(grade.getComment(),grade.getRemarks(),grade.getStudentNo(),grade.getSubjectCode(),grade.getSection(),grade.getGrade()).execute();
     }
-    
 
-    public List<GradesTable> getStudentGrade(String studentNo) {
+    public List<GradesTable> getStudentGrades(String studentNo ) {
         return dslContext.selectFrom(Tables.GRADES_TABLE)
                 .where(Tables.GRADES_TABLE.STUDENT_NO.eq(studentNo))
                 .fetchInto(GradesTable.class);
-    }
+        }
 }

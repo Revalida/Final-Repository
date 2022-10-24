@@ -1,12 +1,14 @@
 <app-header></app-header>
 <app-faculty-sidenav></app-faculty-sidenav>
+
+&nbsp;
 <form
   #s="ngForm"
   (ngSubmit)="trial(s)"
   style="margin-left: 500px; margin-right: 500px"
 >
   <div class="form-group">
-    <label>Section:</label>;
+    <label>Section:</label>
     <div>
       <select
         id="section"
@@ -68,7 +70,7 @@
           <td>
             <button
               (click)="evaluate(student)"
-              class="btn-warning"
+              class="btn btn-warning"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
