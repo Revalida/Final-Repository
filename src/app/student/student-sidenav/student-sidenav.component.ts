@@ -23,9 +23,8 @@ export class StudentSidenavComponent implements OnInit {
         });
         if (user) {
           this.data = user;
-          // console.log(this.data);
         } else {
-          console.log(res);
+          this.toast.error("Can't load the data...")
         }
       },
       (err) => {

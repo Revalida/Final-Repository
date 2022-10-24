@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-irregular',
@@ -13,7 +14,7 @@ export class StudentIrregularComponent implements OnInit {
   closeResult: any;
   studentNo = '';
   data: any;
-  constructor(private http: HttpClient, private modalService: NgbModal) {}
+  constructor(private http: HttpClient, private modalService: NgbModal, private toast: ToastrService) {}
 
   ngOnInit(): void {
     let response = this.http.get('http://localhost:9191/student/irregular');
@@ -32,7 +33,6 @@ export class StudentIrregularComponent implements OnInit {
       );
 
     this.studentNo = data.studNo;
-    console.log(this.studentNo);
   }
 
   private getDismissReason(reason: any): string {
@@ -51,6 +51,7 @@ export class StudentIrregularComponent implements OnInit {
     this.http
       .post('http://localhost:9191/parent/addparent', this.data)
       .subscribe((result) => {
+        this.toast.success("Student's parent added successfully!")
         this.ngOnInit(); // reload the table
       });
     this.modalService.dismissAll(); // dismiss the modal

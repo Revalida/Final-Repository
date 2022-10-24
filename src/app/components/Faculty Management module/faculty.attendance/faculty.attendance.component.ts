@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-faculty.attendance',
@@ -24,12 +25,11 @@ export class FacultyAttendanceComponent implements OnInit {
   ass: any;
   facultydata: any;
 
-  constructor(private formbuilder: FormBuilder, private http: HttpClient) {}
+  constructor(private formbuilder: FormBuilder, private http: HttpClient, private toast: ToastrService) {}
 
   ngOnInit(): void {
     let response = this.http.get('http://localhost:9191/student');
     response.subscribe((data) => (this.students = data));
-    console.log(this.students);
     this.http
       .get(
         'http://localhost:9191/subject/' + sessionStorage.getItem('FACULTY_NO')
@@ -44,7 +44,6 @@ export class FacultyAttendanceComponent implements OnInit {
   }
   evaluate(data: any) {
     this.facultydata = data;
-    console.log(this.facultydata);
   }
 
   present(data: any) {
@@ -57,7 +56,7 @@ export class FacultyAttendanceComponent implements OnInit {
     this.http
       .post('http://localhost:9191/attendance/addattendance', this.studAtt)
       .subscribe((result) => {
-        console.log(result);
+        this.toast.success("Attendance Added Successfully!")
       });
   }
 
@@ -71,7 +70,7 @@ export class FacultyAttendanceComponent implements OnInit {
     this.http
       .post('http://localhost:9191/attendance/addattendance', this.studAtt)
       .subscribe((result) => {
-        console.log(result);
+        this.toast.success("Attendance Added Successfully!")
       });
   }
   trial(s: NgForm) {
@@ -81,14 +80,11 @@ export class FacultyAttendanceComponent implements OnInit {
       .subscribe(
         (res) => {
           this.students = res;
-          console.log(this.datas);
         },
         (err) => {
-          alert('Something went wrong!');
+          this.toast.error('Something went wrong!');
         }
       );
-    console.log(this.faculty);
-    console.log(this.section);
   }
 
   submit() {
@@ -100,11 +96,10 @@ export class FacultyAttendanceComponent implements OnInit {
     } else {
       this.ass.remarks = 'FAILED';
     }
-    console.log(this.ass);
     this.http
       .post('http://localhost:9191/grades/addgrade', this.ass)
       .subscribe((result) => {
-        console.log(result);
+        this.toast.success("Grade Added to the Student!")
       });
   }
 }

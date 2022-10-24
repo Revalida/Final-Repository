@@ -21,12 +21,9 @@ export class FacultyGradesComponent implements OnInit {
     this.http
       .get('http://localhost:9191/student')
       .subscribe((data) => (this.students = data));
-    console.log(this.students);
   }
 
   submit() {
     this.ass = this.formValue.value;
-    console.log(this.ass);
-    console.log(this.students);
   }
 }

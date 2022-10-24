@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-load-bsee',
@@ -26,7 +27,7 @@ export class StudentLoadBseeComponent implements OnInit {
   load: any;
   updateLoad: any;
   lods: any;
-  constructor(private http: HttpClient, private modalService: NgbModal) {}
+  constructor(private http: HttpClient, private modalService: NgbModal, private toast: ToastrService) {}
 
   ngOnInit(): void {
     let response11 = this.http.get('http://localhost:9191/BSEE11');
@@ -93,19 +94,17 @@ export class StudentLoadBseeComponent implements OnInit {
     this.studLoad.facultyNo = s.form.value.facultyNo;
     this.studLoad.section = s.form.value.section;
     this.studLoad.schedule = s.form.value.schedule;
-    console.log(this.studLoad);
-    console.log(s.form.value.subjectCode);
 
     this.http
       .post('http://localhost:9191/student/load', this.studLoad)
       .subscribe((result) => {
-        console.log(result);
+        this.toast.success("Schedule added successfully!")
       });
 
     this.http
       .post('http://localhost:9191/faculty/load', this.studLoad)
       .subscribe((result) => {
-        console.log(result);
+        this.toast.success("Schedule added successfully!")
       });
 
     this.modalService.dismissAll(); // dismiss the modal

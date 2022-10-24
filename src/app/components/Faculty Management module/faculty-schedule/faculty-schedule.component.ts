@@ -16,6 +16,5 @@ export class FacultyScheduleComponent implements OnInit {
     this.http
       .get('http://localhost:9191/subject/' + this.facultyNo)
       .subscribe((data) => (this.load = data));
-    console.log(this.load);
   }
 }

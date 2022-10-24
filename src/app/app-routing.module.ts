@@ -28,9 +28,7 @@ import { UserGuard } from './guards/user.guard';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { StudentLoadComponent } from './admin/studentload/student-load/student-load.component';
 import { FacultyGradesComponent } from './components/Faculty Management module/faculty-grades/faculty-grades.component';
-
 import { FacultyScheduleComponent } from './components/Faculty Management module/faculty-schedule/faculty-schedule.component';
-
 import { StudentActiveComponent } from './admin/student-list/student-active/student-active.component';
 import { StudentLoadBsitComponent } from './admin/studentload/student-load-bsit/student-load-bsit.component';
 import { StudentLoadBscsComponent } from './admin/studentload/student-load-bscs/student-load-bscs.component';
@@ -138,10 +136,6 @@ const routes: Routes = [
     canActivate: [AdminGuard],
   },
   {
-    path: 'faculty-attendance',
-    component: FacultyAttendanceComponent,
-  },
-  {
     path: 'admin-profile',
     component: AdminProfileComponent,
     canActivate: [AdminGuard],
@@ -152,17 +146,9 @@ const routes: Routes = [
     canActivate: [AdminGuard],
   },
   {
-    path: 'grading-system',
-    component: FacultyGradesComponent,
-  },
-  {
     path: 'student-active',
     component: StudentActiveComponent,
     canActivate: [AdminGuard],
-  },
-  {
-    path: 'faculty-schedule',
-    component: FacultyScheduleComponent,
   },
   {
     path: 'student-load-bsit',
@@ -180,8 +166,24 @@ const routes: Routes = [
     canActivate: [AdminGuard],
   },
   {
+    path: 'grading-system',
+    component: FacultyGradesComponent,
+    canActivate: [ProfessorGuard],
+  },
+  {
+    path: 'faculty-attendance',
+    component: FacultyAttendanceComponent,
+    canActivate: [ProfessorGuard],
+  },
+  {
+    path: 'faculty-schedule',
+    component: FacultyScheduleComponent,
+    canActivate: [ProfessorGuard],
+  },
+  {
     path: 'parent-attendance',
     component: AttendanceParentComponent,
+    canActivate: [ParentGuard],
   },
 ];
 

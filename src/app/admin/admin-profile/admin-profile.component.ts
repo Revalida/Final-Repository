@@ -1,14 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { AstMemoryEfficientTransformer } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-
-export interface ChangePassword {
-  newPass: string;
-  confirmPass: string;
-}
 
 export class Admin {
   constructor(public adminId: number, public adminPassword: string) {}
@@ -91,6 +85,7 @@ export class AdminProfileComponent implements OnInit {
     this.http
       .post('http://localhost:9191/student/addstudent', s.value)
       .subscribe((result) => {
+        this.toast.success("Student Added Successfully!")
         this.ngOnInit(); // reload the table
       });
     this.modalService.dismissAll(); // dismiss the modal
@@ -114,46 +109,24 @@ export class AdminProfileComponent implements OnInit {
     this.http
       .post('http://localhost:9191/faculty/addfaculty', f.value)
       .subscribe((result) => {
+        this.toast.success("New Professor Added Successfully!")
         this.ngOnInit(); // reload the table
       });
     this.modalService.dismissAll(); // dismiss the modal
   }
 
-  // previewImage(e: any) {
-  //   if(e.target.files) {
-  //      const reader = new FileReader();
-  //      reader.readAsDataURL(e.target.files[0]);
-  //      reader.onload = (event: any) => {
-  //        this.imageUrl = event.target.result;
-  //      }
-  //     this.studentForm.get('student')?.patchValue(e.target.files[0].name)
-  //   }
-  //  }
-
   onChangePassword(f: NgForm, data: Admin) {
     console.log(f.form.value);
     this.updatePass = data.adminPassword;
     this.updateId = data.adminId;
-    // console.log(this.updateId);
-    // console.log(data.adminPassword);
-    // console.log(this.updatePass);
     this.http
       .put(
         'http://localhost:9191/updateadminpassword/' + this.updateId,
         f.value
       )
       .subscribe((result) => {
+        this.toast.success("Admin Password Updated Successfully!")
         this.ngOnInit(); // reload the table
       });
-    // console.log(this.updatePass);
-    // console.log(this.data.adminPassword);
-    const userCred = this.changePasswordForm.getRawValue() as ChangePassword;
-    if (!userCred.newPass || !userCred.confirmPass) {
-      // return this.toast.error('Please fill all the required fields!');
-    }
-
-    if (userCred.newPass !== userCred.confirmPass) {
-      // return this.toast.error('Password does not match!');
-    }
   }
 }

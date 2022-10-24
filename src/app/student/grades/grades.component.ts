@@ -20,7 +20,6 @@ export class GradesComponent implements OnInit {
     this.http.get('http://localhost:9191/grade/' + this.studentNo).subscribe(
       (res) => {
         this.data = res;
-        // console.log(this.data);
       },
       (err) => {
         this.toast.error('Something went wrong!');

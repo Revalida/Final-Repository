@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { ClockService } from 'src/app/services/clock.service';
 
@@ -13,7 +14,7 @@ export class FacultySidenavComponent implements OnInit {
   name = '';
   clock!: Observable<Date>;
 
-  constructor(private http: HttpClient, private clockService: ClockService) {}
+  constructor(private http: HttpClient, private clockService: ClockService, private toast: ToastrService) {}
 
   ngOnInit(): void {
     this.http.get<any>('http://localhost:9191/faculty').subscribe(
@@ -28,7 +29,7 @@ export class FacultySidenavComponent implements OnInit {
         }
       },
       (err) => {
-        alert('Something went wrong!');
+        this.toast.error('Something went wrong!');
       }
     );
     this.clock = this.clockService.getClock();

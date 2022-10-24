@@ -71,6 +71,7 @@ export class AdminSidenavComponent implements OnInit {
     this.http
       .post('http://localhost:9191/student/addstudent', s.value)
       .subscribe((result) => {
+        this.toast.success("Student Added Successfully!")
         this.ngOnInit(); // reload the table
       });
     this.modalService.dismissAll(); // dismiss the modal
@@ -94,6 +95,7 @@ export class AdminSidenavComponent implements OnInit {
     this.http
       .post('http://localhost:9191/faculty/addfaculty', f.value)
       .subscribe((result) => {
+        this.toast.success("New Professor Added Successfully!")
         this.ngOnInit(); // reload the table
       });
     this.modalService.dismissAll(); // dismiss the modal

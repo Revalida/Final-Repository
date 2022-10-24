@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 export class Faculty {
   constructor(public id: number, public facultyPassword: string) {}
@@ -24,7 +25,7 @@ export class FacultyComponent implements OnInit {
   updatePass: any;
   updateId: any;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private toast: ToastrService) {
     this.profForm = this.fb.group({
       firstName: ['', [Validators.required]],
       middleName: ['', [Validators.required]],
@@ -51,10 +52,9 @@ export class FacultyComponent implements OnInit {
         }
       },
       (err) => {
-        alert('Something went wrong!');
+        this.toast.error('Something went wrong!');
       }
     );
-    console.log(this.data);
   }
 
   previewImage(e: any) {
@@ -88,30 +88,14 @@ export class FacultyComponent implements OnInit {
     console.log(f.form.value);
     this.updatePass = data.facultyPassword;
     this.updateId = data.id;
-    // console.log(this.updateId);
-    // console.log(data.facultyPassword);
-    // console.log(this.updatePass);
     this.http
       .put(
         'http://localhost:9191/updatefacultypassword/' + this.updateId,
         f.value
       )
       .subscribe((result) => {
+        this.toast.success("Your Password Updated Successfully!")
         this.ngOnInit(); // reload the table
       });
-    // console.log(this.updatePass);
-    // console.log(this.data.adminPassword);
-    // const userCred = this.changePasswordForm.getRawValue() as ChangePassword;
-    // if (!userCred.newPass || !userCred.confirmPass) {
-    //   // return this.toast.error('Please fill all the required fields!');
-    // }
-
-    // if (userCred.newPass !== userCred.confirmPass) {
-    //   // return this.toast.error('Password does not match!');
-    // }
-  }
-
-  toogleSidebar() {
-    this.opened = !this.opened;
   }
 }

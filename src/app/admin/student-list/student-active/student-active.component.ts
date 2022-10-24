@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-active',
@@ -14,7 +15,7 @@ export class StudentActiveComponent implements OnInit {
   studentNo = '';
   data: any;
   parentNo: any;
-  constructor(private http: HttpClient, private modalService: NgbModal) {}
+  constructor(private http: HttpClient, private modalService: NgbModal, private toast: ToastrService) {}
 
   ngOnInit(): void {
     let response = this.http.get('http://localhost:9191/student');
@@ -52,6 +53,7 @@ export class StudentActiveComponent implements OnInit {
     this.http
       .post('http://localhost:9191/parent/addparent', this.data)
       .subscribe((result) => {
+        this.toast.success("Student's parent added successfully!")
         this.ngOnInit(); // reload the table
       });
     this.data = p.form.value;
@@ -59,6 +61,7 @@ export class StudentActiveComponent implements OnInit {
     this.http
       .patch('http://localhost:9191/updatestudent/', this.data)
       .subscribe((result) => {
+        this.toast.success("Student updated successfully!")
         this.ngOnInit(); // reload the table
       });
     this.modalService.dismissAll(); // dismiss the modal

@@ -77,16 +77,9 @@ export class ProfileComponent implements OnInit {
         f.value
       )
       .subscribe((result) => {
+        this.toast.success("Your Password Updated Successfully!")
         this.ngOnInit(); // reload the table
       });
-      
-    const userCred = this.ngForm.getRawValue() as ChangePassword;
-    if (!userCred.newPass || !userCred.confirmPass) {
-      // return this.toast.error('Please fill all the required fields!');
-    }
 
-    if (userCred.newPass !== userCred.confirmPass) {
-      // return this.toast.error('Password does not match!');
-    }
   }
 }
