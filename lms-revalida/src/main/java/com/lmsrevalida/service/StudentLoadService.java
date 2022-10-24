@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jooq.revalida.model.Tables;
-import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.StudentLoad;
 
 @Service
@@ -29,7 +28,7 @@ public class StudentLoadService {
 				,load.getFacultyNo(),load.getSem()).execute();
 	}
 	
-	public List<StudentLoad> getStudentLoad(String id) {
+	public List<StudentLoad> getStudentLoads(String id) {
         return dslContext.selectFrom(Tables.STUDENT_LOAD)
                 .where(Tables.STUDENT_LOAD.STUDENT_NO.eq(id))
                 .fetchInto(StudentLoad.class);

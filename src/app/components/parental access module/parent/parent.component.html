@@ -37,10 +37,12 @@
                           class="d-flex flex-row justify-content-center align-items-center"
                         >
                           <div class="mb-25 col-md-5">
-                            <label for="studentNo" class="form-label"
+                            <label for="parentNo" class="form-label"
                               >Parent No.</label
                             >
                             <input
+                              id="parentNo"
+                              name="parentNo"
                               class="form-control"
                               type="text"
                               value="{{ data?.parentNo }}"
@@ -67,13 +69,13 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="mb-3 col-md-6">
-                        <label for="firstName" class="form-label"
+                        <label for="ParentFirstname" class="form-label"
                           >First Name</label
                         >
                         <input
                           class="form-control"
                           type="text"
-                          value="{{ data?.studentFirstname }}"
+                          value="{{ data?.ParentFirstname }}"
                           [attr.disabled]="true"
                         />
                       </div>
@@ -187,7 +189,7 @@
                           />
                         </div>
                         <div class="mb-3 col-md-6">
-                          <label for="parent" class="form-label"
+                          <label for="parentFirstname" class="form-label"
                             >Parent/Guardian</label
                           >
                           <input
@@ -205,16 +207,21 @@
                 <div class="card mb-4">
                   <h5 class="card-header">Change password</h5>
                   <div class="card-body address-group">
-                    <div class="form-group">
-                      <label for="studentPassword">Password</label>
-                      <div class="input-group">
-                        <input
-                          id="studentPassword"
-                          class="form-control"
-                          name="studentPassword"
-                          #studentPassword="ngModel"
-                          ngModel
-                        />
+
+                    <form #f="ngForm" (ngSubmit)="onChangePassword(f, data)">
+                      <div class="form-group">
+                        <label for="parentPassword">Password</label>
+                        <div class="input-group">
+                          <input
+                            id="parentPassword"
+                            class="form-control"
+                            name="parentPassword"
+                            type="password"
+                            #parentPassword="ngModel"
+                            ngModel
+                          />
+                        </div>
+
                       </div>
                     </div>
 

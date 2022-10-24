@@ -372,7 +372,7 @@ li:hover {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
-  color: rgb(3, 34, 34);
+  color: rgb(32, 149, 32);
 }
 
 .section-title h2::before {
@@ -470,18 +470,11 @@ li:hover {
   cursor: pointer;
   background-color: rgb(6, 54, 50);
 }
-.marquee {
-  color: rgb(3, 37, 35);
-  font-size: 18px;
-  font-style: bold;
-  font-family: roboto;
-  padding: 10px;
-  margin-top: -2%;
-  background-color: #c4f1f3;
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-bottom: 3%;
-  border-radius: 15px;
+
+@media only screen and (max-width: 992px){
+.footer {
+    padding: 5px;
+}
 }
 
 

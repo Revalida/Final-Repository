@@ -41,17 +41,11 @@ import { ParentgradeComponent } from './parentgrade/parentgrade.component';
 const routes: Routes = [
   {
     path: '',
-
     component: WelcomepageComponent,
   },
   {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'student-profile',
-    component: ProfileComponent,
-    canActivate: [UserGuard],
   },
   {
     path: 'admindashboard',
@@ -71,62 +65,77 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'pre-assigned',
     component: PreAssignedComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'courses-list',
     component: CoursesListComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'attendance',
     component: AttendanceComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'grades',
     component: GradesComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'admin-student-list',
     component: AdminStudentListComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin-parent-list',
     component: AdminParentListComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin-faculty-list',
     component: AdminFacultyListComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin-course-list',
     component: AdminCourseListComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'course-bsit',
     component: CourseBsitComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'course-bscs',
     component: CourseBscsComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'course-bsee',
     component: CourseBseeComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'student-regular',
     component: StudentRegularComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'student-irregular',
     component: StudentIrregularComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'student-graduate',
     component: StudentGraduateComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'faculty-attendance',
@@ -135,10 +144,12 @@ const routes: Routes = [
   {
     path: 'admin-profile',
     component: AdminProfileComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'student-load',
     component: StudentLoadComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'grading-system',
@@ -147,6 +158,7 @@ const routes: Routes = [
   {
     path: 'student-active',
     component: StudentActiveComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'faculty-schedule',
@@ -155,14 +167,17 @@ const routes: Routes = [
   {
     path: 'student-load-bsit',
     component: StudentLoadBsitComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'student-load-bscs',
     component: StudentLoadBscsComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'student-load-bsee',
     component: StudentLoadBseeComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'parent-attendance',

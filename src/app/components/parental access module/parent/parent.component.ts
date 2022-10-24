@@ -5,14 +5,18 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { StudentService } from 'src/app/services/student.service';
 
+export class Parent {
+  constructor(public id: number, public parentPassword: string) {}
+}
+
 @Component({
   selector: 'app-parent',
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.scss'],
 })
 export class ParentComponent implements OnInit {
-  clock!: Observable<Date>;
-  changePasswordForm: FormGroup | undefined;
+
+
   imageUrl: string = '';
   data: any;
   studentNo: any;
@@ -44,10 +48,32 @@ export class ParentComponent implements OnInit {
         this.toast.error('Something went wrong!');
       }
     );
+  }
 
-    this.changePasswordForm = this.fb.group({
-      newPass: ['', [Validators.required]],
-      confirmPass: ['', [Validators.required]],
-    });
+  onChangePassword(f: NgForm, data: Parent) {
+    console.log(f.form.value);
+    this.updatePass = data.parentPassword;
+    this.updateId = data.id;
+    // console.log(this.updateId);
+    // console.log(data.adminPassword);
+    // console.log(this.updatePass);
+    this.http
+      .put(
+        'http://localhost:9191/updateparentpassword/' + this.updateId,
+        f.value
+      )
+      .subscribe((result) => {
+        this.ngOnInit(); // reload the table
+      });
+    // console.log(this.updatePass);
+    // console.log(this.data.adminPassword);
+    // const userCred = this.changePasswordForm.getRawValue() as ChangePassword;
+    // if (!userCred.newPass || !userCred.confirmPass) {
+    //   // return this.toast.error('Please fill all the required fields!');
+    // }
+
+    // if (userCred.newPass !== userCred.confirmPass) {
+    //   // return this.toast.error('Password does not match!');
+    // }
   }
 }
