@@ -14,6 +14,7 @@ export class Student {
   styleUrls: ['./student-regular.component.scss'],
 })
 export class StudentRegularComponent implements OnInit {
+  student: any;
   regStudents: any;
   closeResult: any;
   studNo: any;
@@ -26,8 +27,12 @@ export class StudentRegularComponent implements OnInit {
   ngOnInit(): void {
     let response = this.http.get('http://localhost:9191/student/regular');
     response.subscribe((data) => (this.regStudents = data));
+
+    let response2 = this.http.get('http://localhost:9191/student/regular');
+    response2.subscribe((data) => (this.student = data));
   }
   openParent(parent: any, data: any) {
+    console.log(this.student.id);
     this.modalService
       .open(parent, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
@@ -51,8 +56,8 @@ export class StudentRegularComponent implements OnInit {
   }
 
   addParent(p: NgForm, data: Student) {
-    // this.data = p.form.value;
-    console.log(this.regStudents.id);
+    console.log(this);
+    this.data = p.form.value;
     this.studNo = data.id;
     console.log(this.studNo);
     this.http
@@ -60,6 +65,17 @@ export class StudentRegularComponent implements OnInit {
       .subscribe((result) => {
         this.ngOnInit(); // reload the table
       });
+    console.log(p.form.value);
+    // this.updateId = data.id;
+    // console.log(this.updateId);
+    // this.http
+    //   .put(
+    //     'http://localhost:9191/updatestudentparent/' + this.updateId,
+    //     p.value
+    //   )
+    //   .subscribe((result) => {
+    //     this.ngOnInit(); // reload the table
+    //   });
     this.modalService.dismissAll(); // dismiss the modal
   }
 }

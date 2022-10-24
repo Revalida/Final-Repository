@@ -46,11 +46,12 @@ public class StudentService {
 	
 	public void insertStudent(StudentDetails student) {
 		dslContext.insertInto(Tables.STUDENT_DETAILS,Tables.STUDENT_DETAILS.STUDENT_FIRSTNAME
-				,Tables.STUDENT_DETAILS.STUDENT_MIDDLENAME,Tables.STUDENT_DETAILS.STUDENT_LASTNAME
+				,Tables.STUDENT_DETAILS.STUDENT_MIDDLENAME,Tables.STUDENT_DETAILS.STUDENT_LASTNAME,Tables.STUDENT_DETAILS.EMAIL
 				,Tables.STUDENT_DETAILS.COURSE,Tables.STUDENT_DETAILS.SECTION,Tables.STUDENT_DETAILS.SEM
-				,Tables.STUDENT_DETAILS.YEAR_LEVEL)
-		.values(student.getStudentFirstname(),student.getStudentMiddlename(),student.getStudentLastname(),student.getCourse(),student.getSection()
-,student.getSem(),student.getYearLevel()).execute();
+				,Tables.STUDENT_DETAILS.YEAR_LEVEL,Tables.STUDENT_DETAILS.ACAD_YEAR,Tables.STUDENT_DETAILS.STATUS
+				,Tables.STUDENT_DETAILS.ACTIVE_DEACTIVE)
+		.values(student.getStudentFirstname(),student.getStudentMiddlename(),student.getStudentLastname(),student.getEmail(),student.getCourse(),student.getSection()
+,student.getSem(),student.getYearLevel(),student.getAcadYear(),student.getStatus(),student.getActiveDeactive()).execute();
 	}
 	
 
