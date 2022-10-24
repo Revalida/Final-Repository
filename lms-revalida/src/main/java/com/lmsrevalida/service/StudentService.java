@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jooq.revalida.model.Tables;
+import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
 
 @Service
@@ -59,6 +60,12 @@ public class StudentService {
         .set(Tables.STUDENT_DETAILS.STUDENT_PASSWORD, student.getStudentPassword())
         .where(Tables.STUDENT_DETAILS.ID.eq(Id))
         .execute();
+    }
+
+	public List<StudentDetails> getStudentSection(String section ) {
+        return dslContext.selectFrom(Tables.STUDENT_DETAILS)
+                .where(Tables.STUDENT_DETAILS.SECTION.eq(section))
+                .fetchInto(StudentDetails.class);
     }
 	
 	

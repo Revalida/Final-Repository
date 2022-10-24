@@ -1,5 +1,28 @@
 <app-header></app-header>
 <app-faculty-sidenav></app-faculty-sidenav>
+<form
+  #s="ngForm"
+  (ngSubmit)="trial(s)"
+  style="margin-left: 500px; margin-right: 500px"
+>
+  <div class="form-group">
+    <label>Section:</label>;
+    <div>
+      <select
+        id="section"
+        class="form-control"
+        name="section"
+        #facultyNo
+        ngModel
+      >
+        <option *ngFor="let profs of faculty" [value]="profs.section">
+          {{ profs.section }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <button data-dismiss="modal" class="btn btn-info">Filter</button>
+</form>
 <div class="table">
   <div class="row">
     <table class="table table-bordered table-striped">
@@ -11,6 +34,7 @@
           <th>Year Level</th>
           <th>Acad Year</th>
           <th>Present / Absent</th>
+          <th>Evaluate</th>
         </tr>
       </thead>
       <tbody>
@@ -35,14 +59,126 @@
           </td>
           <td>
             <button class="btn btn-sm btn-warning" (click)="present(student)">
-              Present
-            </button>
+              Present</button
+            >&nbsp;
             <button class="btn btn-sm btn-warning" (click)="absent(student)">
               Absent
+            </button>
+          </td>
+          <td>
+            <button
+              (click)="evaluate(student)"
+              class="btn-warning"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Evaluate
             </button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="examplfeModalLabel">
+          Student's Grade and Remarks
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="form-group">
+            <div>
+              <label>Subject</label>
+              <select
+                id="section"
+                class="form-control"
+                formControlName="subjectCode"
+              >
+                <option
+                  *ngFor="let profs of faculty"
+                  [value]="profs.subjectTitle"
+                >
+                  {{ profs.subjectTitle }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputUsername1">Grade</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="grade"
+              id="exampleInputUsername1"
+              aria-describedby="emailHelp"
+              placeholder="Username"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                formValue.controls['grade'].dirty &&
+                formValue.hasError('required', 'grade')
+              "
+              >Grade is required</span
+            >
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1">Comment</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="comment"
+              id="exampleInputPassword1"
+              placeholder="Password"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                formValue.controls['comment'].dirty &&
+                formValue.hasError('required', 'comment')
+              "
+              >Comment is required</span
+            >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          [disabled]="formValue.invalid"
+          class="btn btn-primary"
+          (click)="submit()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
   </div>
 </div>

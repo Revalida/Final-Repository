@@ -1,0 +1,54 @@
+<app-header></app-header>
+<app-faculty-sidenav></app-faculty-sidenav>
+<div class="container">
+  <!-- PAGE CONTENTS -->
+  <div class="table">
+    <div class="row">
+      <div class="card">
+        <div class="header">
+          <h2 class="title">Courses and Schedule</h2>
+        </div>
+      </div>
+      &nbsp;
+
+      <div class="card">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered table-striped table-centered table-hover mb-0"
+            id="datatable"
+          >
+            <thead>
+              <tr>
+                <th>Subject Code</th>
+                <th>Schedule (Day & Time)</th>
+                <!-- <th class="border-top-0" scope="col" style="width:120px">Action</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of load">
+                <td>
+                  <span> {{ data?.subjectTitle }} </span>
+                </td>
+                <td>
+                  <span> {{ data?.schedule }} </span>
+                </td>
+                <!-- <td style="white-space: nowrap">
+                        <button class="btn us-btn-secondary" 
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCenter"
+                        >Edit</button>&nbsp;
+                      </td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- <button class="btn us-btn-primary" 
+                    style="width:120px; margin-left: auto; margin-right: auto; margin-top: 50px;" 
+                    (click)="onSubmit()">Approve</button>
+            <button class="btn us-btn-secondary" 
+                    style="width:120px; margin-left: auto; margin-right: auto; margin-top: 50px;" 
+                    (click)="onDecline()">Decline</button> -->
+    </div>
+  </div>
+</div>

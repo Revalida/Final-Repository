@@ -34,13 +34,4 @@ public class StudentLoadService {
                 .where(Tables.STUDENT_LOAD.STUDENT_NO.eq(id))
                 .fetchInto(StudentLoad.class);
         }
-	
-	public void updateStudentLoad(StudentLoad load, int load_id) {
-		dslContext.update(Tables.STUDENT_LOAD)
-		.set(Tables.STUDENT_LOAD.FACULTY_NO, load.getFacultyNo())
-		.set(Tables.STUDENT_LOAD.SECTION, load.getSection())
-		.set(Tables.STUDENT_LOAD.SCHEDULE, load.getSchedule())
-		.where(Tables.STUDENT_LOAD.LOAD_ID.eq(load_id))
-		.execute();
-	}
 }

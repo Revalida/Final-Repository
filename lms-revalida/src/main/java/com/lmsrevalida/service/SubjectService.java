@@ -15,6 +15,11 @@ public class SubjectService {
 	@Autowired
 	private DSLContext dslContext;
 	
+	public List<SubjectTable> getAllSubjects() {
+		return dslContext.selectFrom(Tables.SUBJECT_TABLE)
+				.fetchInto(SubjectTable.class);
+	}
+	
 	public List<SubjectTable> getSubjectCS() {
 		return dslContext.selectFrom(Tables.SUBJECT_TABLE)
 				.where(Tables.SUBJECT_TABLE.COURSE.eq("BSCS"))

@@ -27,5 +27,6 @@ export class FacultyGradesComponent implements OnInit {
   submit() {
     this.ass = this.formValue.value;
     console.log(this.ass);
+    console.log(this.students);
   }
 }
