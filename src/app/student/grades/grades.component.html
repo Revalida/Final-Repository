@@ -17,21 +17,23 @@
             <tr>
               <th>Subject Code</th>
               <th>Grade</th>
-              <th>Comment</th>
+              <th>Comment/s</th>
               <th>Remarks</th>
-              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let data of datas">
               <td>
-                <span>{{ data.subjectCode }}</span>
+                <span>{{ data?.subjectCode }}</span>
               </td>
               <td>
-                <span>{{ data.timestamp }}</span>
+                <span>{{ data?.grade }}</span>
               </td>
               <td>
-                <span>{{ data.status }}</span>
+                <span>{{ data?.comments }}</span>
+              </td>
+              <td>
+                <span>{{ data?.remarks }}</span>
               </td>
             </tr>
           </tbody>

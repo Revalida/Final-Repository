@@ -213,5 +213,12 @@ public class SubjectService {
 				.fetchInto(SubjectTable.class);
 	}
 	
+	
+	   public List<SubjectTable> getStudentSubject(String course) {
+	        return dslContext.selectFrom(Tables.SUBJECT_TABLE)
+	                .where(Tables.SUBJECT_TABLE.COURSE.eq(course))
+	                .fetchInto(SubjectTable.class);
+	    }
+	
 
 }

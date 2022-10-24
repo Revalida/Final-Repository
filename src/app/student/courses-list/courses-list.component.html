@@ -3,7 +3,53 @@
 <div class="container">
   <div class="row">
             <!-- PAGE CONTENTS -->
-            
+            <div class="table">
+              <div class="row">
+                  <div class="card">
+                    <div class="header">
+                      <h2 class="title">My Courses List</h2>
+                    </div>
+                  </div>&nbsp; 
+                  <div class="card" >
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-striped table-centered table-hover">
+                        <thead>
+                          <tr>
+                            <th>Subject Code</th>
+                            <th>Subject Title</th>
+                            <th>Units</th>
+                            <th>Pre-requisites</th>
+                            <th>Semester</th>
+                            <th>Year Level</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let data of datas">
+                            <td>
+                              <span>{{ data.subjectCode }}</span>
+                            </td>
+                            <td>
+                              <span>{{ data.subjectTitle }}</span>
+                            </td>
+                            <td>
+                              <span>{{ data.units }}</span>
+                            </td>
+                            <td>
+                              <span>{{ data.prerequisites }}</span>
+                            </td>
+                            <td>
+                              <span>{{ data.sem }}</span>
+                            </td>
+                            <td>
+                              <span>{{ data.yearLevel }}</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+              </div>
 
   </div>
 </div>

@@ -86,6 +86,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
           sessionStorage.setItem('STUDENT_NO', user.studentNo);
+          sessionStorage.setItem('COURSE', user.course);
           console.log(user);
         } else {
           this.toast.error('Student account not found!');

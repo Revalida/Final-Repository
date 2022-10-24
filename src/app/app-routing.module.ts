@@ -33,17 +33,11 @@ import { StudentActiveComponent } from './admin/student-active/student-active.co
 const routes: Routes = [
   {
     path: '',
-
     component: WelcomepageComponent,
   },
   {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'student-profile',
-    component: ProfileComponent,
-    canActivate: [UserGuard],
   },
   {
     path: 'admindashboard',
@@ -63,22 +57,27 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'pre-assigned',
     component: PreAssignedComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'courses-list',
     component: CoursesListComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'attendance',
     component: AttendanceComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'grades',
     component: GradesComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'admin-student-list',

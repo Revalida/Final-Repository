@@ -1,104 +1,47 @@
 <app-header></app-header>
 <app-student-sidenav></app-student-sidenav>
 <div class="container">
-          <!-- PAGE CONTENTS -->
-    <div class="table">
-        <div class="row">
-            <div class="card">
-              <div class="d-flex flex-row justify-content-center align-items-center ">
-              <div class="mb-1 col-md-3">
-                <label for="yearLevel" class="form-label">Year Level</label>
-                <input class="form-control" type="text" value={{data?.yearLevel}} [attr.disabled]="true"/>
-              </div><p style="padding: 15px; margin: 15px"></p>
-              
-              <div class="mb-1 col-md-3">
-                <label for="section" class="form-label">Section</label>
-                <input class="form-control" value={{data?.section}} [attr.disabled]="true"/>
-              </div><p style="padding: 15px; margin: 15px"></p>
-              
-              <div class="mb-1 col-md-3">
-                <label for="sem" class="form-label">Semester</label>
-                <input class="form-control" type="text" value={{data?.sem}} [attr.disabled]="true"/>
-              </div>
-            </div>
-            </div>&nbsp; 
+  <!-- PAGE CONTENTS -->
+  <div class="table">
+    <div class="row">
+      <div class="card">
+        <div class="header">
+          <h2 class="title">Courses Schedule</h2>
+        </div>
+      </div>
+      &nbsp;
 
-            <div class="card" >
-              <div class="table-responsive">
-                <table class="table table-bordered table-striped table-centered table-hover mb-0" id="datatable">
-                  <thead>
-                    <tr>
-                      <th class="border-top-0" scope="col">Subject Code</th>
-                      <th class="border-top-0" scope="col">Schedule (Day & Time)</th>
-                      <th class="border-top-0" scope="col">Professor ID</th>
-                      <th class="border-top-0" scope="col" style="width:120px">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr >
-                      <td><span> {{data?.subjectCode}} </span></td>
-                      <td><span> {{data?.schedule}} </span></td>
-                      <td><span> {{data?.facultyNo}} </span></td>
-                      <td style="white-space: nowrap">
-                        <button class="btn us-btn-secondary" 
-                        data-bs-toggle="modal"
-                        data-bs-target="#modalCenter"
-                        >Edit</button>&nbsp;
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <button class="btn us-btn-primary" 
-                    style="width:120px; margin-left: auto; margin-right: auto; margin-top: 50px;" 
-                    (click)="submit()">Submit</button>
-        </div>
-     </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header" >
-        <h2 class="modal-title" id="modalCenterTitle">Edit Pre-assigned Course</h2>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-mb-1">
-            <!-- First field -->
-            <label for="subjectCode" class="form-label">Subject Code</label>
-            <input class="form-control" type="text" value={{data?.subjectCode}}/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col mb-1">
-            <!-- Second Field -->
-            <label for="sched" class="form-label">Schedule (Day & Time)</label>
-            <input class="form-control" type="text" value={{data?.schedule}}/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col mb-1">
-            <!-- Third Field -->
-            <label for="profID" class="form-label">Professor ID</label>
-            <input class="form-control" type="text" value={{data?.facultyNo}}/>
+      <div class="card">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered table-striped table-centered table-hover mb-0"
+            id="datatable"
+          >
+            <thead>
+              <tr>
+                <th>Subject Code</th>
+                <th>Schedule (Day & Time)</th>
+                <th>Professor ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of data">
+                <td>
+                  <span> {{ data?.subjectCode }} </span>
+                </td>
+                <td>
+                  <span> {{ data?.schedule }} </span>
+                </td>
+                <td>
+                  <span> {{ data?.facultyNo }} </span>
+                </td>
+     
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn us-btn-primary" data-bs-dismiss="modal" (click)="save()">Save</button>
-        <button type="button" class="btn us-btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        
-      </div>
+
     </div>
   </div>
 </div>
-<!-- End Modal -->
