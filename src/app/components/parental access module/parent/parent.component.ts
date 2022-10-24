@@ -15,6 +15,8 @@ export class Parent {
   styleUrls: ['./parent.component.scss'],
 })
 export class ParentComponent implements OnInit {
+
+
   imageUrl: string = '';
   data: any;
   studentNo: any;

@@ -36,6 +36,7 @@ import { StudentLoadBsitComponent } from './admin/studentload/student-load-bsit/
 import { StudentLoadBscsComponent } from './admin/studentload/student-load-bscs/student-load-bscs.component';
 import { StudentLoadBseeComponent } from './admin/studentload/student-load-bsee/student-load-bsee.component';
 import { ParentComponent } from './components/parental access module/parent/parent.component';
+import { ParentgradeComponent } from './parentgrade/parentgrade.component';
 
 const routes: Routes = [
   {
@@ -58,7 +59,7 @@ const routes: Routes = [
   },
   {
     path: 'parentdashboard',
-    component: ParentComponent,
+    component: ParentgradeComponent,
     canActivate: [ParentGuard],
   },
   {

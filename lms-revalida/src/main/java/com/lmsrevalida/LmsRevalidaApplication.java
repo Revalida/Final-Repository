@@ -77,20 +77,26 @@ public class LmsRevalidaApplication {
     public List<ProfessorLoad> getSubject(@PathVariable String facultyNo) {
         return Professorservice.getSubject(facultyNo);
     }
-    @Autowired
-    private GradesService Gradesservice;
     
-    @PostMapping("/grades/addgrade")
-    public GradesTable insertGrade(@RequestBody GradesTable grades) {
-        Gradesservice.insertGrade(grades);
-        return null;
-    }
     
     @PutMapping("updatefacultypassword/{Id}")
 	public String updateFacultyPassword(@RequestBody FacultyDetails faculty, @PathVariable int Id) {
     	Facultyservice.updateFacultyPassword(faculty, Id);
 		return null;
 	}
+    @Autowired
+    private GradesService Gradesservice;
+    
+    @GetMapping("/studgrades/{studentNo}")
+    public List<GradesTable> getStudentGrades(@PathVariable String studentNo) {
+        return Gradesservice.getStudentGrades(studentNo);
+    }
+    
+    @PostMapping("/grades/addgrade")
+    public GradesTable insertGrade(@RequestBody GradesTable grades) {
+        Gradesservice.insertGrade(grades);
+        return null;
+    }
     
     @Autowired
     private StudentService Studentservice;

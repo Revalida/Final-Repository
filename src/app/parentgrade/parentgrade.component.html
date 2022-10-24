@@ -20,34 +20,24 @@
             <thead>
               <tr>
                 <th>Student Number</th>
-                <th>Subject</th>
-                <th>Full Name</th>
-                <th>Status</th>
-                <th>
-                  Date <br />
-                  (YYYY-MM-DD)
-                </th>
+                <th>Grades</th>
+                <th>Remarks</th>
+                <th>Comments</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of datas">
+              <tr *ngFor="let data of load">
                 <td>
                   <span> {{ data?.studentNo }} </span>
                 </td>
                 <td>
-                  <span> {{ data?.subjectCode }} </span>
+                  <span> {{ data?.grade }} </span>
                 </td>
                 <td>
-                  <span>
-                    {{ data?.studentFirstname }} {{ data?.studentMiddlename }}
-                    {{ data?.studentLastname }}
-                  </span>
+                  <span> {{ data?.remarks }} </span>
                 </td>
                 <td>
-                  <span> {{ data?.status }} </span>
-                </td>
-                <td>
-                  <span> {{ data?.timestamp }} </span>
+                  <span> {{ data?.comment }} </span>
                 </td>
               </tr>
             </tbody>
