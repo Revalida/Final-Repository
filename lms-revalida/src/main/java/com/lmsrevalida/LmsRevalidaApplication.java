@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jooq.revalida.model.tables.pojos.AdminDetails;
 import com.jooq.revalida.model.tables.pojos.Attendance;
 import com.jooq.revalida.model.tables.pojos.FacultyDetails;
+import com.jooq.revalida.model.tables.pojos.GradesTable;
 import com.jooq.revalida.model.tables.pojos.ParentDetails;
 import com.jooq.revalida.model.tables.pojos.ProfessorLoad;
 import com.jooq.revalida.model.tables.pojos.StudentDetails;
@@ -28,7 +29,9 @@ import com.lmsrevalida.service.AdminService;
 import com.lmsrevalida.service.AttendanceService;
 import com.lmsrevalida.service.FacultyLoadService;
 import com.lmsrevalida.service.FacultyService;
+import com.lmsrevalida.service.GradesService;
 import com.lmsrevalida.service.ParentService;
+import com.lmsrevalida.service.ProfessorService;
 import com.lmsrevalida.service.StudentLoadService;
 import com.lmsrevalida.service.StudentService;
 import com.lmsrevalida.service.SubjectService;
@@ -65,6 +68,23 @@ public class LmsRevalidaApplication {
 		Facultyservice.insertFaculty(faculty);
 		return null;
 	}
+    @Autowired
+    private ProfessorService Professorservice;
+    
+    
+    
+    @GetMapping("/subject/{facultyNo}")
+    public List<ProfessorLoad> getSubject(@PathVariable String facultyNo) {
+        return Professorservice.getSubject(facultyNo);
+    }
+    @Autowired
+    private GradesService Gradesservice;
+    
+    @PostMapping("/grades/addgrade")
+    public GradesTable insertGrade(@RequestBody GradesTable grades) {
+        Gradesservice.insertGrade(grades);
+        return null;
+    }
     
     @PutMapping("updatefacultypassword/{Id}")
 	public String updateFacultyPassword(@RequestBody FacultyDetails faculty, @PathVariable int Id) {
@@ -86,6 +106,7 @@ public class LmsRevalidaApplication {
 		Studentservice.updateStudentParent(student, Id);
 		return null;
 	}
+
 
     @GetMapping("/student/regular")
     public List<StudentDetails> getRegularStudents() {
@@ -116,6 +137,11 @@ public class LmsRevalidaApplication {
     public StudentDetails AddStudent(@RequestBody StudentDetails student) {
         Studentservice.insertStudent(student);
         return null;
+    }
+    
+    @GetMapping("/student/{section}")
+    public List<StudentDetails> getStudentSection(@PathVariable String section) {
+        return Studentservice.getStudentSection(section);
     }
     
     @Autowired 
@@ -156,6 +182,10 @@ public class LmsRevalidaApplication {
 	@Autowired 
 	private SubjectService Subjectservice;
 	
+	@GetMapping("/course/{course}")
+	public List<SubjectTable> getStudentSubject(@PathVariable String course){
+	    return Subjectservice.getStudentSubject(course);
+	}
 	
 	 
 	@GetMapping("/subjects")
@@ -303,9 +333,9 @@ public class LmsRevalidaApplication {
     private
     StudentLoadService Studentloadservice;
     
-    @GetMapping("/load/{studentNo}")
-    public List<StudentLoad> getStudentLoad(@PathVariable String studentNo) {
-        return Studentloadservice.getStudentLoad(studentNo);
+    @GetMapping("/studentload/{studentNo}")
+    public List<StudentLoad> getStudentLoads(@PathVariable String studentNo) {
+        return Studentloadservice.getStudentLoads(studentNo);
     }
     
     @GetMapping("studentload")
