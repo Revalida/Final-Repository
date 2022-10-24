@@ -45,7 +45,11 @@ import { ParentSidenavComponent } from './components/parental access module/pare
 import { StudentLoadBsitComponent } from './admin/studentload/student-load-bsit/student-load-bsit.component';
 import { StudentLoadBscsComponent } from './admin/studentload/student-load-bscs/student-load-bscs.component';
 import { StudentLoadBseeComponent } from './admin/studentload/student-load-bsee/student-load-bsee.component';
+
+import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
+
 import { StudentActiveComponent } from './admin/student-list/student-active/student-active.component';
+
 
 @NgModule({
   declarations: [
@@ -100,6 +104,7 @@ import { StudentActiveComponent } from './admin/student-list/student-active/stud
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    ScheduleModule, RecurrenceEditorModule,
   ],
   exports: [HeaderComponent],
   providers: [FormBuilder],

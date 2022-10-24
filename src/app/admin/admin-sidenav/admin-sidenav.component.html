@@ -20,7 +20,7 @@
         </div>
         <div style="margin-left: auto; margin-right: auto" class="card-body">
           <h4 style="font-weight: bolder" class="card-title">
-            <b>{{data?.adminFirstname}} {{data?.adminLastname}}</b>
+            <b>{{ data?.adminFirstname }} {{ data?.adminLastname }}</b>
           </h4>
         </div>
       </div>
@@ -73,7 +73,9 @@
           ><b>&nbsp;&nbsp;Assign Course</b></i
         >
       </li>
-      <p>Today is . . . <br>{{ clock | async | date:'MMM d, y, h:mm:ss a'}}</p>
+      <p>
+        Today is . . . <br />{{ clock | async | date: "MMM d, y, h:mm:ss a" }}
+      </p>
     </ul>
   </div>
   <ng-template #student let-modal>
@@ -97,7 +99,7 @@
               id="studentFirstname"
               class="form-control"
               name="studentFirstname"
-              placeholder="studentFirstname"
+              placeholder="Student Firstname"
               #studentFirstname="ngModel"
               ngModel
             />
@@ -110,7 +112,7 @@
               id="studentMiddlename"
               class="form-control"
               name="studentMiddlename"
-              placeholder="studentMiddlename"
+              placeholder="Student Middlename"
               #studentMiddlename="ngModel"
               ngModel
             />
@@ -123,8 +125,21 @@
               id="studentLastname"
               class="form-control"
               name="studentLastname"
-              placeholder="studentLastname"
+              placeholder="Student Lastname"
               #studentLastname="ngModel"
+              ngModel
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <div class="input-group">
+            <input
+              id="email"
+              class="form-control"
+              name="email"
+              placeholder="Email Address"
+              #email="ngModel"
               ngModel
             />
           </div>
@@ -157,28 +172,46 @@
         </div>
         <div class="form-group">
           <label for="sem">Semester</label>
-          <div class="input-group">
-            <input
-              id="sem"
-              class="form-control"
-              name="sem"
-              placeholder="Semester"
-              #sem="ngModel"
-              ngModel
-            />
+          <div class="dropdown">
+            <select id="sem" class="form-control" name="sem" #sem ngModel>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+            </select>
           </div>
         </div>
         <div class="form-group">
           <label for="yearLevel">Year Level</label>
-          <div class="input-group">
-            <input
+          <div class="dropdown">
+            <select
               id="yearLevel"
               class="form-control"
               name="yearLevel"
-              placeholder="Year Level"
-              #yearLevel="ngModel"
+              #yearLevel
               ngModel
-            />
+            >
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="acadYear">Academic Year</label>
+          <div class="dropdown">
+            <select
+              id="acadYear"
+              class="form-control"
+              name="acadYear"
+              #acadYear
+              ngModel
+            >
+              <option value="2020-2021">2020-2021</option>
+              <option value="2021-2022">2021-2022</option>
+              <option value="2022-2023">2022-2023</option>
+            </select>
           </div>
         </div>
         <br />
