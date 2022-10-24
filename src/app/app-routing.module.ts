@@ -35,7 +35,7 @@ import { StudentActiveComponent } from './admin/student-list/student-active/stud
 import { StudentLoadBsitComponent } from './admin/studentload/student-load-bsit/student-load-bsit.component';
 import { StudentLoadBscsComponent } from './admin/studentload/student-load-bscs/student-load-bscs.component';
 import { StudentLoadBseeComponent } from './admin/studentload/student-load-bsee/student-load-bsee.component';
-
+import { ParentComponent } from './components/parental access module/parent/parent.component';
 
 const routes: Routes = [
   {
@@ -64,7 +64,7 @@ const routes: Routes = [
   },
   {
     path: 'parentdashboard',
-    component: AttendanceParentComponent,
+    component: ParentComponent,
     canActivate: [ParentGuard],
   },
   {
@@ -148,11 +148,10 @@ const routes: Routes = [
     component: StudentActiveComponent,
   },
   {
-
     path: 'faculty-schedule',
     component: FacultyScheduleComponent,
-},
-{
+  },
+  {
     path: 'student-load-bsit',
     component: StudentLoadBsitComponent,
   },
@@ -163,7 +162,10 @@ const routes: Routes = [
   {
     path: 'student-load-bsee',
     component: StudentLoadBseeComponent,
-
+  },
+  {
+    path: 'parent-attendance',
+    component: AttendanceParentComponent,
   },
 ];
 

@@ -15,14 +15,14 @@ export class ParentSidenavComponent implements OnInit {
   constructor(private http: HttpClient, private clockService: ClockService) {}
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:9191/faculty').subscribe(
+    this.http.get<any>('http://localhost:9191/parent').subscribe(
       (res) => {
         const user = res.find((a: any) => {
-          return a.facultyNo === sessionStorage.getItem('FACULTY_NO');
+          return a.parentNo === sessionStorage.getItem('PARENT_NO');
         });
         if (user) {
           this.imageUrl = user.imgUrl;
-          this.name = user.facultyName;
+          this.name = user.parentFirstname;
           console.log(this.imageUrl);
         }
       },

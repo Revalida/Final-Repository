@@ -116,6 +116,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('USER', 'user');
           sessionStorage.setItem('ROLE', user.type);
           sessionStorage.setItem('STUDENT_NO', user.studentNo);
+          sessionStorage.setItem('PARENT_NO', user.parentNo);
         } else {
           this.toast.error('Parent Account not found!');
           this.loginForm.reset();
