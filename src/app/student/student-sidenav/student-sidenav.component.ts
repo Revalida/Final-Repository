@@ -23,7 +23,7 @@ export class StudentSidenavComponent implements OnInit {
         });
         if (user) {
           this.data = user;
-          console.log(this.data);
+          // console.log(this.data);
         } else {
           console.log(res);
         }

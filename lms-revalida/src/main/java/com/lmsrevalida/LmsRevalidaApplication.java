@@ -176,6 +176,10 @@ public class LmsRevalidaApplication {
 	@Autowired 
 	private SubjectService Subjectservice;
 	
+	@GetMapping("/course/{course}")
+	public List<SubjectTable> getStudentSubject(@PathVariable String course){
+	    return Subjectservice.getStudentSubject(course);
+	}
 	
 	 
 	@GetMapping("/subjects")
@@ -323,9 +327,9 @@ public class LmsRevalidaApplication {
     private
     StudentLoadService Studentloadservice;
     
-    @GetMapping("/load/{studentNo}")
-    public List<StudentLoad> getStudentLoad(@PathVariable String studentNo) {
-        return Studentloadservice.getStudentLoad(studentNo);
+    @GetMapping("/studentload/{studentNo}")
+    public List<StudentLoad> getStudentLoads(@PathVariable String studentNo) {
+        return Studentloadservice.getStudentLoads(studentNo);
     }
     
     @GetMapping("studentload")

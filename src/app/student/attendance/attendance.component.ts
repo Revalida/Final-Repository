@@ -22,7 +22,7 @@ export class AttendanceComponent implements OnInit {
     this.http.get('http://localhost:9191/attendance/' + this.studentNo).subscribe(
       (res) => {
         this.datas = res;
-        console.log(this.datas);
+        // console.log(this.datas);
       },
       (err) => {
         this.toast.error('Something went wrong!');
